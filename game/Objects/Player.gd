@@ -4,6 +4,7 @@ const ACC = 32
 const HORIZONTAL_VEL = 160
 const VERTICAL_VEL = 0
 const GRAVITY = 200
+const JUMP_SPEED = -2000
 
 var acc = ACC
 var velocity = Vector2()
@@ -36,11 +37,12 @@ func motion_change(time_stamp):
 	if(jump):
 		if(!jumping and is_on_floor()):
 			jumping = true
-			velocity.y = -2000
+			velocity.y = JUMP_SPEED
 			
 	if(jumping):
 		velocity.y = velocity.y + GRAVITY
-		if(velocity.y == 2000):
+		#Se colidir com algum objeto ou plataforma, ele para de "pular"
+		if(velocity.y == -JUMP_SPEED):
 			jumping = false
 			velocity.y = 0
 
