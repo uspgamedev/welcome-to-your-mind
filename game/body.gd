@@ -4,6 +4,9 @@ const ACT = preload("actions.gd")
 const G = -160
 const ACC = 2.2
 const EPSILON = 1
+const SENSITIVITY = 0.01
+
+signal ready
 
 onready var center = OS.get_window_size() / 2
 onready var input = get_node('/root/input')
@@ -24,15 +27,18 @@ func _ready():
 	input.connect('press_action', self, '_jump')
 	input.connect('hold_action', self, '_add_jump_height')
 	input.connect('hold_direction', self, '_add_speed')
-	get_viewport().warp_mouse(center)
 	dir.update_vector(self.get_rotation())
 	set_process_input(true)
+	get_viewport().warp_mouse(center)
+	for i in range (9):
+		yield(get_tree(), 'fixed_frame')
+	self.connect('ready', self, '_check_mouse_rotation')
 
 func _fixed_process(delta):
+	emit_signal('ready')
 	apply_gravity(delta)
 	apply_speed(delta)
 	deaccelerate()
-	check_mouse_rotation()
 	dir.update_vector(self.get_rotation())
 
 func set_jump(flag):
@@ -88,7 +94,7 @@ func deaccelerate():
 		speed.z *= .8
 	speed.y *= .85
 
-func check_mouse_rotation():
+func _check_mouse_rotation():
 	var new_mouse_pos = get_viewport().get_mouse_pos()
 	diff = Vector2(0.1 * (new_mouse_pos.x - center.x), \
 	(max(min(0.1 * (new_mouse_pos.y - center.y), 10), -10)))
@@ -103,7 +109,7 @@ func check_mouse_rotation():
 				rotate()
 			else:
 				set_rotation_limit(-90)
-		self.global_rotate(Vector3(0, diff.x, 0), 0.008)
+		self.global_rotate(Vector3(0, diff.x, 0), SENSITIVITY)
 	get_viewport().warp_mouse(center)
 	set_transform(self.get_transform().orthonormalized())
 
