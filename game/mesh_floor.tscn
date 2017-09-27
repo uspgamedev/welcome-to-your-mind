@@ -20,7 +20,7 @@ fixed_flags/use_point_size = false
 fixed_flags/discard_alpha = false
 fixed_flags/use_xy_normalmap = false
 params/diffuse = Color( 0.498039, 0.498039, 0.498039, 1 )
-params/specular = Color( 0.498039, 0.498039, 0.498039, 1 )
+params/specular = Color( 0, 0, 0, 1 )
 params/emission = Color( 0, 0, 0, 1 )
 params/specular_exp = 50.0
 params/detail_mix = 1.0
@@ -43,7 +43,13 @@ textures/shade_param_tc = 0
 [sub_resource type="Mesh" id=2]
 
 resource/name = "Cube.016"
-surfaces/0 = { "alphasort":false, "arrays":[ Vector3Array( -1, -1, 1, 1, -1, 1, 1, -1, -1, -1, -1, -1 ), Vector3Array( 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0 ), null, null, Vector3Array( 0.753848, 0.247639, 0, 1.00076, 0.247639, 0, 1.00076, 0.000724554, 0, 0.753848, 0.000724554, 0 ), null, null, null, IntArray( 0, 2, 1, 0, 3, 2 ) ], "material":SubResource( 1 ), "morph_arrays":[  ], "primitive":4 }
+surfaces/0 = {
+"alphasort": false,
+"arrays": [ Vector3Array( -1, -1, 1, 1, -1, 1, 1, -1, -1, -1, -1, -1 ), Vector3Array( 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0 ), null, null, Vector3Array( 0.753848, 0.247639, 0, 1.00076, 0.247639, 0, 1.00076, 0.000724554, 0, 0.753848, 0.000724554, 0 ), null, null, null, IntArray( 0, 2, 1, 0, 3, 2 ) ],
+"material": SubResource( 1 ),
+"morph_arrays": [  ],
+"primitive": 4
+}
 custom_aabb/custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 
 [sub_resource type="BoxShape" id=3]
