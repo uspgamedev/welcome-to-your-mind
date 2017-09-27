@@ -9,10 +9,6 @@
 
 transform/pos = Vector2( 352.455, 261.824 )
 
-[node name="PlayerHitboxArea" parent="Player"]
-
-transform/scale = Vector2( 2, 2 )
-
 [node name="InteractableTestObj" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 626.866, 284.481 )

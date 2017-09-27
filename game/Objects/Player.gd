@@ -15,6 +15,7 @@ func _ready():
 
 func _fixed_process(delta):
 	motion_change(delta)
+	
 
 func is_on_floor():
 	#CADÊ?
@@ -45,7 +46,7 @@ func motion_change(time_stamp):
 		if(velocity.y == -JUMP_SPEED):
 			jumping = false
 			velocity.y = 0
-
+	
 	
 	var motion = velocity * time_stamp
 	move(motion)
