@@ -6,12 +6,13 @@ const ACC = 2.2
 const EPSILON = 1
 const SENSITIVITY = 0.01
 
-signal ready
+signal camera
 
 onready var center = OS.get_window_size() / 2
 onready var input = get_node('/root/input')
 onready var dir = get_node('/root/directions')
 onready var camera = get_node('Camera')
+onready var side_camera = get_node('../SideCamera')
 onready var player_area = get_node('PlayerArea')
 onready var rot_x = 0
 
@@ -22,26 +23,29 @@ var can_jump
 var jump_height = -1
 var last_rot
 var diff
+var initial_rot
 
 func _ready():
 	set_fixed_process(true)
 	input.connect('press_action', self, '_jump')
 	input.connect('press_action', self, '_interact')
+	input.connect('press_action', self, '_change_camera')
 	input.connect('hold_action', self, '_add_jump_height')
 	input.connect('hold_direction', self, '_add_speed')
-	dir.update_vector(self.get_rotation())
+	dir.pov_update_vector(self.get_rotation())
 	set_process_input(true)
 	get_viewport().warp_mouse(center)
+	camera.make_current()
+	initial_rot = self.get_rotation()
 	for i in range (9):
 		yield(get_tree(), 'fixed_frame')
-	self.connect('ready', self, '_check_mouse_rotation')
+	self.connect('camera', self, '_check_mouse_rotation')
 
 func _fixed_process(delta):
-	emit_signal('ready')
+	emit_signal('camera')
 	apply_gravity(delta)
 	apply_speed(delta)
 	deaccelerate()
-	dir.update_vector(self.get_rotation())
 
 func set_jump(flag):
 	self.can_jump = flag
@@ -60,6 +64,22 @@ func _interact(act):
 		for i in player_area.get_overlapping_areas():
 			if i.is_in_group('interactable'):
 				i.interact()
+
+func _change_camera(act):
+	if (act == ACT.CHANGE_CAMERA):
+		if (self.is_connected('camera', self, '_check_mouse_rotation')):
+			self.disconnect('camera', self, '_check_mouse_rotation')
+			self.connect('camera', self, '_side_camera_view')
+			side_camera.make_current()
+			self.set_rotation(initial_rot)
+		else:
+			self.connect('camera', self, '_check_mouse_rotation')
+			self.disconnect('camera', self, '_side_camera_view')
+			camera.make_current()
+
+func _side_camera_view():
+	get_viewport().warp_mouse(center)
+	dir.side_update_vector()
 
 func _add_jump_height(act):
 	if (speed.y < EPSILON and speed.y > -EPSILON):
@@ -90,7 +110,7 @@ func apply_speed(delta):
 func check_if_floor(collider, normal):
 	if (normal.y == 1):
 		speed.y = 0
-	if (collider extends GridMap and normal.y == 1):
+	if (normal.y == 1):
 		set_jump(true)
 		jump_height = -1
 
@@ -107,6 +127,7 @@ func _check_mouse_rotation():
 	var new_mouse_pos = get_viewport().get_mouse_pos()
 	diff = Vector2(0.1 * (new_mouse_pos.x - center.x), \
 	(max(min(0.1 * (new_mouse_pos.y - center.y), 10), -10)))
+	dir.pov_update_vector(self.get_rotation())
 	if (diff != Vector2(0, 0)):
 		if (diff.y < 0):
 			if (rot_x < 90):

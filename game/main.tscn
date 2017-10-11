@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=12 format=1]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://mesh_floor.tres" type="MeshLibrary" id=2]
@@ -49,23 +49,27 @@ bcs/contrast = 1.0
 bcs/saturation = 1.0
 srgb/enabled = false
 
-[sub_resource type="BoxShape" id=2]
-
-extents = Vector3( 1, 1, 1 )
-
-[sub_resource type="ConvexPolygonShape" id=6]
+[sub_resource type="ConvexPolygonShape" id=2]
 
 points = Vector3Array( 1.5, 3, 1.5, 1.5, 3, -1.5, -1.5, 3, 1.5, -1.5, 3, -1.5, -1.5, -3, 1.5, -1.5, -3, -1.5, 1.5, -3, 1.5, 1.5, -3, -1.5 )
 
-[sub_resource type="ConvexPolygonShape" id=7]
+[sub_resource type="ConvexPolygonShape" id=5]
 
 points = Vector3Array( 2, 3, 2, 2, 3, -2, -2, 3, 2, -2, 3, -2, -2, -3, 2, -2, -3, -2, 2, -3, 2, 2, -3, -2 )
 
-[sub_resource type="ConvexPolygonShape" id=5]
+[sub_resource type="ConvexPolygonShape" id=6]
 
 points = Vector3Array( 1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1 )
 
-[sub_resource type="ConvexPolygonShape" id=4]
+[sub_resource type="ConvexPolygonShape" id=7]
+
+points = Vector3Array( 2, 2, 1.5, 2, 2, -1.5, -2, 2, 1.5, -2, 2, -1.5, -2, -2, 1.5, -2, -2, -1.5, 2, -2, 1.5, 2, -2, -1.5 )
+
+[sub_resource type="ConvexPolygonShape" id=8]
+
+points = Vector3Array( 1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1 )
+
+[sub_resource type="ConvexPolygonShape" id=9]
 
 points = Vector3Array( 2, 2, 1.5, 2, 2, -1.5, -2, 2, 1.5, -2, 2, -1.5, -2, -2, 1.5, -2, -2, -1.5, 2, -2, 1.5, 2, -2, -1.5 )
 
@@ -96,7 +100,7 @@ __meta__ = {
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 0.707107, 0, -0.707107, 0.5, 0.707107, 0.5, 0.5, -0.707107, 0.5, 0, 10, 0 )
+transform/local = Transform( 0.707107, 0, 0.707107, -0.5, 0.707107, 0.5, -0.5, -0.707107, 0.5, 0, 10, 0 )
 layers = 1
 params/enabled = true
 params/editor_only = false
@@ -122,19 +126,31 @@ shadow/zoffset_scale = 2.0
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 environment = SubResource( 1 )
 
+[node name="SideCamera" type="Camera" parent="."]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 10, 0, 0 )
+projection = 0
+fov = 65.0
+near = 0.1
+far = 100.0
+keep_aspect = 1
+current = false
+visible_layers = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+
 [node name="Player" type="KinematicBody" parent="."]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 input/ray_pickable = true
 input/capture_on_drag = false
-shape_count = 2
+shape_count = 1
 shapes/0/shape = SubResource( 2 )
-shapes/0/transform = Transform( 1.5, 0, 0, 0, 3, 0, 0, 0, 1.5, 0, -1, 0 )
+shapes/0/transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
 shapes/0/trigger = false
-shapes/1/shape = SubResource( 6 )
-shapes/1/transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
-shapes/1/trigger = false
 collision/layers = 1
 collision/mask = 1
 collide_with/static = true
@@ -143,6 +159,25 @@ collide_with/rigid = true
 collide_with/character = true
 collision/margin = 0.001
 script/script = ExtResource( 3 )
+
+[node name="TestCube" type="TestCube" parent="Player"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1.5, 0, 0, 0, 3, 0, 0, 0, 1.5, 0, -1, 0 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
 
 [node name="Camera" type="Camera" parent="Player"]
 
@@ -165,7 +200,7 @@ transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
 build_mode = 0
 depth = 3.0
 polygon = Vector2Array( -1.5, 3, -1.5, -3, 1.5, -3, 1.5, 3 )
-shape_range = Vector2( 1, 1 )
+shape_range = Vector2( 0, 0 )
 
 [node name="OmniLight" type="OmniLight" parent="Player"]
 
@@ -196,7 +231,7 @@ transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
 input/ray_pickable = false
 input/capture_on_drag = false
 shape_count = 1
-shapes/0/shape = SubResource( 7 )
+shapes/0/shape = SubResource( 5 )
 shapes/0/transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 shapes/0/trigger = false
 space_override = 0
@@ -222,6 +257,7 @@ shape_range = Vector2( 0, 0 )
 
 [node name="TestCube" type="TestCube" parent="."]
 
+editor/display_folded = true
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20 )
 layers = 1
@@ -245,7 +281,7 @@ _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 input/ray_pickable = true
 input/capture_on_drag = false
 shape_count = 1
-shapes/0/shape = SubResource( 5 )
+shapes/0/shape = SubResource( 6 )
 shapes/0/transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -271,7 +307,7 @@ _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 input/ray_pickable = false
 input/capture_on_drag = false
 shape_count = 1
-shapes/0/shape = SubResource( 4 )
+shapes/0/shape = SubResource( 7 )
 shapes/0/transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 shapes/0/trigger = false
 space_override = 0
@@ -289,6 +325,83 @@ collision/mask = 1
 script/script = ExtResource( 4 )
 
 [node name="CollisionPolygon" type="CollisionPolygon" parent="TestCube/Area"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+build_mode = 0
+depth = 3.0
+polygon = Vector2Array( -2, 2, -2, -2, 2, -2, 2, 2 )
+shape_range = Vector2( 0, 0 )
+
+[node name="TestCube1" type="TestCube" parent="."]
+
+editor/display_folded = true
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -24 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+
+[node name="StaticBody" type="StaticBody" parent="TestCube1"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+input/ray_pickable = true
+input/capture_on_drag = false
+shape_count = 1
+shapes/0/shape = SubResource( 8 )
+shapes/0/transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+friction = 1.0
+bounce = 0.0
+constant_linear_velocity = Vector3( 0, 0, 0 )
+constant_angular_velocity = Vector3( 0, 0, 0 )
+
+[node name="CollisionPolygon" type="CollisionPolygon" parent="TestCube1/StaticBody"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+build_mode = 0
+depth = 2.0
+polygon = Vector2Array( -1, 1, -1, -1, 1, -1, 1, 1 )
+shape_range = Vector2( 0, 0 )
+
+[node name="Area" type="Area" parent="TestCube1" groups=[
+"interactable",
+]]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+input/ray_pickable = false
+input/capture_on_drag = false
+shape_count = 1
+shapes/0/shape = SubResource( 9 )
+shapes/0/transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+shapes/0/trigger = false
+space_override = 0
+gravity_point = false
+gravity_distance_scale = 0.0
+gravity_vec = Vector3( 0, -1, 0 )
+gravity = 9.8
+linear_damp = 0.1
+angular_damp = 1.0
+priority = 0.0
+monitoring = true
+monitorable = true
+collision/layers = 1
+collision/mask = 1
+script/script = ExtResource( 4 )
+
+[node name="CollisionPolygon" type="CollisionPolygon" parent="TestCube1/Area"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 build_mode = 0
