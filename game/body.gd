@@ -12,6 +12,7 @@ onready var center = OS.get_window_size() / 2
 onready var input = get_node('/root/input')
 onready var dir = get_node('/root/directions')
 onready var camera = get_node('Camera')
+onready var player_area = get_node('PlayerArea')
 onready var rot_x = 0
 
 var speed = Vector3()
@@ -25,6 +26,7 @@ var diff
 func _ready():
 	set_fixed_process(true)
 	input.connect('press_action', self, '_jump')
+	input.connect('press_action', self, '_interact')
 	input.connect('hold_action', self, '_add_jump_height')
 	input.connect('hold_direction', self, '_add_speed')
 	dir.update_vector(self.get_rotation())
@@ -45,12 +47,19 @@ func set_jump(flag):
 	self.can_jump = flag
 
 func _jump(act):
-	if (jump_height >= 0):
-		jump_height = -1
-	if (can_jump and act == ACT.JUMP):
-		speed -= Vector3(0, .05 * G, 0)
-		jump_height = 0
-	set_jump(false)
+	if (act == ACT.JUMP):
+		if (jump_height >= 0):
+			jump_height = -1
+		if (can_jump and act == ACT.JUMP):
+			speed -= Vector3(0, .05 * G, 0)
+			jump_height = 0
+		set_jump(false)
+
+func _interact(act):
+	if (act == ACT.INTERACT):
+		for i in player_area.get_overlapping_areas():
+			if i.is_in_group('interactable'):
+				i.interact()
 
 func _add_jump_height(act):
 	if (speed.y < EPSILON and speed.y > -EPSILON):

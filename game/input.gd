@@ -42,6 +42,8 @@ func _get_action(e):
 	var act = -1
 	if e.is_action_pressed('ui_jump'):
 		act = ACT.JUMP
+	elif e.is_action_pressed('ui_interact'):
+		act = ACT.INTERACT
 	return act
 
 func _get_direction(e):
