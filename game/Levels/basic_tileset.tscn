@@ -1,0 +1,161 @@
+[gd_scene load_steps=6 format=1]
+
+[ext_resource path="res://Levels/tileset.tex" type="Texture" id=1]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 50, 0, 50, 50, 0, 50, 0, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 50, 0, 50, 50, 0, 50, 0, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 50, 0, 50, 50, 0, 50 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 0, 0, 50, 50, 0, 50 )
+
+[node name="BasicTileset" type="Node"]
+
+[node name="Brick1" type="Sprite" parent="."]
+
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 0, 0, 50, 50 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Brick1"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Brick1/StaticBody2D"]
+
+build_mode = 0
+polygon = Vector2Array( 0, 0, 0, 50, 50, 50, 50, 0 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="Brick2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 60, 0 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 50, 0, 50, 50 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Brick2"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Brick2/StaticBody2D"]
+
+build_mode = 0
+polygon = Vector2Array( 0, 0, 0, 50, 50, 50, 50, 0 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="LeftRoofBrick" type="Sprite" parent="."]
+
+transform/pos = Vector2( 120, 0 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 100, 0, 50, 50 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="LeftRoofBrick"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LeftRoofBrick/StaticBody2D"]
+
+build_mode = 0
+polygon = Vector2Array( 50, 0, 50, 50, 0, 50 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="RightRoofBrick" type="Sprite" parent="."]
+
+transform/pos = Vector2( 180, 0 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 150, 0, 50, 50 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RightRoofBrick"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 4 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RightRoofBrick/StaticBody2D"]
+
+build_mode = 0
+polygon = Vector2Array( 0, 0, 50, 50, 0, 50 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="BrickBG" type="Sprite" parent="."]
+
+transform/pos = Vector2( 240, 0 )
+texture = ExtResource( 1 )
+centered = false
+region = true
+region_rect = Rect2( 200, 0, 50, 50 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+
