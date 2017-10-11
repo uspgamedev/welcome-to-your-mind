@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://Objects/MovingPlatform.gd" type="Script" id=1]
+[ext_resource path="res://Objects/icon.tex" type="Texture" id=2]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 30, -30, 30, 30, -30, 30, -30, -30 )
+
+[node name="MovingPlatform" type="KinematicBody2D"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 1 )
+left_position = null
+right_position = null
+horizontal_speed = 100
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+
+build_mode = 0
+polygon = Vector2Array( -30, -30, -30, 30, 30, 30, 30, -30 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="Sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+modulate = Color( 0.0737135, 0.773438, 0.0332336, 1 )
+
+
