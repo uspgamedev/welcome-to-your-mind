@@ -12,3 +12,4 @@ Trata-se de um jogo de plataforma, de um jogador, e que aborda temas relacionado
 * Caroline Favret Ramalho
 * Lucas Dário
 * Rodrigo Kagan
+* Victor Domiciano Mendonça
