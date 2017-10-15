@@ -78,6 +78,8 @@ func _change_camera(act):
 			camera.make_current()
 
 func _side_camera_view():
+	var body_trans = self.get_translation()
+	side_camera.set_translation(Vector3(body_trans.x + 20, body_trans.y, body_trans.z))
 	get_viewport().warp_mouse(center)
 	dir.side_update_vector()
 
