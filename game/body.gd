@@ -11,7 +11,8 @@ signal camera
 onready var center = OS.get_window_size() / 2
 onready var input = get_node('/root/input')
 onready var dir = get_node('/root/directions')
-onready var camera = get_node('Camera')
+onready var pov_camera = get_node('POVCamera')
+onready var tp_camera = get_node('TPCamera')
 onready var side_camera = get_node('../SideCamera')
 onready var player_area = get_node('PlayerArea')
 onready var rot_x = 0
@@ -35,7 +36,7 @@ func _ready():
 	dir.pov_update_vector(self.get_rotation())
 	set_process_input(true)
 	get_viewport().warp_mouse(center)
-	camera.make_current()
+	pov_camera.make_current()
 	initial_rot = self.get_rotation()
 	for i in range (9):
 		yield(get_tree(), 'fixed_frame')
@@ -66,7 +67,7 @@ func _interact(act):
 				i.interact()
 
 func _change_camera(act):
-	if (act == ACT.CHANGE_CAMERA):
+	if (act == ACT.SIDE_CAMERA and !tp_camera.is_current()):
 		if (self.is_connected('camera', self, '_check_mouse_rotation')):
 			self.disconnect('camera', self, '_check_mouse_rotation')
 			self.connect('camera', self, '_side_camera_view')
@@ -75,7 +76,15 @@ func _change_camera(act):
 		else:
 			self.connect('camera', self, '_check_mouse_rotation')
 			self.disconnect('camera', self, '_side_camera_view')
-			camera.make_current()
+			pov_camera.make_current()
+	elif (act == ACT.TP_CAMERA and !side_camera.is_current()):
+		rot_x = 0
+		if (pov_camera.is_current()):
+			tp_camera.set_rotation_deg(Vector3(-15, 0, 0))
+			tp_camera.make_current()
+		else:
+			pov_camera.set_rotation_deg(Vector3(0, 0, 0))
+			pov_camera.make_current()
 
 func _side_camera_view():
 	var body_trans = self.get_translation()
@@ -146,10 +155,16 @@ func _check_mouse_rotation():
 	set_transform(self.get_transform().orthonormalized())
 
 func rotate():
-	rot_x -= diff.y * float(90)/157
-	last_rot = camera.get_rotation_deg().x
-	camera.rotate_x(0.01 * diff.y)
+	if (pov_camera.is_current()):
+		rot_x -= diff.y * float(90)/157
+		last_rot = pov_camera.get_rotation_deg().x
+		pov_camera.rotate_x(0.01 * diff.y)
+	else:
+		rot_x -= diff.y * float(90)/157
+		last_rot = tp_camera.get_rotation_deg().x
+		tp_camera.rotate_x(0.003 * diff.y)
+		# need to translate the camera around a sphere
 
 func set_rotation_limit(limit):
-	camera.set_rotation_deg(Vector3(limit, \
-	camera.get_rotation_deg().y, camera.get_rotation_deg().z))
+	pov_camera.set_rotation_deg(Vector3(limit, \
+	pov_camera.get_rotation_deg().y, pov_camera.get_rotation_deg().z))

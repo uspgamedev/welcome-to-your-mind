@@ -53,9 +53,9 @@ srgb/enabled = false
 
 points = Vector3Array( 1.5, 3, 1.5, 1.5, 3, -1.5, -1.5, 3, 1.5, -1.5, 3, -1.5, -1.5, -3, 1.5, -1.5, -3, -1.5, 1.5, -3, 1.5, 1.5, -3, -1.5 )
 
-[sub_resource type="ConvexPolygonShape" id=9]
+[sub_resource type="ConvexPolygonShape" id=14]
 
-points = Vector3Array( 2, 3, 2, 2, 3, -2, -2, 3, 2, -2, 3, -2, -2, -3, 2, -2, -3, -2, 2, -3, 2, 2, -3, -2 )
+points = Vector3Array( 2, 3, 1, 2, 3, -1, -2, 3, 1, -2, 3, -1, -2, -3, 1, -2, -3, -1, 2, -3, 1, 2, -3, -1 )
 
 [sub_resource type="ConvexPolygonShape" id=10]
 
@@ -131,9 +131,9 @@ environment = SubResource( 1 )
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 10, 0, 0 )
 projection = 0
-fov = 65.0
+fov = 60.0
 near = 0.1
-far = 100.0
+far = 1000.0
 keep_aspect = 1
 current = false
 visible_layers = 1048575
@@ -188,9 +188,24 @@ depth = 3.0
 polygon = Vector2Array( -1.5, 3, -1.5, -3, 1.5, -3, 1.5, 3 )
 shape_range = Vector2( 0, 0 )
 
-[node name="Camera" type="Camera" parent="Player"]
+[node name="POVCamera" type="Camera" parent="Player"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+projection = 0
+fov = 60.0
+near = 0.1
+far = 1000.0
+keep_aspect = 1
+current = false
+visible_layers = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+
+[node name="TPCamera" type="Camera" parent="Player"]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 4, 8 )
 projection = 0
 fov = 60.0
 near = 0.1
@@ -226,13 +241,14 @@ params/attenuation = 2.0
 
 [node name="PlayerArea" type="Area" parent="Player"]
 
+editor/display_folded = true
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
 input/ray_pickable = false
 input/capture_on_drag = false
 shape_count = 1
-shapes/0/shape = SubResource( 9 )
-shapes/0/transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+shapes/0/shape = SubResource( 14 )
+shapes/0/transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
 shapes/0/trigger = false
 space_override = 0
 gravity_point = false
@@ -250,8 +266,9 @@ collision/mask = 1
 [node name="CollisionPolygon" type="CollisionPolygon" parent="Player/PlayerArea"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
 build_mode = 0
-depth = 4.0
+depth = 2.0
 polygon = Vector2Array( -2, 3, -2, -3, 2, -3, 2, 3 )
 shape_range = Vector2( 0, 0 )
 

@@ -44,8 +44,10 @@ func _get_action(e):
 		act = ACT.JUMP
 	elif e.is_action_pressed('ui_interact'):
 		act = ACT.INTERACT
-	elif e.is_action_pressed('ui_change_camera'):
-		act = ACT.CHANGE_CAMERA
+	elif e.is_action_pressed('ui_side_camera'):
+		act = ACT.SIDE_CAMERA
+	elif e.is_action_pressed('ui_tp_camera'):
+		act = ACT.TP_CAMERA
 	return act
 
 func _get_direction(e):
