@@ -16,6 +16,14 @@ func _ready():
 func _fixed_process(delta):
 	motion_change(delta)
 	
+	var motion = velocity * delta
+	motion = move(motion)
+	
+	if (is_colliding()):
+		var n = get_collision_normal()
+		motion = n.slide(motion)
+		velocity = n.slide(velocity)
+		move(motion)
 
 func is_on_floor():
 	#CADÊ?
@@ -23,7 +31,7 @@ func is_on_floor():
 
 func motion_change(time_stamp):
 	#velocity.y = VERTICAL_VEL
-	
+
 	var left = Input.is_action_pressed("ui_left")
 	var right = Input.is_action_pressed("ui_right")
 	var jump = Input.is_action_pressed("ui_jump")
@@ -39,7 +47,7 @@ func motion_change(time_stamp):
 		if(!jumping and is_on_floor()):
 			jumping = true
 			velocity.y = JUMP_SPEED
-			
+
 	if(jumping):
 		velocity.y = velocity.y + GRAVITY
 		#Se colidir com algum objeto ou plataforma, ele para de "pular"
