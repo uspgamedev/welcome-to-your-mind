@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://Objects/MovingPlatform.tscn" type="PackedScene" id=1]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="MovingPlatform" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 470, 260 )
+left_position = 420.0
+right_position = 520.0
+
+
