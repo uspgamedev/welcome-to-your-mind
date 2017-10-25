@@ -36,11 +36,12 @@ func _ready():
 	dir.pov_update_vector(self.get_rotation())
 	set_process_input(true)
 	get_viewport().warp_mouse(center)
-	pov_camera.make_current()
+	side_camera.make_current()
 	initial_rot = self.get_rotation()
-	for i in range (9):
-		yield(get_tree(), 'fixed_frame')
-	self.connect('camera', self, '_check_mouse_rotation')
+	self.connect('camera', self, '_side_camera_view')
+	#for i in range (9):
+	#	yield(get_tree(), 'fixed_frame')
+	#self.connect('camera', self, '_check_mouse_rotation')
 
 func _fixed_process(delta):
 	emit_signal('camera')

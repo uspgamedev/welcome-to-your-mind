@@ -30,10 +30,10 @@ func pov_update_vector(rot):
 
 func side_update_vector():
 	var rot = Vector2(0, 0)
-	Vector[UP] =         Vector3(-cos(rot.y), 0, sin(rot.y))
+	Vector[UP] =         Vector3(0, 0, 0)
 	Vector[RIGHT] =      Vector3(-sin(rot.y), 0, -cos(rot.y))
 	Vector[LEFT] =       Vector3(sin(rot.y), 0, cos(rot.y))
-	Vector[DOWN] =       Vector3(cos(rot.y), 0, -sin(rot.y))
+	Vector[DOWN] =       Vector3(0, 0, 0)
 	Vector[UP_RIGHT] =   sqrt(2)/2 * (Vector[UP] + Vector[RIGHT])
 	Vector[DOWN_RIGHT] = sqrt(2)/2 * (Vector[DOWN] + Vector[RIGHT])
 	Vector[DOWN_LEFT] =  sqrt(2)/2 * (Vector[DOWN] + Vector[LEFT])
