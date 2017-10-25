@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://Objects/Player.gd" type="Script" id=1]
 [ext_resource path="res://Objects/icon.tex" type="Texture" id=2]
 [ext_resource path="res://Scripts/CollisionFix.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Camera.gd" type="Script" id=4]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 
@@ -58,5 +59,32 @@ shape = SubResource( 2 )
 trigger = false
 _update_shape_index = 0
 script/script = ExtResource( 3 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit/left = -10000000
+limit/top = -10000000
+limit/right = 10000000
+limit/bottom = 10000000
+drag_margin/h_enabled = true
+drag_margin/v_enabled = true
+smoothing/enable = false
+smoothing/speed = 5.0
+drag_margin/left = 0.2
+drag_margin/top = 0.2
+drag_margin/right = 0.2
+drag_margin/bottom = 0.2
+script/script = ExtResource( 4 )
+
+[node name="Tween" type="Tween" parent="Camera2D"]
+
+playback/process_mode = 1
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
 
 

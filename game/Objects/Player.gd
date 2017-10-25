@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 const ACC = 32
-const HORIZONTAL_VEL = 160
+const HORIZONTAL_VEL = 320
 const VERTICAL_VEL = 0
 const GRAVITY = 200
 const JUMP_SPEED = -2000
@@ -28,7 +28,10 @@ func is_on_floor():
 
 func motion_change(time_stamp):
 	#velocity.y = VERTICAL_VEL
-	velocity.y = velocity.y + GRAVITY
+	if is_on_floor():
+		velocity.y = 0
+	else:
+		velocity.y = velocity.y + GRAVITY
 
 	var left = Input.is_action_pressed("ui_left")
 	var right = Input.is_action_pressed("ui_right")
