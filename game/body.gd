@@ -1,6 +1,7 @@
 extends KinematicBody
 
-const ACT = preload("actions.gd")
+const ACT = preload('actions.gd')
+const DIR = preload('directions.gd')
 const G = -160
 const ACC = 2.2
 const EPSILON = 1
@@ -33,6 +34,7 @@ func _ready():
 	input.connect('press_action', self, '_change_camera')
 	input.connect('hold_action', self, '_add_jump_height')
 	input.connect('hold_direction', self, '_add_speed')
+	input.connect('press_direction', self, '_flip_body')
 	dir.pov_update_vector(self.get_rotation())
 	set_process_input(true)
 	get_viewport().warp_mouse(center)
@@ -51,6 +53,12 @@ func _fixed_process(delta):
 
 func set_jump(flag):
 	self.can_jump = flag
+
+func _flip_body(dir):
+	if (dir == DIR.RIGHT):
+		self.set_rotation_deg(Vector3(0, 0, 0))
+	elif (dir == DIR.LEFT):
+		self.set_rotation_deg(Vector3(-180, 0, -180))
 
 func _jump(act):
 	if (act == ACT.JUMP):
@@ -101,7 +109,7 @@ func _add_jump_height(act):
 		jump_height += 1
 
 func _add_speed(direction):
-	self.speed += dir.Vector[direction] * ACC
+	self.speed += dir.Coordinates[direction] * ACC
 
 func apply_gravity(delta):
 	speed.y += delta * G
