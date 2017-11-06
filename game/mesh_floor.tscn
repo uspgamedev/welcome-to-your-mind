@@ -52,9 +52,9 @@ surfaces/0 = {
 }
 custom_aabb/custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 
-[sub_resource type="BoxShape" id=3]
+[sub_resource type="ConvexPolygonShape" id=3]
 
-extents = Vector3( 1, 1, 1 )
+points = Vector3Array( 1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1 )
 
 [node name="Mesh" type="Spatial"]
 
@@ -98,12 +98,35 @@ bounce = 0.0
 constant_linear_velocity = Vector3( 0, 0, 0 )
 constant_angular_velocity = Vector3( 0, 0, 0 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Floor/FloorCollision"]
+[node name="CollisionPolygon" type="CollisionPolygon" parent="Floor/FloorCollision"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
-shape = SubResource( 3 )
-trigger = false
-_update_shape_index = 0
+build_mode = 0
+depth = 2.0
+polygon = Vector2Array( 1, 1, 1, -1, -1, -1, -1, 1 )
+shape_range = Vector2( 0, 0 )
+
+[node name="Texture" type="MeshInstance" parent="."]
+
+_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 0 )
+layers = 1
+geometry/visible = true
+geometry/material_override = null
+geometry/cast_shadow = 1
+geometry/receive_shadows = true
+geometry/range_begin = 0.0
+geometry/range_end = 0.0
+geometry/extra_cull_margin = 0.0
+geometry/billboard = false
+geometry/billboard_y = false
+geometry/depth_scale = false
+geometry/visible_in_all_rooms = false
+geometry/use_baked_light = false
+geometry/baked_light_tex_id = 0
+mesh/mesh = SubResource( 2 )
+mesh/skeleton = NodePath("..")
+material/0 = null
 
 
