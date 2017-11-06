@@ -12,7 +12,6 @@ points = Vector3Array( 2, 2, 1.5, 2, 2, -1.5, -2, 2, 1.5, -2, 2, -1.5, -2, -2, 1
 
 [node name="TestCube" type="TestCube"]
 
-editor/display_folded = true
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -20 )
 layers = 1
@@ -54,7 +53,9 @@ depth = 2.0
 polygon = Vector2Array( -1, 1, -1, -1, 1, -1, 1, 1 )
 shape_range = Vector2( 0, 0 )
 
-[node name="Area" type="Area" parent="."]
+[node name="Area" type="Area" parent="." groups=[
+"interactable",
+]]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 input/ray_pickable = false
