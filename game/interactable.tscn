@@ -13,7 +13,6 @@ points = Vector3Array( 2, 2, 1.5, 2, 2, -1.5, -2, 2, 1.5, -2, 2, -1.5, -2, -2, 1
 [node name="TestCube" type="TestCube"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -20 )
 layers = 1
 geometry/visible = true
 geometry/material_override = null

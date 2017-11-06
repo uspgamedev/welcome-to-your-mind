@@ -52,9 +52,9 @@ surfaces/0 = {
 }
 custom_aabb/custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 
-[sub_resource type="BoxShape" id=3]
+[sub_resource type="ConvexPolygonShape" id=3]
 
-extents = Vector3( 1, 1, 1 )
+points = Vector3Array( 1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1 )
 
 [node name="Mesh" type="Spatial"]
 
@@ -98,13 +98,14 @@ bounce = 0.0
 constant_linear_velocity = Vector3( 0, 0, 0 )
 constant_angular_velocity = Vector3( 0, 0, 0 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Floor/FloorCollision"]
+[node name="CollisionPolygon" type="CollisionPolygon" parent="Floor/FloorCollision"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
-shape = SubResource( 3 )
-trigger = false
-_update_shape_index = 0
+build_mode = 0
+depth = 2.0
+polygon = Vector2Array( 1, 1, 1, -1, -1, -1, -1, 1 )
+shape_range = Vector2( 0, 0 )
 
 [node name="Texture" type="MeshInstance" parent="."]
 
@@ -127,26 +128,5 @@ geometry/baked_light_tex_id = 0
 mesh/mesh = SubResource( 2 )
 mesh/skeleton = NodePath("..")
 material/0 = null
-
-[node name="FloorCollision" type="StaticBody" parent="Texture"]
-
-_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-input/ray_pickable = true
-input/capture_on_drag = false
-shape_count = 0
-collision/layers = 1
-collision/mask = 1
-friction = 1.0
-bounce = 0.0
-constant_linear_velocity = Vector3( 0, 0, 0 )
-constant_angular_velocity = Vector3( 0, 0, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Texture/FloorCollision"]
-
-_import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
-shape = null
-trigger = false
-_update_shape_index = -1
 
 
