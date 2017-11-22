@@ -96,7 +96,6 @@ params/attenuation = 2.0
 
 [node name="PlayerArea" type="Area" parent="."]
 
-editor/display_folded = true
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
 input/ray_pickable = false

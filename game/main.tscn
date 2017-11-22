@@ -112,6 +112,6 @@ transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -20 )
 
 [node name="Encostinho" parent="." instance=ExtResource( 5 )]
 
-transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 10 )
 
 
