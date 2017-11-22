@@ -118,6 +118,13 @@ depth = 20.0
 polygon = Vector2Array( 10, 10, 10, -10, -10, -10, -10, 10 )
 shape_range = Vector2( 0, 0 )
 
+[node name="Timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 5.0
+one_shot = false
+autostart = false
+
 [connection signal="area_enter" from="EnemyVision" to="." method="_on_EnemyVision_area_enter"]
 
 [connection signal="area_exit" from="EnemyVision" to="." method="_on_EnemyVision_area_exit"]
