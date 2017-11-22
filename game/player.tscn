@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://player.gd" type="Script" id=1]
 [ext_resource path="res://ze.scn" type="PackedScene" id=2]
+[ext_resource path="res://ze_movement.scn" type="PackedScene" id=3]
 
 [sub_resource type="ConvexPolygonShape" id=1]
 
@@ -33,6 +34,31 @@ script/script = ExtResource( 1 )
 [node name="ze" parent="." instance=ExtResource( 2 )]
 
 transform/local = Transform( -0.860365, -7.52155e-08, 1.22873, -2.38553e-07, 1.5, -7.52155e-08, -1.22873, -2.38553e-07, -0.860365, -0.7, -1.5, 0 )
+visibility/visible = false
+
+[node name="ze_movement" parent="." instance=ExtResource( 3 )]
+
+transform/local = Transform( -1.5, 8.4639e-07, 0, 8.46391e-07, 1.5, 8.46391e-07, 4.77584e-13, 8.4639e-07, -1.5, 0.3, -3.9, 0.62 )
+
+[node name="Cylinder.006" parent="ze_movement"]
+
+transform/local = Transform( 0.242938, 0, -0.289522, 0, 0.377945, 0, 0.289522, 0, 0.242938, 0.636799, 0.420422, -0.0795637 )
+
+[node name="Cylinder.007" parent="ze_movement"]
+
+transform/local = Transform( 0.242938, 0, -0.289522, 0, 0.377945, 0, 0.289522, 0, 0.242938, -0.351624, 0.516576, -0.229291 )
+
+[node name="Sphere.010" parent="ze_movement"]
+
+transform/local = Transform( 0.299748, 0, -0.357226, 0, 0.466325, 0, 0.357226, 0, 0.299748, 0.775501, 0.0286872, 0.139105 )
+
+[node name="Sphere.014" parent="ze_movement"]
+
+transform/local = Transform( 0.299748, 0, -0.357226, 0, 0.466325, 0, 0.357226, 0, 0.299748, -0.695039, 0.139761, 0.16904 )
+
+[node name="AnimationPlayer" parent="ze_movement"]
+
+autoplay = "default"
 
 [node name="CollisionPolygon" type="CollisionPolygon" parent="."]
 
@@ -127,3 +153,4 @@ polygon = Vector2Array( -2, 2, -2, -2, 2, -2, 2, 2 )
 shape_range = Vector2( 0, 0 )
 
 
+[editable path="ze_movement"]
