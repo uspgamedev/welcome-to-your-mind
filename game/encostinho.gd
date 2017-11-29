@@ -4,6 +4,7 @@ onready var detected = false
 onready var player = null
 onready var timer = get_node('Timer')
 onready var direction = -1
+onready var grabbing = false
 
 const SPEED = 5
 
@@ -16,7 +17,9 @@ func _fixed_process(delta):
 	check_detection()
 
 func check_detection():
-	if (!detected):
+	if (grabbing):
+		grab()
+	elif (!detected):
 		passive()
 	else:
 		aggressive()
@@ -30,6 +33,15 @@ func run():
 
 func stop():
 	speed.z = 0
+
+func grab():
+	var player_rotation
+	if (player.get_rotation() == Vector3(0, 0, 0)):
+		player_rotation = -3
+	else:
+		player_rotation = 3
+	self.set_layer_mask(2)
+	self.set_translation(player.get_translation() - Vector3(0, 0, player_rotation))
 
 func passive():
 	SPEED = 2
@@ -45,7 +57,7 @@ func aggressive():
 		change_dir(1)
 		run()
 	else:
-		stop()
+		grabbing = true
 
 func change_dir(new_direction):
 	direction = new_direction
