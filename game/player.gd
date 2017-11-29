@@ -94,7 +94,6 @@ func _check_mouse_rotation():
 
 func _change_animation():
 	var new_animation
-	print (speed)
 	if (self.speed.z == 0):
 		new_animation = 'idle'
 	else:

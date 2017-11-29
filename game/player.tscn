@@ -91,6 +91,7 @@ visibility/visible = false
 
 [node name="ze_movement" parent="." instance=ExtResource( 3 )]
 
+editor/display_folded = true
 transform/local = Transform( -1.5, 8.4639e-07, 0, 8.46391e-07, 1.5, 8.46391e-07, 4.77584e-13, 8.4639e-07, -1.5, 0.3, -3.9, 0.62 )
 
 [node name="Cylinder.006" parent="ze_movement"]
@@ -158,6 +159,7 @@ v_offset = 0.0
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+visibility/visible = false
 layers = 1
 params/enabled = true
 params/editor_only = false
