@@ -3,6 +3,7 @@ extends Node
 const DIR = preload('directions.gd')
 const ACT = preload('actions.gd')
 
+signal change_animation
 signal hold_direction(dir)
 signal hold_action(act)
 signal press_direction(dir)
@@ -23,6 +24,7 @@ func _input(event):
 	if act != -1: emit_signal('press_action', act)
 	if _get_quit(event): emit_signal('press_quit')
 	if _get_respawn(event): emit_signal('press_respawn')
+	emit_signal('change_animation')
 
 func _fixed_process(delta):
 	dir = self._get_direction(Input)

@@ -10,6 +10,8 @@ onready var tp_camera = get_node('TPCamera')
 onready var side_camera = get_node('../SideCamera')
 onready var player_area = get_node('PlayerArea')
 onready var rot_x = 0
+onready var animation = get_node('ze_movement/AnimationPlayer')
+onready var animation_type = 'idle'
 
 var last_rot
 var diff
@@ -22,6 +24,7 @@ func _ready():
 	input.connect('hold_action', self, '_add_jump_height')
 	input.connect('hold_direction', self, '_add_speed')
 	input.connect('press_direction', self, '_flip_body')
+	input.connect('change_animation', self, '_change_animation')
 	input.connect('press_action', self, '_change_camera')
 	dir.pov_update_vector(self.get_rotation())
 	set_process_input(true)
@@ -88,6 +91,16 @@ func _check_mouse_rotation():
 	get_viewport().warp_mouse(center)
 	set_transform(self.get_transform().orthonormalized())
 
+
+func _change_animation():
+	var new_animation
+	print (speed)
+	if (self.speed.z == 0):
+		new_animation = 'idle'
+	else:
+		new_animation = 'walking'
+	update_animation(new_animation)
+	
 func rotate():
 	if (pov_camera.is_current()):
 		rot_x -= diff.y * float(90)/157
@@ -102,3 +115,8 @@ func rotate():
 func set_rotation_limit(limit):
 	pov_camera.set_rotation_deg(Vector3(limit, \
 	pov_camera.get_rotation_deg().y, pov_camera.get_rotation_deg().z))
+
+func update_animation(new_animation):
+	if (animation_type != new_animation):
+		animation.play(new_animation)
+		animation_type = new_animation
