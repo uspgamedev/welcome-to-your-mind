@@ -10,10 +10,11 @@ onready var tp_camera = get_node('TPCamera')
 onready var side_camera = get_node('../SideCamera')
 onready var player_area = get_node('PlayerArea')
 onready var animation = get_node('ze_movement/AnimationPlayer')
-onready var rot_x = 0
-onready var animation_type = 'walk'
-onready var encostinhos = 0
 
+var animation_type = 'walk'
+var acc = 3
+var rot_x = 0
+var encostinhos = [null, null, null]
 var last_rot
 var diff
 var initial_rot
@@ -33,6 +34,7 @@ func _ready():
 	side_camera.make_current()
 	initial_rot = self.get_rotation()
 	self.connect('camera', self, '_side_camera_view')
+	ACC = acc
 	#for i in range (9):
 	#	yield(get_tree(), 'fixed_frame')
 	#self.connect('camera', self, '_check_mouse_rotation')
@@ -41,13 +43,13 @@ func _fixed_process(delta):
 	emit_signal('camera')
 
 func slow_down():
-	ACC -= 0.5
-	if (ACC == 0):
+	ACC -= 1
+	if (ACC < 1):
 		die()
 
 func speed_up():
-	if (ACC < 1.5):
-		ACC += 0.5
+	if (ACC < acc):
+		ACC += 1
 
 func die():
 	get_tree().change_scene('res://main.tscn')
@@ -57,6 +59,7 @@ func _interact(act):
 		for i in player_area.get_overlapping_areas():
 			if i.is_in_group('interactable'):
 				i.get_parent().interact()
+				return
 
 func _change_camera(act):
 	if (act == ACT.SIDE_CAMERA and !tp_camera.is_current()):

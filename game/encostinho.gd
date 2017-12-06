@@ -7,6 +7,7 @@ onready var grab_timer = get_node('GrabTimer')
 onready var direction = -1
 onready var grabbing = false
 onready var release = 0
+onready var num = -1
 
 const SPEED = 5
 
@@ -37,21 +38,37 @@ func stop():
 	speed.z = 0
 
 func grab():
-	if (rout_timer.is_active()):
-		rout_timer.set_active(false)
-		player.encostinhos += 1
+	if (num == -1):
 		player.slow_down()
+		if (player.encostinhos[0] == null):
+			player.encostinhos[0] = self
+		else:
+			player.encostinhos[1] = self
+		num = player.encostinhos.find(self)
 	var player_rotation
 	if (player.get_rotation() == Vector3(0, 0, 0)):
 		player_rotation = -3
 	else:
 		player_rotation = 3
 	self.set_layer_mask(2)
-	self.set_translation(player.get_translation() - Vector3(0, 0, player_rotation))
+	self.set_translation(player.get_translation() - Vector3(0, -2 + (num)*(2), player_rotation))
+
+func interact():
+	if (grabbing):
+		release += 1
+		if (release >= 6):
+			release = 0
+			var i = player.encostinhos.find(self)
+			player.encostinhos[i] = null
+			num = -1
+			player.speed_up()
+			grabbing = false
+			detected = false
+			grab_timer.connect('timeout', self, 'check_player_area')
+			grab_timer.start()
 
 func passive():
 	self.set_layer_mask(1)
-	rout_timer.set_active(true)
 	rout_timer.start()
 	SPEED = 2
 	run()
@@ -69,19 +86,11 @@ func aggressive():
 	else:
 		grabbing = true
 
-func interact():
-	release += 1
-	if (release >= 6):
-		release = 0
-		player.speed_up()
-		grabbing = false
-		detected = false
-		grab_timer.connect('timeout', self, 'check_player_area')
-
 func check_player_area():
 	if (get_node('EnemyVision').overlaps_area(player.get_node('PlayerArea'))):
 		detected = true
 	grab_timer.disconnect('timeout', self, 'check_player_area')
+	grab_timer.stop()
 
 func change_dir(new_direction):
 	direction = new_direction

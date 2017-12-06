@@ -3,7 +3,7 @@ extends KinematicBody
 const ACT = preload('actions.gd')
 const DIR = preload('directions.gd')
 const G = -160
-const ACC = 1.5
+const ACC = 1.6
 const EPSILON = 1
 
 onready var input = get_node('/root/input')
@@ -79,6 +79,6 @@ func deaccelerate():
 		speed.x = 0
 		speed.z = 0
 	else:
-		speed.x *= .8
-		speed.z *= .8
+		speed.x *= .6
+		speed.z *= .6
 	speed.y *= .85
