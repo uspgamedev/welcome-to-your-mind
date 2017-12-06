@@ -44,12 +44,15 @@ func _fixed_process(delta):
 
 func slow_down():
 	ACC -= 1
+	get_node('Label').set_scale(Vector2(3, 3))
 	if (ACC < 1):
 		die()
 
 func speed_up():
 	if (ACC < acc):
 		ACC += 1
+	if (ACC == acc):
+		get_node('Label').set_scale(Vector2(0, 0))
 
 func die():
 	get_tree().change_scene('res://main.tscn')
