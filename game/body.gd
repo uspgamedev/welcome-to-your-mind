@@ -3,7 +3,7 @@ extends KinematicBody
 const ACT = preload('actions.gd')
 const DIR = preload('directions.gd')
 const G = -160
-const ACC = 2.2
+const ACC = 1.5
 const EPSILON = 1
 
 onready var input = get_node('/root/input')

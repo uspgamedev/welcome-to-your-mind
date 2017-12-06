@@ -9,9 +9,10 @@ onready var pov_camera = get_node('POVCamera')
 onready var tp_camera = get_node('TPCamera')
 onready var side_camera = get_node('../SideCamera')
 onready var player_area = get_node('PlayerArea')
-onready var rot_x = 0
 onready var animation = get_node('ze_movement/AnimationPlayer')
-onready var animation_type = 'idle'
+onready var rot_x = 0
+onready var animation_type = 'walk'
+onready var encostinhos = 0
 
 var last_rot
 var diff
@@ -39,11 +40,23 @@ func _ready():
 func _fixed_process(delta):
 	emit_signal('camera')
 
+func slow_down():
+	ACC -= 0.5
+	if (ACC == 0):
+		die()
+
+func speed_up():
+	if (ACC < 1.5):
+		ACC += 0.5
+
+func die():
+	get_tree().change_scene('res://main.tscn')
+
 func _interact(act):
 	if (act == ACT.INTERACT):
 		for i in player_area.get_overlapping_areas():
 			if i.is_in_group('interactable'):
-				i.interact()
+				i.get_parent().interact()
 
 func _change_camera(act):
 	if (act == ACT.SIDE_CAMERA and !tp_camera.is_current()):
@@ -90,7 +103,6 @@ func _check_mouse_rotation():
 		self.global_rotate(Vector3(0, diff.x, 0), SENSITIVITY)
 	get_viewport().warp_mouse(center)
 	set_transform(self.get_transform().orthonormalized())
-
 
 func _change_animation():
 	var new_animation
