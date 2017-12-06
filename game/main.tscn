@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://levels/gridmap_test.tscn" type="PackedScene" id=2]
 [ext_resource path="res://player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://interactable.tscn" type="PackedScene" id=4]
-[ext_resource path="res://encostinho.tscn" type="PackedScene" id=5]
+[ext_resource path="res://encostinho.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Environment" id=1]
 
@@ -106,12 +105,8 @@ v_offset = 0.0
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 
-[node name="TestCube" parent="." instance=ExtResource( 4 )]
+[node name="Encostinho" parent="." instance=ExtResource( 4 )]
 
-transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, -20 )
-
-[node name="Encostinho" parent="." instance=ExtResource( 5 )]
-
-transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 10 )
+transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20 )
 
 

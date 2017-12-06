@@ -63,7 +63,7 @@ tracks/3/keys = FloatArray( 0, 1, -0.695039, 0.38712, 0.16904, 0, -0.422618, 0, 
 
 [sub_resource type="ConvexPolygonShape" id=5]
 
-points = Vector3Array( 2, 2, 1, 2, 2, -1, -2, 2, 1, -2, 2, -1, -2, -2, 1, -2, -2, -1, 2, -2, 1, 2, -2, -1 )
+points = Vector3Array( 2, 2, 2.5, 2, 2, -2.5, -2, 2, 2.5, -2, 2, -2.5, -2, -2, 2.5, -2, -2, -2.5, 2, -2, 2.5, 2, -2, -2.5 )
 
 [node name="Player" type="KinematicBody"]
 
@@ -114,7 +114,7 @@ transform/local = Transform( 0.299748, 0, -0.357225, 0, 0.466325, 0, 0.357225, 0
 
 anims/idle = SubResource( 2 )
 anims/walking = SubResource( 3 )
-playback/speed = 10.0
+playback/speed = 8.0
 autoplay = "default"
 
 [node name="CollisionPolygon" type="CollisionPolygon" parent="."]
@@ -188,7 +188,7 @@ input/ray_pickable = false
 input/capture_on_drag = false
 shape_count = 1
 shapes/0/shape = SubResource( 5 )
-shapes/0/transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
+shapes/0/transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 shapes/0/trigger = false
 space_override = 0
 gravity_point = false
@@ -206,9 +206,8 @@ collision/mask = 1
 [node name="CollisionPolygon" type="CollisionPolygon" parent="PlayerArea"]
 
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-transform/local = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
 build_mode = 0
-depth = 2.0
+depth = 5.0
 polygon = Vector2Array( -2, 2, -2, -2, 2, -2, 2, 2 )
 shape_range = Vector2( 0, 0 )
 
