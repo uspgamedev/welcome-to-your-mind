@@ -53,7 +53,7 @@ surfaces/0 = {
 }
 custom_aabb/custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 
-[sub_resource type="ConvexPolygonShape" id=8]
+[sub_resource type="ConvexPolygonShape" id=10]
 
 points = Vector3Array( 1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1 )
 
@@ -107,7 +107,7 @@ surfaces/0 = {
 }
 custom_aabb/custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 
-[sub_resource type="ConvexPolygonShape" id=9]
+[sub_resource type="ConvexPolygonShape" id=11]
 
 points = Vector3Array( 1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1 )
 
@@ -123,7 +123,7 @@ surfaces/0 = {
 }
 custom_aabb/custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
 
-[sub_resource type="FixedMaterial" id=10]
+[sub_resource type="FixedMaterial" id=8]
 
 flags/visible = true
 flags/double_sided = true
@@ -161,13 +161,13 @@ textures/glow_tc = 0
 textures/normal_tc = 0
 textures/shade_param_tc = 0
 
-[sub_resource type="Mesh" id=11]
+[sub_resource type="Mesh" id=9]
 
 resource/name = "Cube.016"
 surfaces/0 = {
 "alphasort": false,
 "arrays": [ Vector3Array( -1, -1, 1, 1, -1, 1, 1, -1, -1, -1, -1, -1 ), Vector3Array( 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0 ), null, null, Vector3Array( 0.753848, 0.247639, 0, 1.00076, 0.247639, 0, 1.00076, 0.000724554, 0, 0.753848, 0.000724554, 0 ), null, null, null, IntArray( 0, 2, 1, 0, 3, 2 ) ],
-"material": SubResource( 10 ),
+"material": SubResource( 8 ),
 "morph_arrays": [  ],
 "primitive": 4
 }
@@ -205,7 +205,7 @@ _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 input/ray_pickable = true
 input/capture_on_drag = false
 shape_count = 1
-shapes/0/shape = SubResource( 8 )
+shapes/0/shape = SubResource( 10 )
 shapes/0/transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -252,7 +252,7 @@ _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 input/ray_pickable = true
 input/capture_on_drag = false
 shape_count = 1
-shapes/0/shape = SubResource( 9 )
+shapes/0/shape = SubResource( 11 )
 shapes/0/transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -311,7 +311,7 @@ geometry/depth_scale = false
 geometry/visible_in_all_rooms = false
 geometry/use_baked_light = false
 geometry/baked_light_tex_id = 0
-mesh/mesh = SubResource( 11 )
+mesh/mesh = SubResource( 9 )
 mesh/skeleton = NodePath("..")
 material/0 = null
 
