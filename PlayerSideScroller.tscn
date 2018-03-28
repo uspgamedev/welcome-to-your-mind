@@ -1,6 +1,4 @@
-[gd_scene load_steps=5 format=2]
-
-[ext_resource path="res://PlayerSideScroller.gd" type="Script" id=1]
+[gd_scene load_steps=4 format=2]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -79,7 +77,6 @@ axis_lock_angular_x = false
 axis_lock_angular_y = false
 axis_lock_angular_z = false
 collision/safe_margin = 0.001
-script = ExtResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="." index="0"]
 
