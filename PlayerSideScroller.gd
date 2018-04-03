@@ -18,6 +18,8 @@ func _physics_process(delta):
         dir.x += -1
     if Input.is_action_pressed("movement_right"):
         dir.x += 1
+    if Input.is_action_pressed('ui_quit'):
+        get_tree().quit()
 
     if is_on_floor():
         if Input.is_action_just_pressed("movement_jump"):
