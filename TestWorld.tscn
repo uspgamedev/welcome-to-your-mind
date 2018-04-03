@@ -56,7 +56,7 @@ _sections_unfolded = [ "Transform" ]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.98002, 0 )
 script = ExtResource( 2 )
 
-[node name="WorldCamera" type="Camera" parent="Player" index="2"]
+[node name="WorldCamera" type="Camera" parent="Player" index="3"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.502941, 10 )
 keep_aspect = 0
