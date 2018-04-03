@@ -7,6 +7,9 @@ const JUMP_SPEED = 18
 const ACCEL = 3.5
 
 var is_sprinting = false
+var movement = "right"
+
+onready var moveTween = get_node("MovementTween")
 
 const DEACCEL= 16
 const MAX_SLOPE_ANGLE = 40
@@ -16,8 +19,20 @@ func _physics_process(delta):
 
     if Input.is_action_pressed("movement_left"):
         dir.x += -1
+        if movement == "right":
+            print("BLU")
+            movement = "left"
+            moveTween.interpolate_property(get_node("MeshInstance"), "rotation_degrees", Vector3(0,0,0), Vector3(0,180,0), 0.30, moveTween.TRANS_LINEAR, moveTween.EASE_IN_OUT)
+            moveTween.start()
+            
     if Input.is_action_pressed("movement_right"):
         dir.x += 1
+        if movement == "left":
+            print("BLA")
+            movement = "right"
+            moveTween.interpolate_property(get_node("MeshInstance"), "rotation_degrees", Vector3(0,180,0), Vector3(0,0,0), 0.30, moveTween.TRANS_LINEAR, moveTween.EASE_IN_OUT)
+            moveTween.start()
+
     if Input.is_action_pressed('ui_quit'):
         get_tree().quit()
 
