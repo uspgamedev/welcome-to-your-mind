@@ -10,7 +10,7 @@ var new_y
 
 
 func _ready():
-    set_physics_process(false)
+	set_physics_process(false)
 
 
 func _process(delta):
