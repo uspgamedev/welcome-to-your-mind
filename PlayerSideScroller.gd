@@ -7,6 +7,7 @@ const JUMP_SPEED = 18
 const ACCEL = 3.5
 
 var is_sprinting = false
+var is_jumping = false
 var movement = "right"
 
 onready var moveTween = get_node("MovementTween")
@@ -20,7 +21,6 @@ func _physics_process(delta):
     if Input.is_action_pressed("movement_left"):
         dir.x += -1
         if movement == "right":
-            print("BLU")
             movement = "left"
             moveTween.interpolate_property(get_node("MeshInstance"), "rotation_degrees", Vector3(0,0,0), Vector3(0,180,0), 0.30, moveTween.TRANS_LINEAR, moveTween.EASE_IN_OUT)
             moveTween.start()
@@ -28,7 +28,6 @@ func _physics_process(delta):
     if Input.is_action_pressed("movement_right"):
         dir.x += 1
         if movement == "left":
-            print("BLA")
             movement = "right"
             moveTween.interpolate_property(get_node("MeshInstance"), "rotation_degrees", Vector3(0,180,0), Vector3(0,0,0), 0.30, moveTween.TRANS_LINEAR, moveTween.EASE_IN_OUT)
             moveTween.start()
@@ -37,8 +36,14 @@ func _physics_process(delta):
         get_tree().quit()
 
     if is_on_floor():
+        if is_jumping:
+            is_jumping = false
+            get_node("WorldCamera").update_y()
         if Input.is_action_just_pressed("movement_jump"):
             vel.y = JUMP_SPEED
+            is_jumping = true
+    else:
+        is_jumping = true
 
     dir.y = 0
     dir = dir.normalized()

@@ -1,12 +1,35 @@
 extends Camera
 
-onready var player = get_node('../Player')
-var initial_camera_transform
+const YOFFSET = 3
+const ZOFFSET = 20
+const SMOOTHSPD = 0.2
+
+onready var player = get_parent()
+onready var init_y = player.translation.y
+var new_y
+
 
 func _ready():
-    initial_camera_transform = self.get_camera_transform()
-    self.translate(player.translation)
-    set_process(true)
+    set_physics_process(false)
+
 
 func _process(delta):
-    print(player.translation)
+	var current_y = init_y - player.translation.y + YOFFSET
+	set_translation(Vector3(0, current_y, ZOFFSET))
+
+
+func _physics_process(delta):
+	if init_y >= new_y - 0.1 and init_y <= new_y + 0.1:
+		set_physics_process(false)
+	else:
+		if init_y > new_y:
+			init_y -= SMOOTHSPD
+		else:
+			init_y += SMOOTHSPD
+
+
+func update_y():
+	new_y = player.translation.y
+	print("old = ", init_y)
+	print("new = ", new_y)
+	set_physics_process(true)
