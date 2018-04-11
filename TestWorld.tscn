@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://PlayerSideScroller.tscn" type="PackedScene" id=1]
-[ext_resource path="res://PlayerSideScroller.gd" type="Script" id=2]
+[ext_resource path="res://PlayerTopDown.gd" type="Script" id=2]
 [ext_resource path="res://WorldCamera.gd" type="Script" id=3]
 
 [sub_resource type="PlaneMesh" id=1]
@@ -149,7 +149,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Player" parent="." index="1" instance=ExtResource( 1 )]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.98002, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
 script = ExtResource( 2 )
 _sections_unfolded = [ "Axis Lock", "Transform" ]
 
@@ -180,5 +180,22 @@ playback_speed = 1.0
 playback/active = false
 playback/repeat = false
 playback/speed = 1.0
+
+[node name="Camera" type="Camera" parent="Player" index="4"]
+
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 20, 0 )
+keep_aspect = 1
+cull_mask = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+doppler_tracking = 0
+projection = 0
+current = true
+fov = 70.0
+size = 1.0
+near = 0.05
+far = 100.0
+_sections_unfolded = [ "Transform" ]
 
 
