@@ -2,7 +2,7 @@ extends Camera
 
 const YOFFSET = 3
 const ZOFFSET = 20
-const SMOOTHSPD = 0.2
+const SMOOTHSPD = 0.3
 
 onready var player = get_parent()
 onready var init_y = player.translation.y
@@ -19,7 +19,7 @@ func _process(delta):
 
 
 func _physics_process(delta):
-	if init_y >= new_y - 0.1 and init_y <= new_y + 0.1:
+	if init_y >= new_y - SMOOTHSPD and init_y <= new_y + SMOOTHSPD:
 		set_physics_process(false)
 	else:
 		if init_y > new_y:
