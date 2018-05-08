@@ -84,7 +84,7 @@ func _physics_process(delta):
 	hvel.y = 0
 	
 	var target = dir
-	var slow_factor = 1 + encostinhos.count() 
+	var slow_factor = 1 + encostinhos.size() 
 	target *= (MAX_SPEED/slow_factor)
 	
 	var accel
