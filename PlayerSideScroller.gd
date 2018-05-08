@@ -11,6 +11,7 @@ var is_sprinting = false
 var is_jumping = false
 var movement = "right"
 var ladder = null
+var encostinhos = []
 
 onready var moveTween = get_node("MovementTween")
 
@@ -31,6 +32,11 @@ func _input(event):
 		lad = ladder_scn.instance()
 		self.add_child(lad)
 
+func encostinho_colision():
+	# Começar a equilibrar os encostinhos nas costas do jogador
+	pass
+	
+
 func _physics_process(delta):
 	var dir = Vector3(0,0,0)
 	
@@ -40,7 +46,7 @@ func _physics_process(delta):
 			movement = "left"
 			moveTween.interpolate_property(get_node("MeshInstance"), "rotation_degrees", Vector3(0,0,0), Vector3(0,180,0), 0.30, moveTween.TRANS_LINEAR, moveTween.EASE_IN_OUT)
 			moveTween.start()
-	        
+			
 	if Input.is_action_pressed("movement_right"):
 		dir.x += 1
 		if movement == "left":
@@ -71,13 +77,14 @@ func _physics_process(delta):
 	hvel.y = 0
 	
 	var target = dir
-	target *= MAX_SPEED
+	var slow_factor = 1 + encostinhos.count() 
+	target *= (MAX_SPEED/slow_factor)
 	
 	var accel
 	if dir.dot(hvel) > 0:
-	    accel = ACCEL
+		accel = ACCEL
 	else:
-	    accel = DEACCEL
+		accel = DEACCEL
 	
 	hvel = hvel.linear_interpolate(target, accel*delta)
 	vel.x = hvel.x
