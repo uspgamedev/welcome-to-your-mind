@@ -18,7 +18,7 @@ const DEACCEL= 16
 const MAX_SLOPE_ANGLE = 40
 
 func _input(event):
-	if event.is_action_pressed('interact') and ladder != null:
+	if event.is_action_pressed('interact') and ladder != null and self.is_on_floor():
 		var lad
 		for child in self.get_children():
 			if child.is_in_group('ladder'):
@@ -41,12 +41,18 @@ func _physics_process(delta):
 			moveTween.interpolate_property(get_node("MeshInstance"), "rotation_degrees", Vector3(0,0,0), Vector3(0,180,0), 0.30, moveTween.TRANS_LINEAR, moveTween.EASE_IN_OUT)
 			moveTween.start()
 	        
-	if Input.is_action_pressed("movement_right"):
+	elif Input.is_action_pressed("movement_right"):
 		dir.x += 1
 		if movement == "left":
 			movement = "right"
 			moveTween.interpolate_property(get_node("MeshInstance"), "rotation_degrees", Vector3(0,180,0), Vector3(0,0,0), 0.30, moveTween.TRANS_LINEAR, moveTween.EASE_IN_OUT)
 			moveTween.start()
+	
+	elif Input.is_action_pressed('movement_forward') and ladder != null:
+		self.translation += Vector3(0, .1, 0)
+	
+	elif Input.is_action_pressed('movement_backward') and ladder != null:
+		self.translation += Vector3(0, -.1, 0)
 	
 	if Input.is_action_pressed('ui_quit'):
 		get_tree().quit()
@@ -54,7 +60,7 @@ func _physics_process(delta):
 	if is_on_floor():
 		if is_jumping:
 			is_jumping = false
-			get_node("WorldCamera").update_y()
+			get_node("SideCamera").update_y()
 		if Input.is_action_just_pressed("movement_jump"):
 			vel.y = JUMP_SPEED
 			is_jumping = true
@@ -64,8 +70,9 @@ func _physics_process(delta):
 	dir.y = 0
 	dir = dir.normalized()
 	
-	var grav = norm_grav
-	vel.y += delta*grav
+	if ladder == null:
+		var grav = norm_grav
+		vel.y += delta*grav
 	
 	var hvel = vel
 	hvel.y = 0
