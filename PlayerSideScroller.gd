@@ -1,5 +1,6 @@
 extends KinematicBody
 
+var ladder_scn = preload("res://Ladder.tscn")
 const norm_grav = -24.8
 var vel = Vector3()
 const MAX_SPEED = 20
@@ -9,11 +10,26 @@ const ACCEL = 3.5
 var is_sprinting = false
 var is_jumping = false
 var movement = "right"
+var ladder = null
 
 onready var moveTween = get_node("MovementTween")
 
 const DEACCEL= 16
 const MAX_SLOPE_ANGLE = 40
+
+func _input(event):
+	if event.is_action_pressed('interact') and ladder != null:
+		var lad
+		for child in self.get_children():
+			if child.is_in_group('ladder'):
+				child.queue_free()
+				lad = ladder_scn.instance()
+				lad.translation = self.translation - Vector3(0, 1, 0)
+				get_parent().add_child(lad)
+				return
+		get_parent().remove_child(ladder)
+		lad = ladder_scn.instance()
+		self.add_child(lad)
 
 func _physics_process(delta):
 	var dir = Vector3(0,0,0)
