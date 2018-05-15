@@ -123,7 +123,7 @@ size = Vector2( 2, 2 )
 subdivide_width = 0
 subdivide_depth = 0
 
-[node name="Player" type="KinematicBody" index="0" groups=[
+[node name="Player" type="KinematicBody" groups=[
 "player",
 ]]
 

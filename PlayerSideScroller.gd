@@ -20,6 +20,7 @@ const MAX_SLOPE_ANGLE = 40
 
 func _input(event):
 	if event.is_action_pressed('interact') and ladder != null and self.is_on_floor():
+		get_node("SideCamera").update_y()
 		var lad
 		for child in self.get_children():
 			if child.is_in_group('ladder'):
