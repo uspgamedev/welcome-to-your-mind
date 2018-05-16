@@ -30,6 +30,4 @@ func _physics_process(delta):
 
 func update_y():
 	new_y = player.translation.y
-	print("old = ", init_y)
-	print("new = ", new_y)
 	set_physics_process(true)

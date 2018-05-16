@@ -9,6 +9,7 @@ const ACCEL = 3.5
 
 var is_sprinting = false
 var is_jumping = false
+var carrying = false
 var movement = "right"
 var ladder = null
 var encostinhos = []
@@ -19,7 +20,7 @@ const DEACCEL= 16
 const MAX_SLOPE_ANGLE = 40
 
 func _input(event):
-	if event.is_action_pressed('interact') and ladder != null and self.is_on_floor():
+	if event.is_action_pressed('interact') and ladder != null:
 		get_node("SideCamera").update_y()
 		var lad
 		for child in self.get_children():
@@ -28,17 +29,22 @@ func _input(event):
 				lad = ladder_scn.instance()
 				lad.translation = self.translation - Vector3(0, 1, 0)
 				get_parent().add_child(lad)
+				carrying = false
 				return
 		get_parent().remove_child(ladder)
 		lad = ladder_scn.instance()
+		carrying = true
 		self.add_child(lad)
+
 
 func encostinho_colision():
 	# Começar a equilibrar os encostinhos nas costas do jogador
 	pass
 	
 
+
 func _physics_process(delta):
+	print(is_on_floor())
 	var dir = Vector3(0,0,0)
 	
 	if Input.is_action_pressed("movement_left"):
@@ -55,11 +61,8 @@ func _physics_process(delta):
 			moveTween.interpolate_property(get_node("MeshInstance"), "rotation_degrees", Vector3(0,180,0), Vector3(0,0,0), 0.30, moveTween.TRANS_LINEAR, moveTween.EASE_IN_OUT)
 			moveTween.start()
 	
-	elif Input.is_action_pressed('movement_forward') and ladder != null:
-		self.translation += Vector3(0, .1, 0)
-	
-	elif Input.is_action_pressed('movement_backward') and ladder != null:
-		self.translation += Vector3(0, -.1, 0)
+	elif Input.is_action_pressed('movement_forward') and ladder != null and not carrying:
+		vel.y += 0.8
 	
 	if Input.is_action_pressed('ui_quit'):
 		get_tree().quit()
@@ -77,9 +80,8 @@ func _physics_process(delta):
 	dir.y = 0
 	dir = dir.normalized()
 	
-	if ladder == null:
-		var grav = norm_grav
-		vel.y += delta*grav
+	var grav = norm_grav
+	vel.y += delta*grav
 	
 	var hvel = vel
 	hvel.y = 0
