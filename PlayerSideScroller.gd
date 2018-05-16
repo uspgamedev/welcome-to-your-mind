@@ -20,7 +20,7 @@ const DEACCEL= 16
 const MAX_SLOPE_ANGLE = 40
 
 func _input(event):
-	if event.is_action_pressed('interact') and ladder != null:
+	if event.is_action_pressed('interact') and ladder != null and is_on_floor():
 		get_node("SideCamera").update_y()
 		var lad
 		for child in self.get_children():
