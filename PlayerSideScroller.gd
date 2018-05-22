@@ -1,6 +1,7 @@
 extends KinematicBody
 
 var ladder_scn = preload("res://Ladder.tscn")
+var mao_scn = preload("res://Mao.tscn")
 const norm_grav = -24.8
 var vel = Vector3()
 const MAX_SPEED = 20
@@ -15,11 +16,13 @@ var ladder = null
 var encostinhos = []
 
 onready var moveTween = get_node("MovementTween")
+onready var mao_timer = get_node("MaoTimer")
 
 const DEACCEL= 16
 const MAX_SLOPE_ANGLE = 40
 
 func _input(event):
+	mao_timer.start()
 	if event.is_action_pressed('interact') and ladder != null and is_on_floor():
 		var lad
 		for child in self.get_children():
@@ -35,12 +38,9 @@ func _input(event):
 		carrying = true
 		self.add_child(lad)
 
-
 func encostinho_colision():
 	# Começar a equilibrar os encostinhos nas costas do jogador
 	pass
-	
-
 
 func _physics_process(delta):
 	var dir = Vector3(0,0,0)
@@ -99,3 +99,10 @@ func _physics_process(delta):
 	vel.x = hvel.x
 	vel.z = hvel.z
 	vel = move_and_slide(vel,Vector3(0,1,0), 0.05, 4, deg2rad(MAX_SLOPE_ANGLE))
+
+func _on_MaoTimer_timeout():
+	print("mao")
+	var mao = mao_scn.instance()
+	mao.set_translation(self.get_translation() - Vector3(0, 0, 0))
+	self.get_parent().add_child(mao)
+	
