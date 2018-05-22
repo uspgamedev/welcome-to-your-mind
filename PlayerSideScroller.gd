@@ -61,7 +61,7 @@ func _physics_process(delta):
 			moveTween.start()
 	
 	elif Input.is_action_pressed('movement_forward') and ladder != null and not carrying:
-		vel.y += 0.8
+		vel.y = 7
 	
 	if Input.is_action_pressed('ui_quit'):
 		get_tree().quit()
