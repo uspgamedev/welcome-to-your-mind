@@ -21,7 +21,6 @@ const MAX_SLOPE_ANGLE = 40
 
 func _input(event):
 	if event.is_action_pressed('interact') and ladder != null and is_on_floor():
-		get_node("SideCamera").update_y()
 		var lad
 		for child in self.get_children():
 			if child.is_in_group('ladder'):
@@ -44,8 +43,8 @@ func encostinho_colision():
 
 
 func _physics_process(delta):
-	print(is_on_floor())
 	var dir = Vector3(0,0,0)
+	get_node("SideCamera").update_y()
 	
 	if Input.is_action_pressed("movement_left"):
 		dir.x += -1
@@ -70,12 +69,12 @@ func _physics_process(delta):
 	if is_on_floor():
 		if is_jumping:
 			is_jumping = false
-			get_node("SideCamera").update_y()
 		if Input.is_action_just_pressed("movement_jump"):
 			vel.y = JUMP_SPEED
 			is_jumping = true
 	else:
 		is_jumping = true
+	
 	
 	dir.y = 0
 	dir = dir.normalized()
