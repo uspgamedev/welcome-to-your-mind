@@ -18,4 +18,4 @@ func _physics_process(delta):
 func _on_Timer_timeout():
 	if player != null:
 		player.set_physics_process(true)
-		player.MaoTimer.stop()
+		player.get_node("MaoTimer").stop()
