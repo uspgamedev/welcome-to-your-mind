@@ -101,8 +101,7 @@ func _physics_process(delta):
 	vel = move_and_slide(vel,Vector3(0,1,0), 0.05, 4, deg2rad(MAX_SLOPE_ANGLE))
 
 func _on_MaoTimer_timeout():
-	print("mao")
 	var mao = mao_scn.instance()
-	mao.set_translation(self.get_translation() - Vector3(0, 0, 0))
+	mao.set_translation(self.get_translation() + Vector3(0, 0, .5))
 	self.get_parent().add_child(mao)
 	
