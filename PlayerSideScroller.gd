@@ -4,6 +4,7 @@ var ladder_scn = preload("res://Ladder.tscn")
 var mao_scn = preload("res://Mao.tscn")
 const norm_grav = -24.8
 var vel = Vector3()
+var plat_vel = Vector3(0, 0, 0)
 const MAX_SPEED = 20
 const JUMP_SPEED = 18
 const ACCEL = 3.5
@@ -52,7 +53,7 @@ func _physics_process(delta):
 			movement = "left"
 			moveTween.interpolate_property(get_node("MeshInstance"), "rotation_degrees", Vector3(0,0,0), Vector3(0,180,0), 0.30, moveTween.TRANS_LINEAR, moveTween.EASE_IN_OUT)
 			moveTween.start()
-	        
+			
 	elif Input.is_action_pressed("movement_right"):
 		dir.x += 1
 		if movement == "left":
@@ -94,18 +95,22 @@ func _physics_process(delta):
 		accel = ACCEL
 	else:
 		accel = DEACCEL
-	
-	if get_floor_velocity().x != 0.0:
-		hvel.x += get_floor_velocity().x/50
+
 	hvel = hvel.linear_interpolate(target, accel*delta)
-	vel.x = hvel.x
 	vel.z = hvel.z
+	#vel.x = hvel.x
+	if plat_vel == Vector3(0, 0, 0):
+		vel.x = hvel.x
+	else:
+		vel.x = - hvel.x - self.get_floor_velocity().x + plat_vel.x
+	print(vel)
 	vel = move_and_slide(vel, Vector3(0,1,0), 0.05, 4, deg2rad(MAX_SLOPE_ANGLE))
 
 func _on_MaoTimer_timeout():
-	var mao = mao_scn.instance()
-	mao.set_translation(self.get_translation() + Vector3(0, 0, .5))
-	self.get_parent().add_child(mao)
+	#var mao = mao_scn.instance()
+	#mao.set_translation(self.get_translation() + Vector3(0, 0, .5))
+	#self.get_parent().add_child(mao)
+	pass
 
 func die():
 	get_tree().change_scene("res://TestWorld.tscn")
