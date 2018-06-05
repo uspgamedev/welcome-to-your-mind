@@ -57,16 +57,16 @@ _sections_unfolded = [ "Albedo" ]
 [sub_resource type="CubeMesh" id=1]
 
 material = SubResource( 3 )
-size = Vector3( 2, 0.5, 2 )
+size = Vector3( 4, 0.5, 2 )
 subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
 [sub_resource type="BoxShape" id=2]
 
-extents = Vector3( 1, 0.5, 1 )
+extents = Vector3( 2, 0.5, 1 )
 
-[node name="MovimngPlatform" type="KinematicBody" index="0"]
+[node name="MovimngPlatform" type="KinematicBody"]
 
 input_ray_pickable = true
 input_capture_on_drag = false
@@ -80,7 +80,7 @@ axis_lock_angular_y = false
 axis_lock_angular_z = false
 collision/safe_margin = 0.001
 script = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Collision", "Transform" ]
 
 [node name="MeshInstance" type="MeshInstance" parent="." index="0"]
 
@@ -129,5 +129,9 @@ reverb_bus_uniformity = 0.0
 
 shape = SubResource( 2 )
 disabled = false
+
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
+
+[connection signal="body_exited" from="Area" to="." method="_on_Area_body_exited"]
 
 

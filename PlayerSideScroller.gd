@@ -95,10 +95,12 @@ func _physics_process(delta):
 	else:
 		accel = DEACCEL
 	
+	if get_floor_velocity().x != 0.0:
+		hvel.x += get_floor_velocity().x/50
 	hvel = hvel.linear_interpolate(target, accel*delta)
 	vel.x = hvel.x
 	vel.z = hvel.z
-	vel = move_and_slide(vel,Vector3(0,1,0), 0.05, 4, deg2rad(MAX_SLOPE_ANGLE))
+	vel = move_and_slide(vel, Vector3(0,1,0), 0.05, 4, deg2rad(MAX_SLOPE_ANGLE))
 
 func _on_MaoTimer_timeout():
 	var mao = mao_scn.instance()
