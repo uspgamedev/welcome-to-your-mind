@@ -7,7 +7,7 @@
 [ext_resource path="res://Spike.tscn" type="PackedScene" id=5]
 [ext_resource path="res://MovingPlatform.tscn" type="PackedScene" id=6]
 
-[node name="World" type="Spatial" index="0"]
+[node name="World" type="Spatial"]
 
 [node name="GridMap" type="GridMap" parent="." index="0"]
 
