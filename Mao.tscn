@@ -98,7 +98,7 @@ tracks/1/keys = {
 "values": [ Vector3( 0, -2, 0 ), Vector3( 0, -2, 0 ), Vector3( 0, 0, 0 ) ]
 }
 
-[node name="Mao" type="StaticBody" index="0" groups=[
+[node name="Mao" type="StaticBody" groups=[
 "mao",
 ]]
 
@@ -180,10 +180,6 @@ blend_times = [  ]
 
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
 
-[connection signal="body_exited" from="Area" to="." method="_on_Area_body_exited"]
-
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 
 
