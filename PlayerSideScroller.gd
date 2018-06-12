@@ -98,12 +98,7 @@ func _physics_process(delta):
 
 	hvel = hvel.linear_interpolate(target, accel*delta)
 	vel.z = hvel.z
-	#vel.x = hvel.x
-	if plat_vel == Vector3(0, 0, 0):
-		vel.x = hvel.x
-	else:
-		vel.x = - hvel.x - self.get_floor_velocity().x + plat_vel.x
-	print(vel)
+	vel.x = hvel.x
 	vel = move_and_slide(vel, Vector3(0,1,0), 0.05, 4, deg2rad(MAX_SLOPE_ANGLE))
 
 func _on_MaoTimer_timeout():

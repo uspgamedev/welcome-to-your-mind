@@ -4,18 +4,19 @@ const MOVE_SPD = 0.05
 
 onready var initial_trans = self.get_translation()
 var player = null
-var distance = 10
+var distance = 2
 var i = 0
 var vel
 
 func _physics_process(delta):
-	vel = Vector3((sin(i-1) * distance), 0, 0) - Vector3((sin(i) * distance), 0, 0)
 	if player != null:
 		player.plat_vel = vel
-	self.set_translation(initial_trans + Vector3((sin(i) * distance), 0, 0))
+	self.set_translation(initial_trans + Vector3(i*distance, 0, 0))
 	i += MOVE_SPD
-	if (i > 2 * PI):
+	if (abs(i) > 2 * PI):
 		i = 0
+		initial_trans = self.get_translation()
+		MOVE_SPD *= -1
 
 func _on_Area_body_entered(body):
 	if body.is_in_group("player"):
