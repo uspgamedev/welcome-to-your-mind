@@ -44,6 +44,9 @@ func encostinho_colision():
 	pass
 
 func _physics_process(delta):
+	
+	self.set_translation(Vector3(self.get_translation().x, self.get_translation().y, 0))
+	
 	var dir = Vector3(0,0,0)
 	get_node("SideCamera").update_y()
 	
@@ -97,8 +100,8 @@ func _physics_process(delta):
 		accel = DEACCEL
 
 	hvel = hvel.linear_interpolate(target, accel*delta)
-	vel.z = hvel.z
 	vel.x = hvel.x
+	self.get_floor_velocity()
 	vel = move_and_slide(vel, Vector3(0,1,0), 0.05, 4, deg2rad(MAX_SLOPE_ANGLE))
 
 func _on_MaoTimer_timeout():
