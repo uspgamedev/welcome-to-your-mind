@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://encostinho.gd" type="Script" id=1]
 
@@ -62,11 +62,15 @@ subdivide_width = 0
 subdivide_height = 0
 subdivide_depth = 0
 
-[sub_resource type="BoxShape" id=3]
+[sub_resource type="BoxShape" id=4]
 
 extents = Vector3( 1, 1, 1 )
 
-[node name="Encostinho" type="KinematicBody" groups=[
+[sub_resource type="BoxShape" id=3]
+
+extents = Vector3( 1.5, 1.5, 1.5 )
+
+[node name="Encostinho" type="KinematicBody" index="0" groups=[
 "Inimigo",
 ]]
 
@@ -98,7 +102,12 @@ mesh = SubResource( 2 )
 skeleton = NodePath("..")
 material/0 = null
 
-[node name="Area" type="Area" parent="." index="1"]
+[node name="CollisionShape" type="CollisionShape" parent="." index="1"]
+
+shape = SubResource( 4 )
+disabled = false
+
+[node name="Area" type="Area" parent="." index="2"]
 
 input_ray_pickable = false
 input_capture_on_drag = false
@@ -126,5 +135,14 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 
 shape = SubResource( 3 )
 disabled = false
+
+[node name="Timer" type="Timer" parent="." index="3"]
+
+process_mode = 1
+wait_time = 2.0
+one_shot = false
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 
