@@ -6,17 +6,14 @@ var player = null
 var vel = Vector3(5, 0, 0)
 var pos
 
+onready var init_pos = self.get_translation()
+onready var timer = get_node('TimerInteraction')
 
 func _on_AreaInteraction_body_entered(body):
-	if body.is_in_group('player'):
+	if body.is_in_group('player') and timer.time_left == 0:
 		body.encostinho_colision(self)
 		player = body
 		pos = Vector3(rand_range(0.5, 1.0) * pos_or_neg(), rand_range(0.5, 1.0) * pos_or_neg(), rand_range(.5, 1.0))
-
-func _on_AreaInteraction_body_exited(body):
-	if body.is_in_group('player'):
-		body.encostinho_left(self)
-		player = null
 
 func pos_or_neg():
 	var r = randi() % 2

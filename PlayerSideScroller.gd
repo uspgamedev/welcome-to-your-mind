@@ -15,6 +15,7 @@ var carrying = false
 var movement = "right"
 var ladder = null
 var encostinhos = []
+var interact_counter = 0
 
 onready var moveTween = get_node("MovementTween")
 onready var mao_timer = get_node("MaoTimer")
@@ -26,6 +27,12 @@ func _input(event):
 	var input_string = event.as_text().split(':')[0]
 	if input_string != 'InputEventMouseMotion' and input_string != 'InputEventMouseButton':
 		mao_timer.start()
+	if event.is_action_pressed('interact'):
+		interact_counter += 1
+		if interact_counter % 5 == 0:
+			interact_counter = 0
+			if encostinhos.size() > 0:
+				encostinho_left(encostinhos[encostinhos.size() -1])
 	if event.is_action_pressed('interact') and ladder != null and is_on_floor():
 		var lad
 		for child in self.get_children():
@@ -51,6 +58,9 @@ func encostinho_colision(encost):
 func encostinho_left(encost):
 	encostinhos.remove(encostinhos.find(encost))
 	encost.vel = Vector3(5, 0, 0)
+	encost.timer.start()
+	encost.player = null
+	encost.set_translation(Vector3(encost.get_translation().x, encost.init_pos.y, 0))
 
 func _physics_process(delta):
 	
@@ -89,7 +99,6 @@ func _physics_process(delta):
 			is_jumping = true
 	else:
 		is_jumping = true
-	
 	
 	dir.y = 0
 	dir = dir.normalized()

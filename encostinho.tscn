@@ -168,9 +168,14 @@ wait_time = 2.0
 one_shot = false
 autostart = true
 
-[connection signal="body_entered" from="AreaInteraction" to="." method="_on_AreaInteraction_body_entered"]
+[node name="TimerInteraction" type="Timer" parent="." index="4"]
 
-[connection signal="body_exited" from="AreaInteraction" to="." method="_on_AreaInteraction_body_exited"]
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[connection signal="body_entered" from="AreaInteraction" to="." method="_on_AreaInteraction_body_entered"]
 
 [connection signal="body_entered" from="AreaVision" to="." method="_on_AreaVision_body_entered"]
 
