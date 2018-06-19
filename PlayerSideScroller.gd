@@ -24,7 +24,7 @@ const MAX_SLOPE_ANGLE = 40
 
 func _input(event):
 	var input_string = event.as_text().split(':')[0]
-	if input_string != 'InputEventMouseMotion' or input_string != 'InputEventMouseButton':
+	if input_string != 'InputEventMouseMotion' and input_string != 'InputEventMouseButton':
 		mao_timer.start()
 	if event.is_action_pressed('interact') and ladder != null and is_on_floor():
 		var lad
@@ -41,9 +41,16 @@ func _input(event):
 		carrying = true
 		self.add_child(lad)
 
-func encostinho_colision():
-	# Começar a equilibrar os encostinhos nas costas do jogador
-	pass
+func encostinho_colision(encost):
+	if (encostinhos.size() >= 3):
+		die()
+	encostinhos.append(encost)
+	encost.set_translation(self.get_translation() + Vector3(1, 0, 0))
+	encost.vel = Vector3(0, 0, 0)
+
+func encostinho_left(encost):
+	encostinhos.remove(encostinhos.find(encost))
+	encost.vel = Vector3(5, 0, 0)
 
 func _physics_process(delta):
 	
@@ -53,6 +60,7 @@ func _physics_process(delta):
 	get_node("SideCamera").update_y()
 	
 	if Input.is_action_pressed("movement_left"):
+		mao_timer.start()
 		dir.x += -1
 		if movement == "right":
 			movement = "left"
@@ -60,6 +68,7 @@ func _physics_process(delta):
 			moveTween.start()
 			
 	elif Input.is_action_pressed("movement_right"):
+		mao_timer.start()
 		dir.x += 1
 		if movement == "left":
 			movement = "right"

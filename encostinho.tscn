@@ -2,10 +2,10 @@
 
 [ext_resource path="res://encostinho.gd" type="Script" id=1]
 
-[sub_resource type="SpatialMaterial" id=1]
+[sub_resource type="SpatialMaterial" id=7]
 
 render_priority = 0
-flags_transparent = false
+flags_transparent = true
 flags_unshaded = false
 flags_vertex_lighting = false
 flags_no_depth_test = false
@@ -25,7 +25,7 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 1, 0.5625, 0, 1 )
+albedo_color = Color( 0.156863, 0.156863, 0.156863, 0.784314 )
 metallic = 0.0
 metallic_specular = 0.5
 metallic_texture_channel = 0
@@ -54,21 +54,23 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo" ]
 
-[sub_resource type="CubeMesh" id=2]
+[sub_resource type="SphereMesh" id=6]
 
-material = SubResource( 1 )
-size = Vector3( 2, 2, 2 )
-subdivide_width = 0
-subdivide_height = 0
-subdivide_depth = 0
+material = SubResource( 7 )
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+radius = 0.9
+height = 1.8
+radial_segments = 8
+rings = 4
+is_hemisphere = false
 
 [sub_resource type="BoxShape" id=4]
 
-extents = Vector3( 1, 1, 1 )
-
-[sub_resource type="BoxShape" id=3]
-
 extents = Vector3( 1.5, 1.5, 1.5 )
+
+[sub_resource type="BoxShape" id=5]
+
+extents = Vector3( 7, 7, 7 )
 
 [node name="Encostinho" type="KinematicBody" index="0" groups=[
 "Inimigo",
@@ -98,16 +100,11 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 2 )
+mesh = SubResource( 6 )
 skeleton = NodePath("..")
 material/0 = null
 
-[node name="CollisionShape" type="CollisionShape" parent="." index="1"]
-
-shape = SubResource( 4 )
-disabled = false
-
-[node name="Area" type="Area" parent="." index="2"]
+[node name="AreaInteraction" type="Area" parent="." index="1"]
 
 input_ray_pickable = false
 input_capture_on_drag = false
@@ -131,9 +128,37 @@ reverb_bus_amount = 0.0
 reverb_bus_uniformity = 0.0
 _sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="CollisionShape" type="CollisionShape" parent="Area" index="0"]
+[node name="CollisionShape" type="CollisionShape" parent="AreaInteraction" index="0"]
 
-shape = SubResource( 3 )
+shape = SubResource( 4 )
+disabled = false
+
+[node name="AreaVision" type="Area" parent="." index="2"]
+
+input_ray_pickable = false
+input_capture_on_drag = false
+space_override = 0
+gravity_point = false
+gravity_distance_scale = 0.0
+gravity_vec = Vector3( 0, -1, 0 )
+gravity = 9.8
+linear_damp = 0.1
+angular_damp = 1.0
+priority = 0.0
+monitoring = true
+monitorable = true
+collision_layer = 1
+collision_mask = 1
+audio_bus_override = false
+audio_bus_name = "Master"
+reverb_bus_enable = false
+reverb_bus_name = "Master"
+reverb_bus_amount = 0.0
+reverb_bus_uniformity = 0.0
+
+[node name="CollisionShape" type="CollisionShape" parent="AreaVision" index="0"]
+
+shape = SubResource( 5 )
 disabled = false
 
 [node name="Timer" type="Timer" parent="." index="3"]
@@ -142,6 +167,12 @@ process_mode = 1
 wait_time = 2.0
 one_shot = false
 autostart = true
+
+[connection signal="body_entered" from="AreaInteraction" to="." method="_on_AreaInteraction_body_entered"]
+
+[connection signal="body_exited" from="AreaInteraction" to="." method="_on_AreaInteraction_body_exited"]
+
+[connection signal="body_entered" from="AreaVision" to="." method="_on_AreaVision_body_entered"]
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
