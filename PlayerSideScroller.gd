@@ -75,7 +75,7 @@ func _physics_process(delta):
 		dir.x += -1
 		if movement == "right":
 			movement = "left"
-			moveTween.interpolate_property(get_node("MeshInstance"), "rotation_degrees", Vector3(0,0,0), Vector3(0,180,0), 0.30, moveTween.TRANS_LINEAR, moveTween.EASE_IN_OUT)
+			moveTween.interpolate_property(get_node("MeshInstance"), "rotation_degrees", Vector3(0,90,0), Vector3(0,-90,0), 0.30, moveTween.TRANS_LINEAR, moveTween.EASE_IN_OUT)
 			moveTween.start()
 			
 	elif Input.is_action_pressed("movement_right"):
@@ -83,7 +83,7 @@ func _physics_process(delta):
 		dir.x += 1
 		if movement == "left":
 			movement = "right"
-			moveTween.interpolate_property(get_node("MeshInstance"), "rotation_degrees", Vector3(0,180,0), Vector3(0,0,0), 0.30, moveTween.TRANS_LINEAR, moveTween.EASE_IN_OUT)
+			moveTween.interpolate_property(get_node("MeshInstance"), "rotation_degrees", Vector3(0,-90,0), Vector3(0,90,0), 0.30, moveTween.TRANS_LINEAR, moveTween.EASE_IN_OUT)
 			moveTween.start()
 	
 	elif Input.is_action_pressed('movement_forward') and ladder != null and not carrying:
@@ -133,4 +133,4 @@ func _on_MaoTimer_timeout():
 	self.get_parent().add_child(mao)
 
 func die():
-	get_tree().change_scene("res://LTPWorld.tscn")
+	get_tree().change_scene("res://test/LTPWorld.tscn")
