@@ -7,7 +7,15 @@
 extents = Vector3( 1, 1, 1 )
 _sections_unfolded = [ "Resource" ]
 
-[sub_resource type="SpatialMaterial" id=2]
+[sub_resource type="PrismMesh" id=2]
+
+left_to_right = 0.5
+size = Vector3( 2, 2, 2 )
+subdivide_width = 0
+subdivide_height = 0
+subdivide_depth = 0
+
+[sub_resource type="SpatialMaterial" id=3]
 
 render_priority = 0
 flags_transparent = false
@@ -30,11 +38,11 @@ params_point_size = 1.0
 params_billboard_mode = 0
 params_grow = false
 params_use_alpha_scissor = false
-albedo_color = Color( 0.335938, 0.335938, 0.335938, 1 )
+albedo_color = Color( 0.113198, 0.112289, 0.128906, 1 )
 metallic = 0.0
-metallic_specular = 0.5
+metallic_specular = 0.0
 metallic_texture_channel = 0
-roughness = 0.0
+roughness = 0.5
 roughness_texture_channel = 0
 emission_enabled = false
 normal_enabled = false
@@ -57,17 +65,9 @@ uv2_triplanar = false
 uv2_triplanar_sharpness = 1.0
 proximity_fade_enable = false
 distance_fade_enable = false
-_sections_unfolded = [ "Albedo", "Metallic" ]
+_sections_unfolded = [ "Metallic", "Roughness" ]
 
-[sub_resource type="CubeMesh" id=3]
-
-material = SubResource( 2 )
-size = Vector3( 2, 0.5, 2 )
-subdivide_width = 0
-subdivide_height = 0
-subdivide_depth = 0
-
-[node name="StaticBody" type="StaticBody"]
+[node name="StaticBody" type="StaticBody" index="0"]
 
 input_ray_pickable = true
 input_capture_on_drag = false
@@ -106,7 +106,7 @@ reverb_bus_uniformity = 0.0
 
 shape = SubResource( 1 )
 disabled = false
-_sections_unfolded = [ "Visibility" ]
+_sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="MeshInstance" type="MeshInstance" parent="." index="1"]
 
@@ -119,9 +119,10 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 3 )
+mesh = SubResource( 2 )
 skeleton = NodePath("..")
-material/0 = null
+material/0 = SubResource( 3 )
+_sections_unfolded = [ "material" ]
 
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
 
