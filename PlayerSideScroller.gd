@@ -16,6 +16,7 @@ var movement = "right"
 var ladder = null
 var encostinhos = []
 var interact_counter = 0
+var can_jump = false
 
 onready var moveTween = get_node("MovementTween")
 onready var mao_timer = get_node("MaoTimer")
@@ -94,7 +95,7 @@ func _physics_process(delta):
 	if is_on_floor():
 		if is_jumping:
 			is_jumping = false
-		if Input.is_action_just_pressed("movement_jump"):
+		if Input.is_action_just_pressed("movement_jump") and can_jump:
 			vel.y = JUMP_SPEED
 			is_jumping = true
 	else:
@@ -132,4 +133,4 @@ func _on_MaoTimer_timeout():
 	self.get_parent().add_child(mao)
 
 func die():
-	get_tree().change_scene("res://TestWorld.tscn")
+	get_tree().change_scene("res://LTPWorld.tscn")
