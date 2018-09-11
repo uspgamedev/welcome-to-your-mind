@@ -1,21 +1,23 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Stages/Depression/Enemies/TriggerBad.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Stages/Depression/Enemies/TriggerBase.tscn" type="PackedScene" id=1]
 
-[node name="TriggerBad" type="KinematicBody2D"]
+[sub_resource type="CircleShape2D" id=1]
 
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-collision/safe_margin = 0.08
-script = ExtResource( 1 )
-speed = 100
+custom_solver_bias = 0.0
+radius = 300.0
 
-[node name="Sprite" type="Sprite" parent="." index="0"]
+[node name="TriggerBase" instance=ExtResource( 1 )]
 
-self_modulate = Color( 1, 0, 0, 1 )
-texture = ExtResource( 2 )
-_sections_unfolded = [ "Material", "Visibility" ]
+evil = true
+
+[node name="Sprite" parent="." index="0"]
+
+modulate = Color( 1, 0, 0, 1 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+
+shape = SubResource( 1 )
 
 

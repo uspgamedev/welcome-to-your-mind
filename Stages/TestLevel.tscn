@@ -1,16 +1,16 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Stages/Depression/Enemies/TriggerGood.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Stages/Depression/Enemies/TriggerBad.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Stages/Depression/Enemies/TriggerGood.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Stages/Depression/Enemies/TriggerBad.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 300, 20 )
 
-[node name="Node" type="Node" index="0"]
+[node name="Node" type="Node"]
 
 [node name="Node2D" type="Node2D" parent="." index="0"]
 
@@ -72,17 +72,18 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Player" parent="." index="1" instance=ExtResource( 2 )]
+[node name="TriggerGood" parent="Node2D" index="2" instance=ExtResource( 2 )]
 
-position = Vector2( 140.662, 66.8426 )
+position = Vector2( 187.31, 210.696 )
 
-[node name="TriggerGood" parent="." index="2" instance=ExtResource( 3 )]
+[node name="TriggerBase" parent="Node2D" index="3" instance=ExtResource( 3 )]
 
-position = Vector2( 599.573, 451.577 )
+position = Vector2( 673.04, 146.185 )
 
-[node name="TriggerBad" parent="." index="3" instance=ExtResource( 4 )]
+[node name="Player" parent="Node2D" index="4" instance=ExtResource( 4 )]
 
-position = Vector2( 470.551, 307.376 )
-speed = 400
+modulate = Color( 0.164062, 0.164062, 0.164062, 1 )
+position = Vector2( -62.461, -123.432 )
+_sections_unfolded = [ "Transform", "Visibility" ]
 
 
