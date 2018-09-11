@@ -25,6 +25,6 @@ func _on_Tween_tween_completed(object, key):
 	go_to_player()
 
 func _on_Area2D_body_entered(body):
-	if body.is_in_group("player") and not player:
+	if body.is_in_group("Player") and not player:
 		player = body
 		go_to_player()
