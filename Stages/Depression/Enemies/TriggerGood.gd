@@ -13,7 +13,7 @@ func go_to_player():
 	
 	if dist > 70:
 		Twn.interpolate_property(self, "position", get_position(), player.get_position() + Vector2(randx, randy),
-		 						dist/100.0, Twn.TRANS_CUBIC, Twn.EASE_IN_OUT)
+		 						max(dist/100.0, 1.0), Twn.TRANS_CUBIC, Twn.EASE_IN_OUT)
 		Twn.start()
 	else:
 		Tim.set_wait_time(0.1)
