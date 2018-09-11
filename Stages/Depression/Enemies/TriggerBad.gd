@@ -12,7 +12,6 @@ func shaked_off():
 	get_parent().remove_child(self)
 	set_position(pos)
 	parentparent.add_child(self)
-	print("pos: ", get_position())
 	$ShakenOffTimer.start()
 	yield($ShakenOffTimer, "timeout")
 	set_physics_process(true)

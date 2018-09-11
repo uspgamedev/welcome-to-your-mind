@@ -62,8 +62,6 @@ func free_trigger():
 	if triggers.empty():
 		return
 	var trig = triggers.pop_back()
-	print("Player: ", get_global_position())
-	print("Trig: ", trig.get_global_position())
 	trig.shaked_off()
 
 func add_trigger(trigger):
