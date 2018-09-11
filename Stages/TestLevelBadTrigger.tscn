@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Stages/Depression/Enemies/TriggerBad.tscn" type="PackedScene" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 600, 10 )
+
+[node name="Node" type="Node" index="0"]
+
+[node name="Node2D" type="Node2D" parent="." index="0"]
+
+[node name="Player" parent="Node2D" index="0" instance=ExtResource( 1 )]
+
+position = Vector2( 80, 90 )
+
+[node name="TriggerBad" parent="Node2D" index="1" instance=ExtResource( 2 )]
+
+position = Vector2( 340, 340 )
+
+[node name="CollisionShape2D" parent="Node2D/TriggerBad/Area2D" index="0"]
+
+scale = Vector2( 0.957547, 0.957547 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D" index="2"]
+
+editor/display_folded = true
+position = Vector2( 545, 483 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="Sprite" type="Sprite" parent="Node2D/StaticBody2D" index="0"]
+
+self_modulate = Color( 1, 0, 0.820312, 1 )
+position = Vector2( 1.00003, 0.5 )
+scale = Vector2( 18.7188, 0.328125 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D" index="1"]
+
+shape = SubResource( 1 )
+
+
+[editable path="Node2D/TriggerBad"]
