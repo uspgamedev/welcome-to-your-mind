@@ -12,6 +12,7 @@ var direction = Vector2() # Input Direction
 var can_jump = true
 var last_shake = 0 # 0 is left, 1 is right. Used to force alternating directions in shake
 var shake_counter = 0
+var triggers = []
 
 
 func get_input():
@@ -25,7 +26,6 @@ func get_input():
 		
 	if Input.is_action_pressed('ui_up') and can_jump and is_on_floor():
 		velocity.y = -JUMP_POWER
-#	direction = direction.normalized()
 
 
 func _physics_process(delta):
@@ -51,13 +51,24 @@ func shake(shake_direction):
 	last_shake = shake_direction
 	$ShakeTimer.start()
 	shake_counter += 1
-	print(shake_counter)
 	if shake_counter >= SHAKENUM:
-		free_triggers()
+		free_trigger()
 
 func _on_ShakeTimer_timeout():
 	shake_counter = 0
 
-func free_triggers():
-	print("Im free!")
+func free_trigger():
 	shake_counter = 0
+	if triggers.empty():
+		return
+	var trig = triggers.pop_back()
+	print("Player: ", get_global_position())
+	print("Trig: ", trig.get_global_position())
+	trig.shaked_off()
+
+func add_trigger(trigger):
+	var pos = trigger.get_position() - get_position()
+	get_parent().remove_child(trigger)
+	trigger.set_position(pos)
+	add_child(trigger)
+	triggers.append(trigger)

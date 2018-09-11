@@ -9,7 +9,7 @@ custom_solver_bias = 0.0
 radius = 22.0
 height = 20.0
 
-[node name="Player" type="KinematicBody2D" index="0" groups=[
+[node name="Player" type="KinematicBody2D" groups=[
 "Player",
 ]]
 
@@ -18,12 +18,14 @@ collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Transform", "Visibility" ]
 GRAV = 2480
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
+modulate = Color( 0.300781, 0.300781, 0.300781, 1 )
 texture = ExtResource( 2 )
+_sections_unfolded = [ "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
