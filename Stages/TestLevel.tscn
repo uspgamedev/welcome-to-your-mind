@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Stages/Depression/Enemies/TriggerGood.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -73,5 +74,9 @@ __meta__ = {
 [node name="Player" parent="." index="1" instance=ExtResource( 2 )]
 
 position = Vector2( 140.662, 66.8426 )
+
+[node name="TriggerGood" parent="." index="2" instance=ExtResource( 3 )]
+
+position = Vector2( 599.573, 451.577 )
 
 
