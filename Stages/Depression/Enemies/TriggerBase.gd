@@ -16,9 +16,10 @@ func _physics_process(delta):
 	var velocity = (target_pos - self.position).normalized() * SPD * delta
 	move_and_slide(velocity)
 	
-	if distance_to_target() < MINDISTANCE:
+	var dist = distance_to_target()
+	if  dist < MINDISTANCE:
 		reached_target(target)
-	elif distance_to_target() > MAXDISTANCE:
+	elif dist > MAXDISTANCE:
 		set_physics_process(false)
 		target = null
 
@@ -27,7 +28,7 @@ func reached_target(target):
 	target = null
 
 func distance_to_target():
-	return get_position().distance_to(target.get_position())
+	return get_global_position().distance_to(target.get_global_position())
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("Player") and not target:

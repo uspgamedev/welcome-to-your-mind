@@ -76,8 +76,8 @@ func free_trigger():
 	timerbar.value = 0
 
 func add_trigger(trigger):
-	var pos = trigger.get_position() - get_position()
-	get_parent().remove_child(trigger)
+	var pos = trigger.get_global_position() - get_global_position()
+	trigger.get_parent().remove_child(trigger)
 	trigger.set_position(pos)
 	add_child(trigger)
 	triggers.append(trigger)
