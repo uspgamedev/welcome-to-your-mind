@@ -14,6 +14,11 @@ var last_shake = 0 # 0 is left, 1 is right. Used to force alternating directions
 var shake_counter = 0
 var triggers = []
 
+onready var timer = get_node("Timer")
+onready var timerbar = get_node("ProgressBar")
+
+func ready():
+	timerbar.value = 0
 
 func get_input():
 	direction = Vector2()
@@ -27,6 +32,10 @@ func get_input():
 	if Input.is_action_pressed('ui_up') and can_jump and is_on_floor():
 		velocity.y = -JUMP_POWER
 
+func _process(delta):
+	if not timer.is_stopped():
+		timerbar.value = timer.wait_time - timer.time_left
+	
 
 func _physics_process(delta):
 	get_input()
@@ -63,6 +72,8 @@ func free_trigger():
 		return
 	var trig = triggers.pop_back()
 	trig.shaked_off()
+	timer.stop()
+	timerbar.value = 0
 
 func add_trigger(trigger):
 	var pos = trigger.get_position() - get_position()
@@ -70,3 +81,10 @@ func add_trigger(trigger):
 	trigger.set_position(pos)
 	add_child(trigger)
 	triggers.append(trigger)
+	timer.start()
+
+func die():
+    get_tree().change_scene("res://Stages/TestLevel.tscn")
+
+func _on_Timer_timeout():
+	self.die()

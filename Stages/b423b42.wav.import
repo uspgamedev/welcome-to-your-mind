@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/b423b42.wav-7c1a051fff292b9c6df6d3c2dba53d0f.sample"
+
+[deps]
+
+source_file="res://Stages/b423b42.wav"
+dest_files=[ "res://.import/b423b42.wav-7c1a051fff292b9c6df6d3c2dba53d0f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
