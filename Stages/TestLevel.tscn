@@ -1,34 +1,25 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Stages/TestLevel.gd" type="Script" id=1]
-[ext_resource path="res://Stages/Depression/Enemies/TriggerGood.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Stages/Depression/Enemies/TriggerBad.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://icon.png" type="Texture" id=5]
-[ext_resource path="res://Stages/b423b42.wav" type="AudioStream" id=6]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://Stages/Depression/Enemies/TriggerWave.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Stages/b423b42.wav" type="AudioStream" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 300, 20 )
 
-[node name="Node" type="Node" index="0"]
+[node name="Node" type="Node"]
 
 script = ExtResource( 1 )
 
-[node name="TriggerGood" parent="." index="0" instance=ExtResource( 2 )]
+[node name="Player" parent="." index="0" instance=ExtResource( 2 )]
 
-position = Vector2( 390.433, 400.971 )
+position = Vector2( 258.809, 366.755 )
 
-[node name="TriggerBase" parent="." index="1" instance=ExtResource( 3 )]
-
-position = Vector2( 876.163, 336.46 )
-
-[node name="Player" parent="." index="2" instance=ExtResource( 4 )]
-
-position = Vector2( 140.662, 66.8426 )
-
-[node name="Floor" type="Node2D" parent="." index="3"]
+[node name="Floor" type="Node2D" parent="." index="1"]
 
 position = Vector2( 203.123, 190.275 )
 _sections_unfolded = [ "Transform" ]
@@ -36,7 +27,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="Floor" index="0"]
+[node name="StaticBody2D2" type="StaticBody2D" parent="Floor" index="0" groups=[
+"floor",
+]]
 
 editor/display_folded = true
 position = Vector2( 592.725, 348.255 )
@@ -51,7 +44,7 @@ bounce = 0.0
 [node name="Sprite" type="Sprite" parent="Floor/StaticBody2D2" index="0"]
 
 scale = Vector2( 9.4, 0.6 )
-texture = ExtResource( 5 )
+texture = ExtResource( 3 )
 _sections_unfolded = [ "Transform" ]
 __meta__ = {
 "_edit_lock_": true
@@ -64,7 +57,9 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Floor" index="1"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Floor" index="1" groups=[
+"floor",
+]]
 
 editor/display_folded = true
 position = Vector2( 8.16223, 348.255 )
@@ -79,7 +74,7 @@ bounce = 0.0
 [node name="Sprite" type="Sprite" parent="Floor/StaticBody2D" index="0"]
 
 scale = Vector2( 9.4, 0.6 )
-texture = ExtResource( 5 )
+texture = ExtResource( 3 )
 _sections_unfolded = [ "Transform" ]
 __meta__ = {
 "_edit_lock_": true
@@ -92,9 +87,13 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="4"]
+[node name="TriggerWave" parent="." index="2" instance=ExtResource( 4 )]
 
-stream = ExtResource( 6 )
+position = Vector2( 304.456, -19.1765 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="3"]
+
+stream = ExtResource( 5 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
@@ -102,6 +101,9 @@ max_distance = 2000.0
 attenuation = 1.0
 bus = "Master"
 area_mask = 1
+__meta__ = {
+"_edit_lock_": true
+}
 
 [connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_AudioStreamPlayer2D_finished"]
 
