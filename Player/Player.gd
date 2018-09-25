@@ -14,7 +14,6 @@ var last_shake = 0 # 0 is left, 1 is right. Used to force alternating directions
 var shake_counter = 0
 var triggers = []
 
-onready var timer = get_node("DeathTimer")
 onready var timerbar = get_node("CanvasLayer/ProgressBar")
 
 func ready():
@@ -33,6 +32,7 @@ func get_input():
 		velocity.y = -JUMP_POWER
 
 func _process(delta):
+	var timer = $DeathTimer 
 	if not timer.is_stopped():
 		timerbar.value = timer.wait_time - timer.time_left
 	
@@ -69,7 +69,7 @@ func _on_ShakeTimer_timeout():
 func free_trigger():
 	shake_counter = 0
 	if triggers.empty():
-		timer.stop()
+		$DeathTimer.stop()
 		timerbar.value = 0
 		return
 	var trig = triggers.pop_back()
@@ -81,7 +81,8 @@ func add_trigger(trigger):
 	trigger.set_position(pos)
 	add_child(trigger)
 	triggers.append(trigger)
-	timer.start()
+	if $DeathTimer.is_stopped():
+		$DeathTimer.start()
 
 func die():
     get_tree().change_scene("res://Stages/TestLevel.tscn")
