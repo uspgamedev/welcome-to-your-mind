@@ -11,8 +11,13 @@ radius = 150.0
 [node name="TriggerTutorial" instance=ExtResource( 1 )]
 
 pause_mode = 2
+modulate = Color( 1, 1, 1, 1 )
 script = ExtResource( 2 )
-_sections_unfolded = [ "Pause", "Z Index" ]
+_sections_unfolded = [ "Pause", "Visibility", "Z Index" ]
+
+[node name="Sprite" parent="." index="0"]
+
+_sections_unfolded = [ "Material", "Transform", "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
 

@@ -37,6 +37,7 @@ func shake(shake_direction):
 		print("SOLTOU")
 		set_process_input(false)
 		tutorialanimation.visible = false
+		self.die()
 		get_tree().paused = false
 
 func _on_ShakeTimer_timeout():
