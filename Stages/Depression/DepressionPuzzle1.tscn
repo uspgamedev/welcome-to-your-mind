@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
-[ext_resource path="res://Stages/Depression/Enemies/TriggerWave.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Stages/Depression/Enemies/Octopus.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -14,11 +14,38 @@ extents = Vector2( 788.094, 57.3839 )
 custom_solver_bias = 0.0
 extents = Vector2( 21.7433, 10 )
 
-[node name="Puzzle1" type="Node2D" index="0"]
+[node name="Puzzle1" type="Node"]
 
 [node name="Player" parent="." index="0" instance=ExtResource( 1 )]
 
-position = Vector2( 47.8818, 126.457 )
+editor/display_folded = true
+position = Vector2( -106.823, 401.525 )
+
+[node name="Camera2D" type="Camera2D" parent="Player" index="5"]
+
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = -300
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 600
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+_sections_unfolded = [ "Limit" ]
 
 [node name="Floor" type="StaticBody2D" parent="." index="1" groups=[
 "Floor",
@@ -33,6 +60,9 @@ constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" index="0"]
 
@@ -47,12 +77,13 @@ scale = Vector2( 24.7082, 1.80324 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Visibility" ]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." index="2" groups=[
+[node name="Floor2" type="StaticBody2D" parent="." index="2" groups=[
 "Floor",
 ]]
 
 editor/display_folded = true
-position = Vector2( 100, 250 )
+position = Vector2( -295.823, -62.2951 )
+rotation = 1.57512
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -60,6 +91,41 @@ constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor2" index="0"]
+
+position = Vector2( 310.618, 8.59418 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Floor2/CollisionShape2D" index="0"]
+
+self_modulate = Color( 0.792969, 0.0989517, 0.046463, 1 )
+position = Vector2( 1.114, 0.319763 )
+scale = Vector2( 24.7082, 1.80324 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="3" groups=[
+"Floor",
+]]
+
+editor/display_folded = true
+position = Vector2( -158.03, 267.963 )
+scale = Vector2( 3, 1 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
 
@@ -76,12 +142,13 @@ scale = Vector2( 1.40625, 0.627292 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Visibility" ]
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="." index="3" groups=[
+[node name="StaticBody2D2" type="StaticBody2D" parent="." index="4" groups=[
 "Floor",
 ]]
 
 editor/display_folded = true
-position = Vector2( 360, 250 )
+position = Vector2( 219.053, 227.782 )
+scale = Vector2( 3, 1 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -89,6 +156,10 @@ constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" index="0"]
 
@@ -105,12 +176,13 @@ scale = Vector2( 1.40625, 0.627292 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Visibility" ]
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="." index="4" groups=[
+[node name="StaticBody2D3" type="StaticBody2D" parent="." index="5" groups=[
 "Floor",
 ]]
 
 editor/display_folded = true
-position = Vector2( 610, 250 )
+position = Vector2( 673.408, 376.143 )
+scale = Vector2( 3, 1 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -118,6 +190,10 @@ constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" index="0"]
 
@@ -129,17 +205,18 @@ _sections_unfolded = [ "Transform" ]
 [node name="Sprite" type="Sprite" parent="StaticBody2D3" index="1"]
 
 self_modulate = Color( 0.171875, 1, 0, 1 )
-position = Vector2( 14.9999, 12.7787 )
+position = Vector2( 15, 12.7787 )
 scale = Vector2( 1.40625, 0.627292 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Visibility" ]
 
-[node name="StaticBody2D4" type="StaticBody2D" parent="." index="5" groups=[
+[node name="StaticBody2D4" type="StaticBody2D" parent="." index="6" groups=[
 "Floor",
 ]]
 
 editor/display_folded = true
-position = Vector2( 880, 250 )
+position = Vector2( 1031.95, 280.326 )
+scale = Vector2( 3, 1 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -147,6 +224,10 @@ constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" index="0"]
 
@@ -163,12 +244,8 @@ scale = Vector2( 1.40625, 0.627292 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Visibility" ]
 
-[node name="TriggerWave" parent="." index="6" instance=ExtResource( 3 )]
+[node name="Octopus" parent="." index="7" instance=ExtResource( 3 )]
 
-position = Vector2( 239.425, -40.811 )
-
-[node name="TriggerWave2" parent="." index="7" instance=ExtResource( 3 )]
-
-position = Vector2( 498.965, 73.962 )
+position = Vector2( 290.54, 24.7268 )
 
 

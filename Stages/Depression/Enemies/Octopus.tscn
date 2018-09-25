@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Stages/Depression/Enemies/Octopus.gd" type="Script" id=1]
+[ext_resource path="res://Stages/Depression/Enemies/TriggerWave.tscn" type="PackedScene" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+
+[node name="Octopus" type="Node2D" index="0"]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Pause" ]
+targetpath = null
+TriggerWave = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+scale = Vector2( 3, 1.5 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="AttackInterval" type="Timer" parent="." index="1"]
+
+process_mode = 1
+wait_time = 0.2
+one_shot = true
+autostart = false
+
+[node name="AttackCooldown" type="Timer" parent="." index="2"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = true
+
+[node name="AttackDuration" type="Timer" parent="." index="3"]
+
+process_mode = 1
+wait_time = 2.0
+one_shot = true
+autostart = false
+
+[connection signal="timeout" from="AttackInterval" to="." method="_on_AttackInterval_timeout"]
+
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_AttackCooldown_timeout"]
+
+[connection signal="timeout" from="AttackDuration" to="." method="_on_AttackDuration_timeout"]
+
+
