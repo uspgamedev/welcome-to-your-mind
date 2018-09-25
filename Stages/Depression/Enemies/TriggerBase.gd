@@ -30,7 +30,16 @@ func reached_target(target):
 func distance_to_target():
 	return get_global_position().distance_to(target.get_global_position())
 
+func die():
+	var AnimPlayer = $Sprite/AnimationPlayer
+	AnimPlayer.play("die")
+	yield(AnimPlayer, "animation_finished")
+	queue_free()
+
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("Player") and not target:
 		target = body
 		set_physics_process(true)
+	elif body.is_in_group("Floor") and get_parent().is_in_group("TriggerWave"):
+		get_node("Area2D").queue_free()
+		die()

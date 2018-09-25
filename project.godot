@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="Welcome to your Mind"
-run/main_scene="res://Stages/TestLevel.tscn"
+run/main_scene="res://Stages/Depression/DepressionPuzzle1.tscn"
 config/icon="res://icon.png"
 
 [input]

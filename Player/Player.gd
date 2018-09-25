@@ -85,7 +85,7 @@ func add_trigger(trigger):
 		$DeathTimer.start()
 
 func die():
-    get_tree().change_scene("res://Stages/TestLevel.tscn")
+    get_tree().change_scene("res://Stages/Depression/DepressionPuzzle1.tscn")
 
 func _on_DeathTimer_timeout():
 	self.die()
