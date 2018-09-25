@@ -3,7 +3,7 @@
 [ext_resource path="res://Stages/Depression/Enemies/TriggerBase.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 
 resource_name = "die"
 length = 0.4
@@ -22,9 +22,8 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=2]
 
-resource_name = "idle"
 length = 1.4
 loop = true
 step = 0.1
@@ -66,8 +65,8 @@ autoplay = "idle"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/die = SubResource( 2 )
-anims/idle = SubResource( 1 )
+anims/die = SubResource( 1 )
+anims/idle = SubResource( 2 )
 blend_times = [  ]
 
 [node name="Area2D" type="Area2D" parent="." index="1"]
