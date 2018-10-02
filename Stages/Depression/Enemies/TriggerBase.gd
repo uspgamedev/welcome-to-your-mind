@@ -10,6 +10,8 @@ var target = null # if not null, Trigger is following target
 
 func _ready():
 	set_physics_process(false)
+	set_process(false)
+	set_process_input(false)
 
 func _physics_process(delta):
 	var target_pos = target.get_position()
