@@ -227,6 +227,7 @@ editor/display_folded = true
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 32.5022, 1.10803 )
 script = ExtResource( 3 )
+evil = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerBase/Area2D" index="0"]
 
@@ -245,6 +246,7 @@ editor/display_folded = true
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 48.1808, -57.4263 )
 script = ExtResource( 3 )
+evil = true
 
 [node name="AnimationPlayer" parent="TriggerBase2/Sprite" index="0"]
 
@@ -267,6 +269,7 @@ editor/display_folded = true
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( -43.0146, 49.1909 )
 script = ExtResource( 3 )
+evil = true
 
 [node name="AnimationPlayer" parent="TriggerBase3/Sprite" index="0"]
 
@@ -289,6 +292,7 @@ editor/display_folded = true
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( -29.7682, -5.01938 )
 script = ExtResource( 3 )
+evil = true
 
 [node name="AnimationPlayer" parent="TriggerBase4/Sprite" index="0"]
 
@@ -311,6 +315,7 @@ editor/display_folded = true
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 24.2963, 101.678 )
 script = ExtResource( 3 )
+evil = true
 
 [node name="AnimationPlayer" parent="TriggerBase5/Sprite" index="0"]
 
@@ -333,6 +338,7 @@ editor/display_folded = true
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 40.8346, 51.8613 )
 script = ExtResource( 3 )
+evil = true
 
 [node name="AnimationPlayer" parent="TriggerBase6/Sprite" index="0"]
 
@@ -355,6 +361,7 @@ editor/display_folded = true
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( -48.2906, -54.0524 )
 script = ExtResource( 3 )
+evil = true
 
 [node name="AnimationPlayer" parent="TriggerBase7/Sprite" index="0"]
 
@@ -377,6 +384,7 @@ editor/display_folded = true
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( -23.8281, 100.916 )
 script = ExtResource( 3 )
+evil = true
 
 [node name="AnimationPlayer" parent="TriggerBase8/Sprite" index="0"]
 
@@ -399,6 +407,7 @@ editor/display_folded = true
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( -0.858673, -89.7392 )
 script = ExtResource( 3 )
+evil = true
 
 [node name="AnimationPlayer" parent="TriggerBase9/Sprite" index="0"]
 
@@ -421,6 +430,7 @@ editor/display_folded = true
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( -2.33605, 54.3045 )
 script = ExtResource( 3 )
+evil = true
 
 [node name="AnimationPlayer" parent="TriggerBase10/Sprite" index="0"]
 
@@ -443,6 +453,7 @@ editor/display_folded = true
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( -0.119985, -36.5539 )
 script = ExtResource( 3 )
+evil = true
 
 [node name="AnimationPlayer" parent="TriggerBase11/Sprite" index="0"]
 

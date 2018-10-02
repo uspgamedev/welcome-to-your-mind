@@ -32,6 +32,7 @@ func distance_to_target():
 
 func die():
 	var AnimPlayer = $Sprite/AnimationPlayer
+	get_node("Area2D").queue_free()
 	AnimPlayer.play("die")
 	yield(AnimPlayer, "animation_finished")
 	queue_free()
