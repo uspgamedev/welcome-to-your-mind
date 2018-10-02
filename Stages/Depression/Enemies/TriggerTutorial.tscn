@@ -10,7 +10,7 @@
 custom_solver_bias = 0.0
 radius = 150.0
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=2]
 
 resource_name = "press"
 length = 0.01
@@ -141,7 +141,7 @@ autoplay = "press"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/press = SubResource( 6 )
+anims/press = SubResource( 2 )
 anims/release = SubResource( 3 )
 blend_times = [  ]
 

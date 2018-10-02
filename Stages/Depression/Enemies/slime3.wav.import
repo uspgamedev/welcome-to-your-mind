@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/slime3.wav-0eea6ad68439776c0fd4e108168a287b.sample"
+
+[deps]
+
+source_file="res://Stages/Depression/Enemies/slime3.wav"
+dest_files=[ "res://.import/slime3.wav-0eea6ad68439776c0fd4e108168a287b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

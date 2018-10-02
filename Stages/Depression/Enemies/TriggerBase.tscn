@@ -97,6 +97,17 @@ audio_bus_name = "Master"
 
 shape = SubResource( 3 )
 
+[node name="FXAudioPlayer" type="AudioStreamPlayer2D" parent="." index="3"]
+
+stream = null
+volume_db = -30.0
+pitch_scale = 1.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 
 [connection signal="body_entered" from="AreaCollision" to="." method="_on_AreaCollision_body_entered"]

@@ -1,4 +1,4 @@
-extends Node2D
+	extends Node2D
 
 export (NodePath)var targetpath = null
 export (PackedScene)var TriggerWave = null
@@ -30,6 +30,8 @@ func follow(Target, delta):
 func start_attacking(Target):
 	$AttackDuration.start()
 	$AnimationPlayer.play("Attacking")
+	$FXAudioPlayer.stream = load("res://Stages/Depression/Enemies/octopusattack.wav")
+	$FXAudioPlayer.play()
 	attack(Target)
 
 func attack(Target):

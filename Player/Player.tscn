@@ -79,6 +79,17 @@ rounded = false
 percent_visible = false
 _sections_unfolded = [ "Percent", "Rect" ]
 
+[node name="FXAudioPlayer" type="AudioStreamPlayer2D" parent="." index="5"]
+
+stream = null
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
 [connection signal="timeout" from="ShakeTimer" to="." method="_on_ShakeTimer_timeout"]
 
 [connection signal="timeout" from="DeathTimer" to="." method="_on_DeathTimer_timeout"]

@@ -12,10 +12,6 @@ radius = 150.0
 
 script = ExtResource( 2 )
 
-[node name="Sprite" parent="." index="0"]
-
-_sections_unfolded = [ "Transform", "Visibility" ]
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
 
 shape = SubResource( 1 )
