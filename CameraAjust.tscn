@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://CameraAjudst.gd" type="Script" id=1]
+[ext_resource path="res://CameraAjust.gd" type="Script" id=1]
 
 [node name="CameraAjudst" type="Node2D" index="0"]
 
@@ -10,6 +10,7 @@ right_limit = 10000
 top_limit = -10000
 bottom_limit = 10000
 zoom = 1.0
+adjust_time = 0.5
 
 [node name="Area2D" type="Area2D" parent="." index="0"]
 
@@ -20,6 +21,15 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
+
+[node name="Tween" type="Tween" parent="." index="1"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 

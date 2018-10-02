@@ -11,6 +11,8 @@ onready var FXPlayer = get_node("FXAudioPlayer")
 
 func _ready():
 	set_physics_process(false)
+	set_process(false)
+	set_process_input(false)
 
 func _physics_process(delta):
 	var target_pos = target.get_position()
