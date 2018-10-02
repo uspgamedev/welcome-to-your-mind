@@ -1,5 +1,8 @@
 extends Node2D
 
+# A CollisionShape2D for Area2D must be added to each instance of this node after it is added to a scene.
+# Camera values will be updated and transitioned when Player, with a child Camera2D node, enters said Area2D.
+
 export (int)var left_limit = -10000
 export (int) var right_limit = 10000
 export (int)var top_limit = -10000
