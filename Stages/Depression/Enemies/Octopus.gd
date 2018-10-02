@@ -6,7 +6,7 @@ export (PackedScene)var TriggerWave = null
 const SPEED_MULTIPLIER = 1
 const ATK_OFFSET = 40
 const ATK_SPEED = 700
-const ANGLE_MULTIPLIER = 1.6
+const ANGLE_MULTIPLIER = 2.2
 
 onready var Target = get_parent().get_node("Player")
 onready var initialy = get_global_position().y
