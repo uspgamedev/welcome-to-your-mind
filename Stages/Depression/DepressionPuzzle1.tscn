@@ -19,6 +19,7 @@ extents = Vector2( 21.7433, 10 )
 [node name="Player" parent="." index="0" instance=ExtResource( 1 )]
 
 position = Vector2( -106.823, 401.525 )
+ReloadScene = "res://Stages/Depression/DepressionPuzzle1.tscn"
 
 [node name="Camera2D" type="Camera2D" parent="Player" index="5"]
 
