@@ -40,6 +40,8 @@ func _on_Area2D_body_entered(body):
 	if body.is_in_group("Player") and not target:
 		target = body
 		set_physics_process(true)
-	elif body.is_in_group("Floor") and get_parent().is_in_group("TriggerWave"):
-		get_node("Area2D").queue_free()
+
+func _on_AreaCollision_body_entered(body):
+	if not body.is_in_group("Player") and evil: # Evil triggers die when touching walls
+		get_node("AreaCollision").queue_free()
 		die()
