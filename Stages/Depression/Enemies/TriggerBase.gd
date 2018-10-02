@@ -32,7 +32,6 @@ func distance_to_target():
 
 func die():
 	var AnimPlayer = $Sprite/AnimationPlayer
-	get_node("Area2D").queue_free()
 	AnimPlayer.play("die")
 	yield(AnimPlayer, "animation_finished")
 	queue_free()
@@ -44,5 +43,7 @@ func _on_Area2D_body_entered(body):
 
 func _on_AreaCollision_body_entered(body):
 	if not body.is_in_group("Player") and evil: # Evil triggers die when touching walls
+		set_physics_process(false)
+		get_node("Area2D").queue_free()
 		get_node("AreaCollision").queue_free()
 		die()

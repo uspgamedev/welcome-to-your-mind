@@ -14,11 +14,10 @@ extents = Vector2( 788.094, 57.3839 )
 custom_solver_bias = 0.0
 extents = Vector2( 21.7433, 10 )
 
-[node name="Puzzle1" type="Node" index="0"]
+[node name="Puzzle1" type="Node"]
 
 [node name="Player" parent="." index="0" instance=ExtResource( 1 )]
 
-editor/display_folded = true
 position = Vector2( -106.823, 401.525 )
 
 [node name="Camera2D" type="Camera2D" parent="Player" index="5"]
@@ -31,7 +30,7 @@ limit_left = -300
 limit_top = -10000000
 limit_right = 10000000
 limit_bottom = 600
-limit_smoothed = false
+limit_smoothed = true
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 smoothing_enabled = false
@@ -212,7 +211,7 @@ _sections_unfolded = [ "Visibility" ]
 ]]
 
 editor/display_folded = true
-position = Vector2( 828.86, 137.413 )
+position = Vector2( 762.238, 137.413 )
 scale = Vector2( 3, 1 )
 input_pickable = false
 collision_layer = 1
