@@ -17,7 +17,6 @@ var shake_counter = 0
 var triggers = []
 
 onready var timerbar = get_node("CanvasLayer/ProgressBar")
-onready var FXPlayer = get_node("FXAudioPlayer")
 
 func ready():
 	timerbar.value = 0
@@ -33,8 +32,7 @@ func get_input():
 		
 	if Input.is_action_pressed('ui_up') and can_jump and is_on_floor():
 		velocity.y = -JUMP_POWER
-		FXPlayer.stream = load("res://Stages/Depression/Enemies/jump.wav")
-		FXPlayer.play()
+		$SFXJump.play()
 
 func _process(delta):
 	var timer = $DeathTimer 
