@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Stages/Depression/PuzzleOctopus.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -13,19 +13,24 @@ extents = Vector2( 320, 50 )
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 20, 100 )
+extents = Vector2( 30, 100 )
 
 [sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
-extents = Vector2( 800, 50 )
+extents = Vector2( 20, 100 )
 
 [sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
+extents = Vector2( 800, 50 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
 extents = Vector2( 21.7433, 10 )
 
-[node name="PuzzleOctopus" type="Node2D"]
+[node name="PuzzleOctopus" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 
@@ -61,7 +66,41 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="CameraAjudst" parent="." index="1" instance=ExtResource( 3 )]
+[node name="LeftDoor" type="StaticBody2D" parent="." index="1"]
+
+editor/display_folded = true
+position = Vector2( -302.003, 244.867 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="LeftDoor" index="0"]
+
+scale = Vector2( 1, 3 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftDoor" index="1"]
+
+shape = SubResource( 2 )
+
+[node name="Tween" type="Tween" parent="LeftDoor" index="2"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[node name="CameraAjudst" parent="." index="2" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( -350, 430 )
@@ -74,15 +113,18 @@ adjust_time = 1.51
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraAjudst/Area2D" index="0"]
 
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
-[node name="Octopus" parent="." index="2" instance=ExtResource( 4 )]
+[node name="Octopus" parent="." index="3" instance=ExtResource( 4 )]
 
 position = Vector2( 290.54, 24.7268 )
 
-[node name="Floor" type="Node2D" parent="." index="3"]
+[node name="Floor" type="Node2D" parent="." index="4"]
 
 editor/display_folded = true
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Floor1" type="StaticBody2D" parent="Floor" index="0" groups=[
 "Floor",
@@ -111,7 +153,7 @@ _sections_unfolded = [ "Visibility" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/Floor1" index="1"]
 
 position = Vector2( 310.618, 8.59418 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="Floor2" type="StaticBody2D" parent="Floor" index="1" groups=[
 "Floor",
@@ -141,11 +183,14 @@ _sections_unfolded = [ "Visibility" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/Floor2" index="1"]
 
 position = Vector2( 310.618, 8.59418 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
-[node name="Blockers" type="Node2D" parent="." index="4"]
+[node name="Blockers" type="Node2D" parent="." index="5"]
 
 editor/display_folded = true
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Blockers" index="0" groups=[
 "Floor",
@@ -178,7 +223,7 @@ _sections_unfolded = [ "Visibility" ]
 
 position = Vector2( 14.3146, 12.6898 )
 scale = Vector2( 2.10113, 1.97614 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Blockers" index="1" groups=[
@@ -212,7 +257,7 @@ _sections_unfolded = [ "Visibility" ]
 
 position = Vector2( 14.3146, 12.6898 )
 scale = Vector2( 2.10113, 1.97614 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Blockers" index="2" groups=[
@@ -246,7 +291,7 @@ _sections_unfolded = [ "Visibility" ]
 
 position = Vector2( 14.3146, 12.6898 )
 scale = Vector2( 2.10113, 1.97614 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="Blockers" index="3" groups=[
@@ -280,7 +325,7 @@ _sections_unfolded = [ "Visibility" ]
 
 position = Vector2( 14.3146, 12.6898 )
 scale = Vector2( 2.10113, 1.97614 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
 [connection signal="body_entered" from="CameraAjudst/Area2D" to="." method="_on_Area2D_body_entered"]
