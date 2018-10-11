@@ -1,6 +1,5 @@
-	extends Node2D
+extends Node2D
 
-export (NodePath)var targetpath = null
 export (PackedScene)var TriggerWave = null
 
 const SPEED_MULTIPLIER = 1
@@ -8,13 +7,24 @@ const ATK_OFFSET = 40
 const ATK_SPEED = 700
 const ANGLE_MULTIPLIER = 2.2
 
-onready var Target = get_parent().get_node("Player")
 onready var initialy = get_global_position().y
+var Target
 
 var angle = 0
 
+func ready():
+	set_physics_process(false)
+	set_process(false)
+	set_process_input(false)
+
 func _physics_process(delta):
-	follow(Target, delta)
+	if Target:
+		follow(Target, delta)
+
+func activate(Target):
+	self.Target = Target
+	set_physics_process(true)
+	$AttackCooldown.start()
 
 func follow(Target, delta):
 	var dist = get_global_position() - Target.get_global_position()
@@ -30,13 +40,11 @@ func follow(Target, delta):
 func start_attacking(Target):
 	$AttackDuration.start()
 	$AnimationPlayer.play("Attacking")
-	$FXAudioPlayer.stream = load("res://Stages/Depression/Enemies/octopusattack.wav")
 	$FXAudioPlayer.play()
 	attack(Target)
 
 func attack(Target):
 	$AttackInterval.start()
-	
 	var vec_angle = Vector2(-cos(angle) * ANGLE_MULTIPLIER, -sin(angle))
 	var pos = get_position() + Vector2(0, ATK_OFFSET)
 	var TrigWv = TriggerWave.instance()

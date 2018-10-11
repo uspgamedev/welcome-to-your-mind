@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Stages/Depression/Enemies/Octopus.gd" type="Script" id=1]
+[ext_resource path="res://Stages/Depression/Enemies/Octopus/Octopus.gd" type="Script" id=1]
 [ext_resource path="res://Stages/Depression/Enemies/TriggerWave.tscn" type="PackedScene" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://Stages/Depression/Enemies/Octopus/octopusattack.wav" type="AudioStream" id=4]
 
 [sub_resource type="Animation" id=1]
 
@@ -42,11 +43,10 @@ tracks/0/keys = {
 "values": [ Vector2( 3, 1.5 ), Vector2( 4, 1.5 ) ]
 }
 
-[node name="Octopus" type="Node2D" index="0"]
+[node name="Octopus" type="Node2D"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
-targetpath = null
 TriggerWave = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
@@ -67,7 +67,7 @@ autostart = false
 process_mode = 1
 wait_time = 1.0
 one_shot = true
-autostart = true
+autostart = false
 
 [node name="AttackDuration" type="Timer" parent="." index="3"]
 
@@ -89,7 +89,7 @@ blend_times = [  ]
 
 [node name="FXAudioPlayer" type="AudioStreamPlayer2D" parent="." index="5"]
 
-stream = null
+stream = ExtResource( 4 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
