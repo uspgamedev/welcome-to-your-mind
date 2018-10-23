@@ -9,7 +9,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 500, 30 )
 
-[node name="DepressionStage" type="Node"]
+[node name="DepressionStage" type="Node" index="0"]
 
 [node name="Puzzle1" parent="." index="0" instance=ExtResource( 1 )]
 
@@ -17,6 +17,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Floor" type="StaticBody2D" parent="." index="1"]
 
+editor/display_folded = true
 position = Vector2( -844.791, 530.761 )
 input_pickable = false
 collision_layer = 1
@@ -52,7 +53,7 @@ current = true
 zoom = Vector2( 1.5, 1.5 )
 limit_left = -2000
 limit_top = -50
-limit_right = 10
+limit_right = -250
 limit_bottom = 600
 limit_smoothed = false
 drag_margin_h_enabled = true

@@ -1,40 +1,138 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Stages/Depression/PuzzleOctopus.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
-[ext_resource path="res://CameraAdjust.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Stages/Depression/Enemies/Octopus/Octopus.tscn" type="PackedScene" id=4]
+[ext_resource path="res://CameraAdjust.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Stages/Depression/Enemies/Octopus/Octopus.tscn" type="PackedScene" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 30, 100 )
+extents = Vector2( 20, 100 )
 
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 320, 50 )
+extents = Vector2( 800, 50 )
 
 [sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
-extents = Vector2( 20, 100 )
+extents = Vector2( 30, 100 )
 
 [sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
-extents = Vector2( 800, 50 )
+extents = Vector2( 320, 50 )
 
 [sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
 extents = Vector2( 21.7433, 10 )
 
-[node name="PuzzleOctopus" type="Node2D" index="0"]
+[sub_resource type="RectangleShape2D" id=6]
+
+custom_solver_bias = 0.0
+extents = Vector2( 20, 60 )
+
+[node name="PuzzleOctopus" type="Node2D"]
 
 script = ExtResource( 1 )
 
-[node name="LeftDoor" type="StaticBody2D" parent="." index="0"]
+[node name="CameraAjudst" parent="." index="0" instance=ExtResource( 2 )]
+
+editor/display_folded = true
+position = Vector2( -350, 430 )
+_sections_unfolded = [ "Transform" ]
+left_limit = -300
+right_limit = 2600
+top_limit = 0
+bottom_limit = 600
+init_pos = Vector2( 350, 250 )
+adjust_time = 1.51
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraAjudst/Area2D" index="0"]
+
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Octopus" parent="." index="1" instance=ExtResource( 3 )]
+
+position = Vector2( 290.54, 24.7268 )
+
+[node name="Floor" type="Node2D" parent="." index="2"]
+
+editor/display_folded = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Floor1" type="StaticBody2D" parent="Floor" index="0" groups=[
+"Floor",
+]]
+
+editor/display_folded = true
+position = Vector2( 111.724, 543.888 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/Floor1" index="0"]
+
+position = Vector2( 310.618, 8.59418 )
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="Floor/Floor1" index="1"]
+
+self_modulate = Color( 0.792969, 0.0989517, 0.046463, 1 )
+position = Vector2( 311.732, 8.91394 )
+scale = Vector2( 24.7082, 1.80324 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Floor2" type="StaticBody2D" parent="Floor" index="1" groups=[
+"Floor",
+]]
+
+editor/display_folded = true
+position = Vector2( 1000, 543.888 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/Floor2" index="0"]
+
+position = Vector2( 310.618, 8.59418 )
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="Floor/Floor2" index="1"]
+
+self_modulate = Color( 0.792969, 0.0989517, 0.046463, 1 )
+position = Vector2( 311.732, 8.91394 )
+scale = Vector2( 24.7082, 1.80324 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Wall" type="Node2D" parent="." index="3"]
+
+editor/display_folded = true
+
+[node name="LeftDoor" type="StaticBody2D" parent="Wall" index="0"]
 
 editor/display_folded = true
 position = Vector2( -302.003, 244.867 )
@@ -46,17 +144,17 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
-[node name="Sprite" type="Sprite" parent="LeftDoor" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/LeftDoor" index="0"]
+
+shape = SubResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="Wall/LeftDoor" index="1"]
 
 scale = Vector2( 1, 3 )
-texture = ExtResource( 2 )
+texture = ExtResource( 4 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftDoor" index="1"]
-
-shape = SubResource( 1 )
-
-[node name="Tween" type="Tween" parent="LeftDoor" index="2"]
+[node name="Tween" type="Tween" parent="Wall/LeftDoor" index="2"]
 
 repeat = false
 playback_process_mode = 1
@@ -65,7 +163,38 @@ playback/active = false
 playback/repeat = false
 playback/speed = 1.0
 
-[node name="LeftWall" type="StaticBody2D" parent="." index="1" groups=[
+[node name="RightDoor" type="StaticBody2D" parent="Wall" index="1"]
+
+editor/display_folded = true
+position = Vector2( 2043.98, 279.115 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/RightDoor" index="0"]
+
+shape = SubResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="Wall/RightDoor" index="1"]
+
+scale = Vector2( 1, 3 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Tween" type="Tween" parent="Wall/RightDoor" index="2"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[node name="LeftWall" type="StaticBody2D" parent="Wall" index="2" groups=[
 "Floor",
 ]]
 
@@ -84,81 +213,26 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="LeftWall" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/LeftWall" index="0"]
+
+shape = SubResource( 4 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="Wall/LeftWall" index="1"]
 
 self_modulate = Color( 0.792969, 0.0989517, 0.046463, 1 )
 rotation = -3.72529e-10
 scale = Vector2( 10, 1.5 )
-texture = ExtResource( 2 )
+texture = ExtResource( 4 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall" index="1"]
-
-shape = SubResource( 2 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="CameraAjudst" parent="." index="2" instance=ExtResource( 3 )]
-
-editor/display_folded = true
-position = Vector2( -350, 430 )
-_sections_unfolded = [ "Transform" ]
-left_limit = -300
-right_limit = 2600
-top_limit = 0
-bottom_limit = 600
-init_pos = Vector2( 350, 250 )
-adjust_time = 1.51
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraAjudst/Area2D" index="0"]
-
-shape = SubResource( 3 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Octopus" parent="." index="3" instance=ExtResource( 4 )]
-
-position = Vector2( 290.54, 24.7268 )
-
-[node name="Floor" type="Node2D" parent="." index="4"]
-
-editor/display_folded = true
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Floor1" type="StaticBody2D" parent="Floor" index="0" groups=[
+[node name="RightWall" type="StaticBody2D" parent="Wall" index="3" groups=[
 "Floor",
 ]]
 
-position = Vector2( 111.724, 543.888 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="Floor/Floor1" index="0"]
-
-self_modulate = Color( 0.792969, 0.0989517, 0.046463, 1 )
-position = Vector2( 311.732, 8.91394 )
-scale = Vector2( 24.7082, 1.80324 )
-texture = ExtResource( 2 )
-_sections_unfolded = [ "Visibility" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/Floor1" index="1"]
-
-position = Vector2( 310.618, 8.59418 )
-shape = SubResource( 4 )
-
-[node name="Floor2" type="StaticBody2D" parent="Floor" index="1" groups=[
-"Floor",
-]]
-
-position = Vector2( 1500, 543.888 )
+editor/display_folded = true
+position = Vector2( 2045.98, 59.2479 )
+rotation = 1.5708
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -171,20 +245,20 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="Floor/Floor2" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/RightWall" index="0"]
+
+shape = SubResource( 4 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="Wall/RightWall" index="1"]
 
 self_modulate = Color( 0.792969, 0.0989517, 0.046463, 1 )
-position = Vector2( 311.732, 8.91394 )
-scale = Vector2( 24.7082, 1.80324 )
-texture = ExtResource( 2 )
-_sections_unfolded = [ "Visibility" ]
+rotation = -3.72529e-10
+scale = Vector2( 10, 1.5 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/Floor2" index="1"]
-
-position = Vector2( 310.618, 8.59418 )
-shape = SubResource( 4 )
-
-[node name="Blockers" type="Node2D" parent="." index="5"]
+[node name="Blockers" type="Node2D" parent="." index="4"]
 
 editor/display_folded = true
 __meta__ = {
@@ -210,20 +284,20 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="Blockers/StaticBody2D" index="0"]
-
-self_modulate = Color( 0.171875, 1, 0, 1 )
-position = Vector2( 15, 12.7787 )
-scale = Vector2( 1.40625, 0.627292 )
-texture = ExtResource( 2 )
-_sections_unfolded = [ "Visibility" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Blockers/StaticBody2D" index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Blockers/StaticBody2D" index="0"]
 
 position = Vector2( 14.3146, 12.6898 )
 scale = Vector2( 2.10113, 1.97614 )
 shape = SubResource( 5 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="Blockers/StaticBody2D" index="1"]
+
+self_modulate = Color( 0.171875, 1, 0, 1 )
+position = Vector2( 15, 12.7787 )
+scale = Vector2( 1.40625, 0.627292 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Visibility" ]
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Blockers" index="1" groups=[
 "Floor",
@@ -244,20 +318,20 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="Blockers/StaticBody2D2" index="0"]
-
-self_modulate = Color( 0.171875, 1, 0, 1 )
-position = Vector2( 15, 12.7787 )
-scale = Vector2( 1.40625, 0.627292 )
-texture = ExtResource( 2 )
-_sections_unfolded = [ "Visibility" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Blockers/StaticBody2D2" index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Blockers/StaticBody2D2" index="0"]
 
 position = Vector2( 14.3146, 12.6898 )
 scale = Vector2( 2.10113, 1.97614 )
 shape = SubResource( 5 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="Blockers/StaticBody2D2" index="1"]
+
+self_modulate = Color( 0.171875, 1, 0, 1 )
+position = Vector2( 15, 12.7787 )
+scale = Vector2( 1.40625, 0.627292 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Visibility" ]
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Blockers" index="2" groups=[
 "Floor",
@@ -278,20 +352,20 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="Blockers/StaticBody2D3" index="0"]
-
-self_modulate = Color( 0.171875, 1, 0, 1 )
-position = Vector2( 15, 12.7787 )
-scale = Vector2( 1.40625, 0.627292 )
-texture = ExtResource( 2 )
-_sections_unfolded = [ "Visibility" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Blockers/StaticBody2D3" index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Blockers/StaticBody2D3" index="0"]
 
 position = Vector2( 14.3146, 12.6898 )
 scale = Vector2( 2.10113, 1.97614 )
 shape = SubResource( 5 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="Blockers/StaticBody2D3" index="1"]
+
+self_modulate = Color( 0.171875, 1, 0, 1 )
+position = Vector2( 15, 12.7787 )
+scale = Vector2( 1.40625, 0.627292 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Visibility" ]
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="Blockers" index="3" groups=[
 "Floor",
@@ -312,22 +386,43 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="Blockers/StaticBody2D4" index="0"]
-
-self_modulate = Color( 0.171875, 1, 0, 1 )
-position = Vector2( 15, 12.7787 )
-scale = Vector2( 1.40625, 0.627292 )
-texture = ExtResource( 2 )
-_sections_unfolded = [ "Visibility" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Blockers/StaticBody2D4" index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Blockers/StaticBody2D4" index="0"]
 
 position = Vector2( 14.3146, 12.6898 )
 scale = Vector2( 2.10113, 1.97614 )
 shape = SubResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
+[node name="Sprite" type="Sprite" parent="Blockers/StaticBody2D4" index="1"]
+
+self_modulate = Color( 0.171875, 1, 0, 1 )
+position = Vector2( 15, 12.7787 )
+scale = Vector2( 1.40625, 0.627292 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="ExitArea" type="Area2D" parent="." index="5"]
+
+position = Vector2( 2065, 440 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitArea" index="0"]
+
+shape = SubResource( 6 )
+
 [connection signal="body_entered" from="CameraAjudst/Area2D" to="." method="_on_Area2D_body_entered"]
+
+[connection signal="body_entered" from="ExitArea" to="." method="_on_ExitArea_body_entered"]
 
 
 [editable path="CameraAjudst"]
