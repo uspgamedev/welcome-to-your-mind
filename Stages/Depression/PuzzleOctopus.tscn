@@ -30,7 +30,7 @@ extents = Vector2( 800, 50 )
 custom_solver_bias = 0.0
 extents = Vector2( 21.7433, 10 )
 
-[node name="PuzzleOctopus" type="Node2D"]
+[node name="PuzzleOctopus" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 
@@ -106,7 +106,7 @@ left_limit = -300
 right_limit = 2600
 top_limit = 0
 bottom_limit = 600
-init_pos = Vector2( 300, 100 )
+init_pos = Vector2( 350, 250 )
 adjust_time = 1.51
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraAjudst/Area2D" index="0"]

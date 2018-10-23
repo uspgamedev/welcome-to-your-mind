@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Stages/Depression/Enemies/TriggerBase.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Stages/Depression/Enemies/slime3.wav" type="AudioStream" id=3]
 
 [sub_resource type="Animation" id=1]
 
@@ -97,9 +98,9 @@ audio_bus_name = "Master"
 
 shape = SubResource( 3 )
 
-[node name="FXAudioPlayer" type="AudioStreamPlayer2D" parent="." index="3"]
+[node name="DeathSFX" type="AudioStreamPlayer2D" parent="." index="3"]
 
-stream = null
+stream = ExtResource( 3 )
 volume_db = -30.0
 pitch_scale = 1.0
 autoplay = false

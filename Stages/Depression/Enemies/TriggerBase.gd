@@ -7,7 +7,7 @@ const MINDISTANCE = 50
 const MAXDISTANCE = 500
 
 var target = null # if not null, Trigger is following target
-onready var FXPlayer = get_node("FXAudioPlayer")
+
 
 func _ready():
 	set_physics_process(false)
@@ -35,11 +35,9 @@ func distance_to_target():
 
 func die():
 	var AnimPlayer = $Sprite/AnimationPlayer
-	FXPlayer.stream = load("res://Stages/Depression/Enemies/slime3.wav")
 	AnimPlayer.play("die")
-	FXPlayer.play()
+	$DeathSFX.play()
 	yield(AnimPlayer, "animation_finished")
-	yield(FXPlayer, "finished")
 	queue_free()
 
 func _on_Area2D_body_entered(body):

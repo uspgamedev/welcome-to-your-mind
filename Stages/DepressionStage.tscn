@@ -9,7 +9,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 500, 30 )
 
-[node name="DepressionStage" type="Node" index="0"]
+[node name="DepressionStage" type="Node"]
 
 [node name="Puzzle1" parent="." index="0" instance=ExtResource( 1 )]
 
