@@ -15,8 +15,8 @@ func _ready():
 	set_process_input(false)
 
 func _physics_process(delta):
-	var target_pos = target.get_position()
-	var velocity = (target_pos - self.position).normalized() * SPD * delta
+	var target_pos = target.get_global_position()
+	var velocity = (target_pos - self.global_position).normalized() * SPD * delta
 	move_and_slide(velocity)
 	
 	var dist = distance_to_target()

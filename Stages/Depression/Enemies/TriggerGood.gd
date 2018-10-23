@@ -1,8 +1,12 @@
 extends "res://Stages/Depression/Enemies/TriggerBase.gd"
 
+signal trigger_die
+
 func reached_target(target):
 	set_physics_process(false)
-	while(distance_to_target() < MINDISTANCE):
-		$ContactTimer.start()
-		yield($ContactTimer, "timeout")
-	set_physics_process(true)
+	if(target.is_in_group("Player")):
+		target.can_jump = true	
+		emit_signal("trigger_die")
+		die()
+	else:
+		set_physics_process(true)

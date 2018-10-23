@@ -1,17 +1,19 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Stages/TestLevel.gd" type="Script" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://Stages/b423b42.wav" type="AudioStream" id=4]
 [ext_resource path="res://Stages/Depression/Enemies/TriggerBad.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Stages/Depression/Enemies/TriggerGood.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Stages/Depression/Enemies/TriggerSpawn.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 300, 20 )
 
-[node name="Node" type="Node"]
+[node name="Node" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -104,7 +106,19 @@ __meta__ = {
 
 [node name="TriggerBad" parent="." index="3" instance=ExtResource( 5 )]
 
-position = Vector2( 634.762, 227.626 )
+position = Vector2( 900.035, 272.518 )
+_sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
+
+[node name="TriggerGood" parent="." index="4" instance=ExtResource( 6 )]
+
+position = Vector2( 453.005, 418.995 )
+
+[node name="Spawn" parent="." index="5" instance=ExtResource( 7 )]
+
+position = Vector2( 60, 456 )
+_sections_unfolded = [ "Transform" ]
+
+[connection signal="jumped" from="Player" to="Spawn" method="_on_Player_jumped"]
 
 [connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_AudioStreamPlayer2D_finished"]
 

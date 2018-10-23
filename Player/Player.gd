@@ -11,10 +11,12 @@ const SHAKENUM = 3 # Times needed to shake before freeing itself from Triggers
 
 var velocity = Vector2()
 var direction = Vector2() # Input Direction
-var can_jump = true
+var can_jump = false
 var last_shake = 0 # 0 is left, 1 is right. Used to force alternating directions in shake
 var shake_counter = 0
 var triggers = []
+
+signal jumped
 
 onready var timerbar = get_node("CanvasLayer/ProgressBar")
 
@@ -32,6 +34,8 @@ func get_input():
 		
 	if Input.is_action_pressed('ui_up') and can_jump and is_on_floor():
 		velocity.y = -JUMP_POWER
+		can_jump = false
+		emit_signal("jumped")
 		$SFXJump.play()
 
 func _process(delta):
