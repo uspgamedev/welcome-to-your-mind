@@ -58,7 +58,7 @@ func _physics_process(delta):
 	velocity.x = vel.x
 	velocity.y += vel.y
 	
-	move_and_slide(velocity, Vector2(0, -1))
+	vel = move_and_slide(velocity, Vector2(0, -1))
 
 func shake(shake_direction):
 	if shake_direction == last_shake:
