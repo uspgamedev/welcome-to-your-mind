@@ -1,0 +1,243 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Stages/Depression/Enemies/TriggerSpawn.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 600, 20 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 120, 16 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 30, 80 )
+
+[node name="JumpIntro" type="Node2D" index="0"]
+
+[node name="Floor" type="StaticBody2D" parent="." index="0"]
+
+editor/display_folded = true
+position = Vector2( 45.4404, 331.722 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" index="0"]
+
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Floor" index="1"]
+
+scale = Vector2( 18, 0.6 )
+texture = ExtResource( 1 )
+_sections_unfolded = [ "Material", "Transform" ]
+
+[node name="Floor3" type="StaticBody2D" parent="." index="1"]
+
+editor/display_folded = true
+position = Vector2( 488.495, 589.467 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor3" index="0"]
+
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Floor3" index="1"]
+
+scale = Vector2( 18, 0.6 )
+texture = ExtResource( 1 )
+_sections_unfolded = [ "Material", "Transform" ]
+
+[node name="Floor2" type="StaticBody2D" parent="." index="2"]
+
+editor/display_folded = true
+position = Vector2( 1196.53, 503.768 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor2" index="0"]
+
+shape = SubResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="Floor2" index="1"]
+
+scale = Vector2( 3.8, 0.6 )
+texture = ExtResource( 1 )
+_sections_unfolded = [ "Material", "Transform" ]
+
+[node name="Floor4" type="StaticBody2D" parent="." index="3"]
+
+editor/display_folded = true
+position = Vector2( 1917.31, 411.603 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor4" index="0"]
+
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Floor4" index="1"]
+
+scale = Vector2( 18, 0.6 )
+texture = ExtResource( 1 )
+_sections_unfolded = [ "Material", "Transform" ]
+
+[node name="Wall" type="StaticBody2D" parent="." index="4"]
+
+editor/display_folded = true
+position = Vector2( 1055.69, 564.787 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" index="0"]
+
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="Wall" index="1"]
+
+scale = Vector2( 1, 2.4 )
+texture = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wall3" type="StaticBody2D" parent="." index="5"]
+
+editor/display_folded = true
+position = Vector2( 1348.93, 473.809 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall3" index="0"]
+
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="Wall3" index="1"]
+
+scale = Vector2( 1, 2.4 )
+texture = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wall2" type="StaticBody2D" parent="." index="6"]
+
+editor/display_folded = true
+position = Vector2( 610.368, 468.495 )
+scale = Vector2( 1, 1.75401 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2" index="0"]
+
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="Wall2" index="1"]
+
+scale = Vector2( 1, 2.4 )
+texture = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Spawn" parent="." index="7" instance=ExtResource( 2 )]
+
+position = Vector2( 956.347, 515.536 )
+
+[node name="Spawn2" parent="." index="8" instance=ExtResource( 2 )]
+
+position = Vector2( 1269.13, 437.256 )
+
+[node name="Player" parent="." index="9" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+position = Vector2( -334.191, 272.424 )
+
+[node name="Camera2D" type="Camera2D" parent="Player" index="6"]
+
+position = Vector2( -4.54407, -4.54419 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+
+
