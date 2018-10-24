@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Stages/Depression/TriggerSpawn.gd" type="Script" id=1]
+
+[node name="Spawn" type="Node2D" index="0"]
+
+script = ExtResource( 1 )
+respawn_time = 1.0
+
+[node name="RespawnTimer" type="Timer" parent="." index="0"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[connection signal="timeout" from="RespawnTimer" to="." method="_on_RespawnTimer_timeout"]
+
+

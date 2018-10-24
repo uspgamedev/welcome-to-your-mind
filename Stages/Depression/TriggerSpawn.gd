@@ -1,10 +1,13 @@
 extends Node2D
 
+export (float, 5.0)var respawn_time = 1.0
+
 var Trigger_scn = load("res://Stages/Depression/Enemies/TriggerGood.tscn")
 var Player
 var hasTrigger = false
 
 func _ready():
+	$RespawnTimer.set_wait_time(respawn_time)
 	spawn()
 
 func spawn():
@@ -24,8 +27,8 @@ func trigger_gone(Absorber):
 
 func Player_jumped():
 	if hasTrigger == false:
-		$Timer.start()
+		$RespawnTimer.start()
 		hasTrigger = true
 
-func _on_Timer_timeout():
+func _on_RespawnTimer_timeout():
 	spawn()

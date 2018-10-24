@@ -6,7 +6,8 @@
 [ext_resource path="res://Stages/b423b42.wav" type="AudioStream" id=4]
 [ext_resource path="res://Stages/Depression/Enemies/TriggerBad.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Stages/Depression/Enemies/TriggerGood.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Stages/Depression/Enemies/TriggerSpawn.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Stages/Depression/TriggerSpawn.tscn" type="PackedScene" id=7]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 
