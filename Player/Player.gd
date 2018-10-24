@@ -32,17 +32,16 @@ func get_input():
 		direction.x -= 1
 		shake(0)
 		
-	if Input.is_action_pressed('ui_up') and can_jump and is_on_floor():
+	if Input.is_action_pressed('ui_up') and can_jump:
 		velocity.y = -JUMP_POWER
 		can_jump = false
-		emit_signal("jumped")
 		$SFXJump.play()
+		emit_signal("jumped")
 
 func _process(delta):
 	var timer = $DeathTimer 
 	if not timer.is_stopped():
 		timerbar.value = timer.wait_time - timer.time_left
-	
 
 func _physics_process(delta):
 	get_input()
@@ -59,7 +58,6 @@ func _physics_process(delta):
 	velocity.y += delta * GRAV
 	
 	move_and_slide(velocity, Vector2(0, -1))
-
 
 func shake(shake_direction):
 	if shake_direction == last_shake:
@@ -96,3 +94,6 @@ func die():
 
 func _on_DeathTimer_timeout():
 	self.die()
+
+func get_jump():
+	can_jump = true
