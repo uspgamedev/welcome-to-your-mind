@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
-export (bool)var evil = false
+export (bool)var dies_on_walls = false # If true, dies when touching non-player bodies
+export (bool)var sleeping = false # If true, doesn't follow Player when it enters detection area
 
 const SPD = 10000
 const MINDISTANCE = 50
@@ -42,11 +43,12 @@ func die():
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("Player") and not target:
-		target = body
-		set_physics_process(true)
+		if not sleeping:
+			target = body
+			set_physics_process(true)
 
 func _on_AreaCollision_body_entered(body):
-	if not body.is_in_group("Player") and evil: # Evil triggers die when touching walls
+	if not body.is_in_group("Player") and dies_on_walls:
 		set_physics_process(false)
 		get_node("Area2D").queue_free()
 		get_node("AreaCollision").queue_free()

@@ -11,7 +11,8 @@ radius = 300.0
 [node name="TriggerBad" index="0" instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
-evil = true
+dies_on_walls = true
+sleeping = false
 
 [node name="Sprite" parent="." index="0"]
 
