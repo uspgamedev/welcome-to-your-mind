@@ -46,16 +46,17 @@ func _process(delta):
 func _physics_process(delta):
 	get_input()
 	
-	# Horizontal acceleration
-	var hvel = Vector2(0, 0)
-	hvel.x = velocity.x
+	var vel = Vector2(0, 0) # temporary velocity used for calculations
+	vel.x = velocity.x
 	if is_on_floor():
-		hvel = hvel.linear_interpolate(direction * MAX_SPD, ACCEL * delta)
+		vel = vel.linear_interpolate(direction * MAX_SPD, ACCEL * delta)
+		vel.y = 0
 	else:
-		hvel = hvel.linear_interpolate(direction * MAX_SPD, AIR_ACCEL * delta)
+		vel = vel.linear_interpolate(direction * MAX_SPD, AIR_ACCEL * delta)
+		vel.y += delta * GRAV
 	
-	velocity.x = hvel.x
-	velocity.y += delta * GRAV
+	velocity.x = vel.x
+	velocity.y += vel.y
 	
 	move_and_slide(velocity, Vector2(0, -1))
 
