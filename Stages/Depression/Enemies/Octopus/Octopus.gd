@@ -10,7 +10,7 @@ const ANGLE_MULTIPLIER = 2.2
 onready var initialy = get_global_position().y
 var Target
 
-var angle = 0
+var angle = -1.4
 
 func ready():
 	set_physics_process(false)
@@ -24,7 +24,20 @@ func _physics_process(delta):
 func activate(Target):
 	self.Target = Target
 	set_physics_process(true)
+	start_attacking(Target)
+
+func deactivate():
+	Target = get_parent().get_node("CameraAdjust") # used to Octopus goes away after being deactivated
+	$AttackInterval.stop()
+	$AttackDuration.stop()
+	$AnimationPlayer.stop()
+	
+	$FXAudioPlayer/Tween.interpolate_property($FXAudioPlayer, "volume_db", 0, -40, $AttackCooldown.wait_time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	$FXAudioPlayer/Tween.start()
+	
 	$AttackCooldown.start()
+	yield($AttackCooldown, "timeout")
+	queue_free()
 
 func follow(Target, delta):
 	var dist = get_global_position() - Target.get_global_position()
@@ -32,6 +45,7 @@ func follow(Target, delta):
 	if dist.x > 0:
 		direction = Vector2(-1, 0)
 	var speed = abs(dist.x) * SPEED_MULTIPLIER
+	speed = clamp(speed, 0.0, 400.0)
 	var velocity = direction * speed * delta
 	set_position(get_position() + velocity)
 	angle = (get_global_position() + Vector2(0, ATK_OFFSET)).angle_to_point(Target.get_global_position())

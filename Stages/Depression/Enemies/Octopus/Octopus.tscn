@@ -43,7 +43,7 @@ tracks/0/keys = {
 "values": [ Vector2( 3, 1.5 ), Vector2( 4, 1.5 ) ]
 }
 
-[node name="Octopus" type="Node2D"]
+[node name="Octopus" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
@@ -65,7 +65,7 @@ autostart = false
 [node name="AttackCooldown" type="Timer" parent="." index="2"]
 
 process_mode = 1
-wait_time = 1.0
+wait_time = 2.0
 one_shot = true
 autostart = false
 
@@ -91,12 +91,21 @@ blend_times = [  ]
 
 stream = ExtResource( 4 )
 volume_db = 0.0
-pitch_scale = 1.0
+pitch_scale = 0.95
 autoplay = false
 max_distance = 2000.0
-attenuation = 1.0
+attenuation = 0.31864
 bus = "Master"
 area_mask = 1
+
+[node name="Tween" type="Tween" parent="FXAudioPlayer" index="0"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
 
 [connection signal="timeout" from="AttackInterval" to="." method="_on_AttackInterval_timeout"]
 

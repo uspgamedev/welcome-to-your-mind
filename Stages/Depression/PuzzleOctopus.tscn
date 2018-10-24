@@ -1,14 +1,14 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Stages/Depression/PuzzleOctopus.gd" type="Script" id=1]
 [ext_resource path="res://CameraAdjust.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Stages/Depression/Enemies/Octopus/Octopus.tscn" type="PackedScene" id=3]
 [ext_resource path="res://icon.png" type="Texture" id=4]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=6]
 
 custom_solver_bias = 0.0
-extents = Vector2( 20, 100 )
+extents = Vector2( 20, 60 )
 
 [sub_resource type="RectangleShape2D" id=2]
 
@@ -30,19 +30,13 @@ extents = Vector2( 320, 50 )
 custom_solver_bias = 0.0
 extents = Vector2( 21.7433, 10 )
 
-[sub_resource type="RectangleShape2D" id=6]
-
-custom_solver_bias = 0.0
-extents = Vector2( 20, 60 )
-
-[node name="PuzzleOctopus" type="Node2D" index="0"]
+[node name="PuzzleOctopus" type="Node2D"]
 
 script = ExtResource( 1 )
 
-[node name="CameraAjudst" parent="." index="0" instance=ExtResource( 2 )]
+[node name="CameraAdjust" parent="." index="0" instance=ExtResource( 2 )]
 
-editor/display_folded = true
-position = Vector2( -350, 430 )
+position = Vector2( -300, 430 )
 _sections_unfolded = [ "Transform" ]
 left_limit = -300
 left_time = 1.0
@@ -54,14 +48,15 @@ bottom_limit = 600
 bottom_time = 2.0
 zoom_time = 1.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraAjudst/Area2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraAdjust/Area2D" index="0"]
 
-shape = SubResource( 1 )
+shape = SubResource( 6 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Octopus" parent="." index="1" instance=ExtResource( 3 )]
 
-position = Vector2( 290.54, 24.7268 )
+position = Vector2( 400, 0 )
+_sections_unfolded = [ "Pause", "Transform" ]
 
 [node name="Floor" type="Node2D" parent="." index="2"]
 
@@ -406,7 +401,6 @@ _sections_unfolded = [ "Visibility" ]
 
 [node name="ExitArea" type="Area2D" parent="." index="5"]
 
-editor/display_folded = true
 position = Vector2( 2065, 440 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -424,9 +418,9 @@ __meta__ = {
 
 shape = SubResource( 6 )
 
-[connection signal="body_entered" from="CameraAjudst/Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="CameraAdjust/Area2D" to="." method="_on_CameraAdjust_Area_exited"]
 
-[connection signal="body_entered" from="ExitArea" to="." method="_on_ExitArea_body_entered"]
+[connection signal="body_exited" from="ExitArea" to="." method="_on_ExitArea_body_exited"]
 
 
-[editable path="CameraAjudst"]
+[editable path="CameraAdjust"]
