@@ -9,7 +9,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 500, 30 )
 
-[node name="DepressionStage" type="Node" index="0"]
+[node name="DepressionStage" type="Node"]
 
 [node name="Puzzle1" parent="." index="0" instance=ExtResource( 1 )]
 
@@ -52,7 +52,7 @@ rotating = false
 current = true
 zoom = Vector2( 1.5, 1.5 )
 limit_left = -2000
-limit_top = -50
+limit_top = 0
 limit_right = -250
 limit_bottom = 600
 limit_smoothed = false

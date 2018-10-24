@@ -35,7 +35,7 @@ extents = Vector2( 21.7433, 10 )
 custom_solver_bias = 0.0
 extents = Vector2( 20, 60 )
 
-[node name="PuzzleOctopus" type="Node2D"]
+[node name="PuzzleOctopus" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 
@@ -45,11 +45,14 @@ editor/display_folded = true
 position = Vector2( -350, 430 )
 _sections_unfolded = [ "Transform" ]
 left_limit = -300
+left_time = 1.0
 right_limit = 2600
+right_time = 2.0
 top_limit = 0
+top_time = 2.0
 bottom_limit = 600
-init_pos = Vector2( 350, 250 )
-adjust_time = 1.51
+bottom_time = 2.0
+zoom_time = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraAjudst/Area2D" index="0"]
 
@@ -221,7 +224,7 @@ _sections_unfolded = [ "Transform" ]
 [node name="Sprite" type="Sprite" parent="Wall/LeftWall" index="1"]
 
 self_modulate = Color( 0.792969, 0.0989517, 0.046463, 1 )
-rotation = -3.72529e-10
+rotation = -3.72529e-010
 scale = Vector2( 10, 1.5 )
 texture = ExtResource( 4 )
 _sections_unfolded = [ "Transform", "Visibility" ]
@@ -253,7 +256,7 @@ _sections_unfolded = [ "Transform" ]
 [node name="Sprite" type="Sprite" parent="Wall/RightWall" index="1"]
 
 self_modulate = Color( 0.792969, 0.0989517, 0.046463, 1 )
-rotation = -3.72529e-10
+rotation = -3.72529e-010
 scale = Vector2( 10, 1.5 )
 texture = ExtResource( 4 )
 _sections_unfolded = [ "Transform", "Visibility" ]
@@ -403,6 +406,7 @@ _sections_unfolded = [ "Visibility" ]
 
 [node name="ExitArea" type="Area2D" parent="." index="5"]
 
+editor/display_folded = true
 position = Vector2( 2065, 440 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
