@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Stages/Depression/Enemies/DeathPit/DeathPit.gd" type="Script" id=1]
+[ext_resource path="res://Stages/Depression/Enemies/DeathPit/FakeTrigger.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Stages/Depression/Enemies/DeathPit/PitShadows.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 100, 10 )
+
+[node name="DeathPit" type="Node2D"]
+
+position = Vector2( 0, -0.440125 )
+z_index = 20
+script = ExtResource( 1 )
+_sections_unfolded = [ "Z Index" ]
+width = 400
+
+[node name="FakeTriggers" type="Node2D" parent="." index="0"]
+
+[node name="Trigger1" parent="FakeTriggers" index="0" instance=ExtResource( 2 )]
+
+[node name="Shadow" type="Sprite" parent="." index="1"]
+
+scale = Vector2( 2, 1 )
+z_index = 10
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="Area2D" type="Area2D" parent="." index="2"]
+
+editor/display_folded = true
+position = Vector2( 0, 30 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+
+
