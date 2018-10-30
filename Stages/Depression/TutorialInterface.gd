@@ -1,19 +1,19 @@
-extends CanvasLayer
+extends Node2D
 
 const SHAKENUM = 7 # Times needed to shake before freeing itself from Triggers
 
 export (bool)var DEBUG = 0
 
-onready var AnimLeft = $Center/ButtonLeft/AnimationPlayer
-onready var AnimRight = $Center/ButtonRight/AnimationPlayer
+onready var AnimLeft = $ButtonLeft/AnimationPlayer
+onready var AnimRight = $ButtonRight/AnimationPlayer
 
 var last_shake = 0 # 0 is left, 1 is right. Used to force alternating directions in shake
 var shake_counter = 0
 var last = 0 # 0 = left; 1 = right
 
 func start(pos):
-	$Center.set_global_position(pos)
-	$Center.visible = true
+	show()
+	set_global_position(pos)
 	$Interval.start()
 
 func _on_Interval_timeout():
@@ -29,7 +29,7 @@ func fade_out():
 	var Twn = $Tween
 	$ShakeTimer.queue_free()
 	$Interval.queue_free()
-	Twn.interpolate_property($Center, "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0), 0.5, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+	Twn.interpolate_property(self, "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0), 0.5, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
 	Twn.start()
 
 
@@ -61,7 +61,7 @@ func shake(shake_direction):
 			print("Tutorial Succeded")
 		set_process_input(false)
 		fade_out()
-		get_parent().die()
+		get_parent().end_tutorial()
 
 func _on_ShakeTimer_timeout():
 	if DEBUG and shake_counter != 0:

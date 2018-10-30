@@ -5,7 +5,6 @@
 [ext_resource path="res://Stages/Depression/TutorialInterface.gd" type="Script" id=3]
 [ext_resource path="res://icon.png" type="Texture" id=4]
 
-
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
@@ -92,6 +91,8 @@ tracks/0/keys = {
 pause_mode = 2
 script = ExtResource( 2 )
 _sections_unfolded = [ "Pause", "Visibility", "Z Index" ]
+dies_on_walls = false
+sleeping = false
 
 [node name="Sprite" parent="." index="0"]
 
@@ -109,33 +110,23 @@ shape = SubResource( 1 )
 
 editor/display_folded = true
 
-[node name="TutorialInterface" type="CanvasLayer" parent="." index="3"]
-
-pause_mode = 2
-editor/display_folded = true
-layer = 1
-offset = Vector2( 0, 0 )
-rotation = 0.0
-scale = Vector2( 1, 1 )
-transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-script = ExtResource( 3 )
-_sections_unfolded = [ "Pause" ]
-DEBUG = true
-
-[node name="Center" type="Node2D" parent="TutorialInterface" index="0"]
+[node name="TutorialInterface" type="Node2D" parent="." index="3"]
 
 visible = false
 z_index = -10
-_sections_unfolded = [ "Z Index" ]
+script = ExtResource( 3 )
+_sections_unfolded = [ "Material", "Pause", "Transform", "Z Index" ]
+DEBUG = 0
 
-[node name="ButtonLeft" type="Sprite" parent="TutorialInterface/Center" index="0"]
+[node name="ButtonLeft" type="Sprite" parent="TutorialInterface" index="0"]
 
+editor/display_folded = true
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( -100, -50 )
 texture = ExtResource( 4 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="TutorialInterface/Center/ButtonLeft" index="0"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TutorialInterface/ButtonLeft" index="0"]
 
 root_node = NodePath("..")
 autoplay = "press"
@@ -146,14 +137,15 @@ anims/press = SubResource( 2 )
 anims/release = SubResource( 3 )
 blend_times = [  ]
 
-[node name="ButtonRight" type="Sprite" parent="TutorialInterface/Center" index="1"]
+[node name="ButtonRight" type="Sprite" parent="TutorialInterface" index="1"]
 
+editor/display_folded = true
 position = Vector2( 100, -50 )
 z_index = -10
 texture = ExtResource( 4 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="TutorialInterface/Center/ButtonRight" index="0"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TutorialInterface/ButtonRight" index="0"]
 
 root_node = NodePath("..")
 autoplay = "release"
@@ -164,21 +156,21 @@ anims/press = SubResource( 4 )
 anims/release = SubResource( 5 )
 blend_times = [  ]
 
-[node name="Interval" type="Timer" parent="TutorialInterface" index="1"]
+[node name="Interval" type="Timer" parent="TutorialInterface" index="2"]
 
 process_mode = 1
 wait_time = 0.4
 one_shot = false
 autostart = false
 
-[node name="ShakeTimer" type="Timer" parent="TutorialInterface" index="2"]
+[node name="ShakeTimer" type="Timer" parent="TutorialInterface" index="3"]
 
 process_mode = 1
 wait_time = 0.5
 one_shot = false
 autostart = false
 
-[node name="Tween" type="Tween" parent="TutorialInterface" index="3"]
+[node name="Tween" type="Tween" parent="TutorialInterface" index="4"]
 
 repeat = false
 playback_process_mode = 1
@@ -186,9 +178,5 @@ playback_speed = 1.0
 playback/active = false
 playback/repeat = false
 playback/speed = 1.0
-
-[connection signal="timeout" from="TutorialInterface/Interval" to="TutorialInterface" method="_on_Interval_timeout"]
-
-[connection signal="timeout" from="TutorialInterface/ShakeTimer" to="TutorialInterface" method="_on_ShakeTimer_timeout"]
 
 
