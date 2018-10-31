@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export (String)var ReloadScene = "res://Stages/Depression/DepressionPuzzle1.tscn"
+export (String)var ReloadScene = "res://Stages/DepressionStage.tscn"
 
 const GRAV = 2480
 const ACCEL = 5
@@ -91,7 +91,7 @@ func add_trigger(trigger):
 		$DeathTimer.start()
 
 func die():
-    get_tree().change_scene(ReloadScene)
+	get_tree().change_scene(ReloadScene)
 
 func _on_DeathTimer_timeout():
 	self.die()
