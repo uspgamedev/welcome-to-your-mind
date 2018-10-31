@@ -10,4 +10,6 @@ func reached_target(target):
 		emit_signal("trigger_absorbed", target)
 		die()
 	else:
+		$ContactTimer.start()
+		yield($ContactTimer, "timeout")
 		set_physics_process(true)
