@@ -5,13 +5,13 @@
 [node name="CameraAjudst" type="Node2D"]
 
 script = ExtResource( 1 )
-left_limit = -10000
+left_limit = -100000000
 left_time = 0.5
-right_limit = 10000
+right_limit = 100000000
 right_time = 0.5
-top_limit = -10000
+top_limit = -100000000
 top_time = 0.5
-bottom_limit = 10000
+bottom_limit = 100000000
 bottom_time = 0.5
 zoom = 1.0
 zoom_time = 0.5
