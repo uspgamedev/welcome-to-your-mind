@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
-[ext_resource path="res://Stages/Depression/Enemies/TriggerBad.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Stages/Depression/Enemies/Trigger/TriggerBad.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Stages/Depression/TriggerTutorial.tscn" type="PackedScene" id=3]
 [ext_resource path="res://CameraAdjust.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=5]
@@ -11,17 +11,17 @@
 custom_solver_bias = 0.0
 extents = Vector2( 1280, 12 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 41, 250 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
 extents = Vector2( 200, 30 )
 
-[node name="IntroTriggerBad" type="Node2D" index="0"]
+[node name="IntroTriggerBad" type="Node2D"]
 
 [node name="Scenery" type="Node2D" parent="." index="0"]
 
@@ -79,7 +79,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scenery/Wall" index="1"]
 
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="Enemies" type="Node2D" parent="." index="1"]
 
@@ -109,7 +109,6 @@ _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
 position = Vector2( 2175, -70 )
 _sections_unfolded = [ "Pause", "Transform", "Visibility", "Z Index" ]
-dies_on_walls = true
 
 [node name="CameraAjudst" parent="." index="2" instance=ExtResource( 4 )]
 
@@ -125,7 +124,7 @@ editor/display_folded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraAjudst/Area2D" index="0"]
 
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="Player" parent="." index="3" instance=ExtResource( 5 )]
 

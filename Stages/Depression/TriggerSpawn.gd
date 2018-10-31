@@ -2,11 +2,12 @@ extends Node2D
 
 export (float, 5.0)var respawn_time = 1.0
 
-var Trigger_scn = load("res://Stages/Depression/Enemies/TriggerGood.tscn")
+var Trigger_scn = load("res://Stages/Depression/Enemies/Trigger/TriggerGood.tscn")
 var Player
 var hasTrigger = false
 
 func _ready():
+	$Visual.queue_free()
 	$RespawnTimer.set_wait_time(respawn_time)
 	spawn()
 

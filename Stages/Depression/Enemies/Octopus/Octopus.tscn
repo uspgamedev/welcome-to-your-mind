@@ -1,9 +1,10 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Stages/Depression/Enemies/Octopus/Octopus.gd" type="Script" id=1]
-[ext_resource path="res://Stages/Depression/Enemies/TriggerWave.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Stages/Depression/Enemies/TriggerWave/TriggerWave.tscn" type="PackedScene" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://Stages/Depression/Enemies/Octopus/octopusattack.wav" type="AudioStream" id=4]
+
 
 [sub_resource type="Animation" id=1]
 

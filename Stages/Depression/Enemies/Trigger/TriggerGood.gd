@@ -1,4 +1,4 @@
-extends "res://Stages/Depression/Enemies/TriggerBase.gd"
+extends "res://Stages/Depression/Enemies/Trigger/TriggerBase.gd"
 
 signal trigger_absorbed(Absorber)
 
