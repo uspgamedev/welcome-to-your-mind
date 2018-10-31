@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
-[ext_resource path="res://Stages/Depression/TriggerSpawn.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Stages/Depression/Enemies/DeathPit/DeathPit.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Stages/Depression/TriggerSpawn.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://CameraAdjust.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -14,15 +16,30 @@ extents = Vector2( 600, 20 )
 custom_solver_bias = 0.0
 extents = Vector2( 120, 16 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
 extents = Vector2( 220, 20 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 500, 20 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 160, 20 )
+
+[sub_resource type="RectangleShape2D" id=6]
 
 custom_solver_bias = 0.0
 extents = Vector2( 30, 80 )
+
+[sub_resource type="RectangleShape2D" id=7]
+
+custom_solver_bias = 0.0
+extents = Vector2( 40, 40 )
 
 [node name="JumpIntro" type="Node2D" index="0"]
 
@@ -103,7 +120,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scenery/Floor3" index="0"]
 
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="Scenery/Floor3" index="1"]
 
@@ -114,7 +131,7 @@ _sections_unfolded = [ "Material", "Transform" ]
 [node name="Floor4" type="StaticBody2D" parent="Scenery" index="3"]
 
 editor/display_folded = true
-position = Vector2( 1917.31, 411.603 )
+position = Vector2( 1880, 415 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -129,15 +146,93 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scenery/Floor4" index="0"]
 
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="Scenery/Floor4" index="1"]
 
-scale = Vector2( 18, 0.6 )
+scale = Vector2( 15.5, 0.6 )
 texture = ExtResource( 1 )
 _sections_unfolded = [ "Material", "Transform" ]
 
-[node name="Wall" type="StaticBody2D" parent="Scenery" index="4"]
+[node name="Floor5" type="StaticBody2D" parent="Scenery" index="4"]
+
+editor/display_folded = true
+position = Vector2( 4100, 620 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scenery/Floor5" index="0"]
+
+shape = SubResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="Scenery/Floor5" index="1"]
+
+scale = Vector2( 15.5, 0.6 )
+texture = ExtResource( 1 )
+_sections_unfolded = [ "Material", "Transform" ]
+
+[node name="Platform" type="StaticBody2D" parent="Scenery" index="5"]
+
+editor/display_folded = true
+position = Vector2( 2734, 415 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scenery/Platform" index="0"]
+
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="Scenery/Platform" index="1"]
+
+scale = Vector2( 5, 0.6 )
+texture = ExtResource( 1 )
+_sections_unfolded = [ "Material", "Transform" ]
+
+[node name="Platform2" type="StaticBody2D" parent="Scenery" index="6"]
+
+editor/display_folded = true
+position = Vector2( 3290, 620 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scenery/Platform2" index="0"]
+
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="Scenery/Platform2" index="1"]
+
+scale = Vector2( 5, 0.6 )
+texture = ExtResource( 1 )
+_sections_unfolded = [ "Material", "Transform" ]
+
+[node name="Wall" type="StaticBody2D" parent="Scenery" index="7"]
 
 editor/display_folded = true
 position = Vector2( 1055.69, 564.787 )
@@ -154,7 +249,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scenery/Wall" index="0"]
 
-shape = SubResource( 3 )
+shape = SubResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="Scenery/Wall" index="1"]
 
@@ -162,7 +257,7 @@ scale = Vector2( 1, 2.4 )
 texture = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Wall3" type="StaticBody2D" parent="Scenery" index="5"]
+[node name="Wall3" type="StaticBody2D" parent="Scenery" index="8"]
 
 editor/display_folded = true
 position = Vector2( 1348.93, 473.809 )
@@ -179,7 +274,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scenery/Wall3" index="0"]
 
-shape = SubResource( 3 )
+shape = SubResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="Scenery/Wall3" index="1"]
 
@@ -187,7 +282,7 @@ scale = Vector2( 1, 2.4 )
 texture = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Wall2" type="StaticBody2D" parent="Scenery" index="6"]
+[node name="Wall2" type="StaticBody2D" parent="Scenery" index="9"]
 
 editor/display_folded = true
 position = Vector2( 610.368, 468.495 )
@@ -205,7 +300,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scenery/Wall2" index="0"]
 
-shape = SubResource( 3 )
+shape = SubResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="Scenery/Wall2" index="1"]
 
@@ -213,18 +308,39 @@ scale = Vector2( 1, 2.4 )
 texture = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Spawn" parent="." index="1" instance=ExtResource( 2 )]
+[node name="Enemies" type="Node2D" parent="." index="1"]
+
+editor/display_folded = true
+
+[node name="DeathPit" parent="Enemies" index="0" instance=ExtResource( 2 )]
+
+position = Vector2( 2993.41, 767.36 )
+width = 1500
+
+[node name="Spawn" parent="." index="2" instance=ExtResource( 3 )]
 
 position = Vector2( 956.347, 515.536 )
 
-[node name="Spawn2" parent="." index="2" instance=ExtResource( 2 )]
+[node name="Spawn2" parent="." index="3" instance=ExtResource( 3 )]
 
 position = Vector2( 1269.13, 437.256 )
 
-[node name="Player" parent="." index="3" instance=ExtResource( 3 )]
+[node name="Spawn3" parent="." index="4" instance=ExtResource( 3 )]
 
-editor/display_folded = true
-position = Vector2( -334.191, 272.424 )
+position = Vector2( 2342.81, 357.478 )
+
+[node name="Spawn4" parent="." index="5" instance=ExtResource( 3 )]
+
+position = Vector2( 3008.85, 523.059 )
+
+[node name="Spawn5" parent="." index="6" instance=ExtResource( 3 )]
+
+position = Vector2( 3414.86, 557.919 )
+
+[node name="Player" parent="." index="7" instance=ExtResource( 4 )]
+
+position = Vector2( -357.607, 251.327 )
+ReloadScene = "res://Stages/Depression/Sections/IntroJump.tscn"
 
 [node name="Camera2D" type="Camera2D" parent="Player" index="6"]
 
@@ -234,7 +350,7 @@ rotating = false
 current = true
 zoom = Vector2( 1, 1 )
 limit_left = -10000000
-limit_top = -10000000
+limit_top = 0
 limit_right = 10000000
 limit_bottom = 10000000
 limit_smoothed = false
@@ -252,4 +368,16 @@ editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
 
+[node name="CameraAjudst" parent="." index="8" instance=ExtResource( 5 )]
 
+editor/display_folded = true
+position = Vector2( 2086.13, 349.496 )
+top_limit = 180
+top_time = 0.8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraAjudst/Area2D" index="0"]
+
+shape = SubResource( 7 )
+
+
+[editable path="CameraAjudst"]
