@@ -20,8 +20,6 @@ func set_width(w):
 
 func update_pit():
 	if has_node("Shadow"):
-		for child in get_children():
-			print(child.get_name())
 		$Shadow.set_scale(Vector2(float(width)/SHADOW_WIDHT, 1))
 		var shape = $Area2D/CollisionShape2D.get_shape()
 		shape.set_extents(Vector2(width/2, 10))
