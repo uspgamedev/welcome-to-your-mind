@@ -1,11 +1,10 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Stages/Depression/Sections/TriggerGoodChallenges/IntroJump.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://Stages/Depression/Enemies/DeathPit/DeathPit.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Stages/Depression/TriggerSpawn.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://CameraAdjust.tscn" type="PackedScene" id=6]
+[ext_resource path="res://CameraAdjust.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -27,27 +26,27 @@ extents = Vector2( 220, 20 )
 custom_solver_bias = 0.0
 extents = Vector2( 500, 20 )
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
 extents = Vector2( 320, 20 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=6]
 
 custom_solver_bias = 0.0
 extents = Vector2( 160, 20 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=7]
 
 custom_solver_bias = 0.0
 extents = Vector2( 30, 80 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=8]
 
 custom_solver_bias = 0.0
 extents = Vector2( 40, 80 )
 
-[node name="JumpIntro" type="Node2D" index="0"]
+[node name="JumpIntro" type="Node2D"]
 
 script = ExtResource( 1 )
 
@@ -180,7 +179,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scenery/Floor5" index="0"]
 
-shape = SubResource( 8 )
+shape = SubResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="Scenery/Floor5" index="1"]
 
@@ -206,7 +205,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scenery/Platform" index="0"]
 
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="Scenery/Platform" index="1"]
 
@@ -232,7 +231,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scenery/Platform2" index="0"]
 
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="Scenery/Platform2" index="1"]
 
@@ -257,7 +256,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scenery/Wall" index="0"]
 
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="Scenery/Wall" index="1"]
 
@@ -283,7 +282,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scenery/Wall2" index="0"]
 
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="Scenery/Wall2" index="1"]
 
@@ -308,7 +307,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scenery/Wall3" index="0"]
 
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="Scenery/Wall3" index="1"]
 
@@ -334,7 +333,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scenery/Wall4" index="0"]
 
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="Scenery/Wall4" index="1"]
 
@@ -352,78 +351,49 @@ position = Vector2( 2900, 780 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 width = 2000
 
-[node name="Spawn" parent="." index="2" instance=ExtResource( 4 )]
+[node name="Spawns" type="Node2D" parent="." index="2"]
+
+editor/display_folded = true
+
+[node name="Spawn" parent="Spawns" index="0" instance=ExtResource( 4 )]
 
 position = Vector2( 956.347, 515.536 )
 
-[node name="Spawn2" parent="." index="3" instance=ExtResource( 4 )]
+[node name="Spawn2" parent="Spawns" index="1" instance=ExtResource( 4 )]
 
 position = Vector2( 1269.13, 437.256 )
 
-[node name="Spawn3" parent="." index="4" instance=ExtResource( 4 )]
+[node name="Spawn3" parent="Spawns" index="2" instance=ExtResource( 4 )]
 
 position = Vector2( 2342.81, 357.478 )
 
-[node name="Spawn4" parent="." index="5" instance=ExtResource( 4 )]
+[node name="Spawn4" parent="Spawns" index="3" instance=ExtResource( 4 )]
 
 position = Vector2( 3008.85, 523.059 )
 
-[node name="Spawn5" parent="." index="6" instance=ExtResource( 4 )]
+[node name="Spawn5" parent="Spawns" index="4" instance=ExtResource( 4 )]
 
 position = Vector2( 3414.86, 557.919 )
 
-[node name="Spawn6" parent="." index="7" instance=ExtResource( 4 )]
+[node name="Spawn6" parent="Spawns" index="5" instance=ExtResource( 4 )]
 
 position = Vector2( 4200, 550 )
 _sections_unfolded = [ "Transform" ]
 respawn_time = 1.8
 
-[node name="Spawn7" parent="." index="8" instance=ExtResource( 4 )]
+[node name="Spawn7" parent="Spawns" index="6" instance=ExtResource( 4 )]
 
 position = Vector2( 4200, 435 )
 _sections_unfolded = [ "Transform" ]
 respawn_time = 1.8
 
-[node name="Spawn8" parent="." index="9" instance=ExtResource( 4 )]
+[node name="Spawn8" parent="Spawns" index="7" instance=ExtResource( 4 )]
 
 position = Vector2( 4200, 330 )
 _sections_unfolded = [ "Transform" ]
 respawn_time = 1.8
 
-[node name="Player" parent="." index="10" instance=ExtResource( 5 )]
-
-editor/display_folded = true
-position = Vector2( -357.607, 242.959 )
-ReloadScene = "res://Stages/Depression/Sections/TriggerGoodChallenges/IntroJump.tscn"
-
-[node name="Camera2D" type="Camera2D" parent="Player" index="6"]
-
-position = Vector2( -4.54407, -4.54419 )
-anchor_mode = 1
-rotating = false
-current = true
-zoom = Vector2( 1, 1 )
-limit_left = -10000000
-limit_top = 0
-limit_right = 10000000
-limit_bottom = 820
-limit_smoothed = false
-drag_margin_h_enabled = true
-drag_margin_v_enabled = true
-smoothing_enabled = false
-smoothing_speed = 5.0
-offset_v = 0.0
-offset_h = 0.0
-drag_margin_left = 0.2
-drag_margin_top = 0.2
-drag_margin_right = 0.2
-drag_margin_bottom = 0.2
-editor_draw_screen = true
-editor_draw_limits = false
-editor_draw_drag_margin = false
-_sections_unfolded = [ "Limit" ]
-
-[node name="ChallengeCamera" parent="." index="11" instance=ExtResource( 6 )]
+[node name="ChallengeCamera" parent="." index="3" instance=ExtResource( 5 )]
 
 editor/display_folded = true
 position = Vector2( 1900, 320 )
@@ -434,19 +404,51 @@ bottom_limit = 820
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChallengeCamera/Area2D" index="0"]
 
-shape = SubResource( 7 )
+shape = SubResource( 8 )
 
-[node name="EasyCamera" parent="." index="12" instance=ExtResource( 6 )]
+[node name="EasyCamera" parent="." index="4" instance=ExtResource( 5 )]
 
 editor/display_folded = true
 position = Vector2( 1700, 320 )
 _sections_unfolded = [ "Transform" ]
 top_limit = 0
 top_time = 0.8
+bottom_limit = 500
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EasyCamera/Area2D" index="0"]
 
-shape = SubResource( 7 )
+shape = SubResource( 8 )
+disabled = true
+_sections_unfolded = [ "Transform" ]
+
+[node name="FirstDown" parent="." index="5" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( 200, 230 )
+_sections_unfolded = [ "Transform" ]
+top_limit = 0
+top_time = 0.6
+bottom_limit = 500
+bottom_time = 0.6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FirstDown/Area2D" index="0"]
+
+shape = SubResource( 8 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="FirstDownReturn" parent="." index="6" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+position = Vector2( -2.51733, 230 )
+_sections_unfolded = [ "Transform" ]
+top_limit = -500
+top_time = 0.8
+bottom_limit = 350
+zoom = 1.2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FirstDownReturn/Area2D" index="0"]
+
+shape = SubResource( 8 )
 disabled = true
 _sections_unfolded = [ "Transform" ]
 
@@ -454,6 +456,12 @@ _sections_unfolded = [ "Transform" ]
 
 [connection signal="body_entered" from="EasyCamera/Area2D" to="." method="_on_EasyArea2D_body_entered"]
 
+[connection signal="body_entered" from="FirstDown/Area2D" to="." method="_on_FirstDown_Area2D_body_entered"]
+
+[connection signal="body_entered" from="FirstDownReturn/Area2D" to="." method="_on_FirstDownReturn_Area2D_body_entered"]
+
 
 [editable path="ChallengeCamera"]
 [editable path="EasyCamera"]
+[editable path="FirstDown"]
+[editable path="FirstDownReturn"]

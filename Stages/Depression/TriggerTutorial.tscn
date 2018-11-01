@@ -5,7 +5,6 @@
 [ext_resource path="res://Stages/Depression/TutorialInterface.gd" type="Script" id=3]
 [ext_resource path="res://icon.png" type="Texture" id=4]
 
-
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
@@ -109,8 +108,9 @@ editor/display_folded = true
 
 [node name="TutorialInterface" type="Node2D" parent="." index="3"]
 
+editor/display_folded = true
 visible = false
-z_index = -10
+z_index = 10
 script = ExtResource( 3 )
 _sections_unfolded = [ "Material", "Pause", "Transform", "Z Index" ]
 DEBUG = 0

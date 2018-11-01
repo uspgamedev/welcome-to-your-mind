@@ -16,12 +16,14 @@ func lower_right_door():
 	Twn.interpolate_property(RD, "position", RD.get_position(),  RD.get_position() + Vector2(0, 170), DOOR_SPD, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
 	Twn.start()
 
-func _on_CameraAdjust_Area_exited(body):
+func _on_EnterArea_body_exited(body):
 	if body.is_in_group("Player"):
-		lower_left_door()
-		$Octopus.activate(body)
-
+		if body.get_global_position().x > $EnterArea.get_global_position().x:
+			lower_left_door()
+			$Octopus.activate(body)
+		
 func _on_ExitArea_body_exited(body):
 	if body.is_in_group("Player"):
-		lower_right_door()
-		$Octopus.deactivate()
+		if body.get_global_position().x > $ExitArea.get_global_position().x:
+			lower_right_door()
+			$Octopus.deactivate()
