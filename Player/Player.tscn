@@ -10,7 +10,7 @@ custom_solver_bias = 0.0
 radius = 22.0
 height = 20.0
 
-[node name="Player" type="KinematicBody2D" groups=[
+[node name="Player" type="KinematicBody2D" index="0" groups=[
 "Player",
 ]]
 
@@ -32,21 +32,28 @@ _sections_unfolded = [ "Visibility" ]
 
 shape = SubResource( 1 )
 
-[node name="ShakeTimer" type="Timer" parent="." index="2"]
+[node name="JumpCooldown" type="Timer" parent="." index="2"]
+
+process_mode = 1
+wait_time = 0.2
+one_shot = true
+autostart = false
+
+[node name="ShakeTimer" type="Timer" parent="." index="3"]
 
 process_mode = 1
 wait_time = 0.2
 one_shot = false
 autostart = false
 
-[node name="DeathTimer" type="Timer" parent="." index="3"]
+[node name="DeathTimer" type="Timer" parent="." index="4"]
 
 process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = false
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="4"]
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="5"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -80,7 +87,7 @@ rounded = false
 percent_visible = false
 _sections_unfolded = [ "Percent", "Rect" ]
 
-[node name="SFXJump" type="AudioStreamPlayer2D" parent="." index="5"]
+[node name="SFXJump" type="AudioStreamPlayer2D" parent="." index="6"]
 
 stream = ExtResource( 3 )
 volume_db = 0.0

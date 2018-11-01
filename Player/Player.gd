@@ -32,11 +32,8 @@ func get_input():
 		direction.x -= 1
 		shake(0)
 		
-	if Input.is_action_pressed('ui_up') and can_jump:
-		velocity.y = -JUMP_POWER
-		can_jump = false
-		$SFXJump.play()
-		emit_signal("jumped")
+	if Input.is_action_pressed('ui_up') and can_jump and $JumpCooldown.time_left <= 0:
+		jump()
 
 func _process(delta):
 	var timer = $DeathTimer 
@@ -98,3 +95,11 @@ func _on_DeathTimer_timeout():
 
 func get_jump():
 	can_jump = true
+
+func jump():
+	velocity.y = -JUMP_POWER
+	can_jump = false
+	$SFXJump.play()
+	$JumpCooldown.start()
+	emit_signal("jumped")
+
