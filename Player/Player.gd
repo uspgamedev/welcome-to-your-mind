@@ -3,10 +3,10 @@ extends KinematicBody2D
 export (String)var ReloadScene = "res://Stages/DepressionStage.tscn"
 
 const GRAV = 2480
-const ACCEL = 5
-const AIR_ACCEL = 2
+const ACCEL = 8
+const AIR_ACCEL = 6
 const MAX_SPD = 400
-const JUMP_POWER = 800
+const JUMP_POWER = 850
 const SHAKENUM = 3 # Times needed to shake before freeing itself from Triggers
 
 var velocity = Vector2()
