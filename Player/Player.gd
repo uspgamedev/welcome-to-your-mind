@@ -48,6 +48,8 @@ func _physics_process(delta):
 	if is_on_floor():
 		vel = vel.linear_interpolate(direction * MAX_SPD, ACCEL * delta)
 		vel.y = 0
+		if not $JumpCooldown.time_left > 0.0:
+			velocity.y = 0
 	else:
 		vel = vel.linear_interpolate(direction * MAX_SPD, AIR_ACCEL * delta)
 		vel.y += delta * GRAV
