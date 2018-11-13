@@ -7,15 +7,15 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 200, 10 )
+extents = Vector2( 150, 10 )
 
-[node name="DeathPit" type="Node2D" index="0"]
+[node name="DeathPit" type="Node2D"]
 
 position = Vector2( 0, -0.440125 )
 z_index = 20
 script = ExtResource( 1 )
 _sections_unfolded = [ "Z Index" ]
-width = 400
+width = 300
 
 [node name="FakeTriggers" type="Node2D" parent="." index="0"]
 
@@ -26,14 +26,13 @@ editor/display_folded = true
 [node name="Shadow" type="Sprite" parent="." index="1"]
 
 position = Vector2( 0, -20 )
-scale = Vector2( 2, 2.5 )
+scale = Vector2( 1.5, 2.25 )
 z_index = 10
 texture = ExtResource( 3 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Area2D" type="Area2D" parent="." index="2"]
 
-editor/display_folded = true
 position = Vector2( 0, 30 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )

@@ -21,8 +21,10 @@ func set_width(w):
 func update_pit():
 	if has_node("Shadow"):
 		$Shadow.set_scale(Vector2(float(width)/SHADOW_WIDHT, 2.25))
-		var shape = $Area2D/CollisionShape2D.get_shape()
+		$Area2D/CollisionShape2D.get_shape()
+		var shape = RectangleShape2D.new()
 		shape.set_extents(Vector2(width/2, 10))
+		$Area2D/CollisionShape2D.set_shape(shape)
 		remove_triggers()
 		add_triggers(width)
 
