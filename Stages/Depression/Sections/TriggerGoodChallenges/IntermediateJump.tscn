@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Stages/Depression/Sections/TriggerGoodChallenges/IntermediateJump.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://Stages/Depression/TriggerSpawn.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Stages/Depression/Enemies/DeathPit/DeathPit.tscn" type="PackedScene" id=4]
 [ext_resource path="res://CameraAdjust.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -32,7 +31,7 @@ extents = Vector2( 20, 230 )
 custom_solver_bias = 0.0
 extents = Vector2( 40, 200 )
 
-[node name="IntermediateJump" type="Node2D" index="0"]
+[node name="IntermediateJump" type="Node2D"]
 
 script = ExtResource( 1 )
 __meta__ = {
@@ -302,40 +301,6 @@ zoom = 0.5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraPart/Area2D" index="0"]
 
 shape = SubResource( 5 )
-
-[node name="Player" parent="." index="6" instance=ExtResource( 6 )]
-
-position = Vector2( -402.052, -87.7416 )
-ReloadScene = "res://Stages/Depression/Sections/TriggerGoodChallenges/Intermediate.tscn"
-
-[node name="Camera2D" type="Camera2D" parent="Player" index="7"]
-
-anchor_mode = 1
-rotating = false
-current = true
-zoom = Vector2( 0.5, 0.5 )
-limit_left = -10000000
-limit_top = -800
-limit_right = 10000000
-limit_bottom = 15
-limit_smoothed = false
-drag_margin_h_enabled = true
-drag_margin_v_enabled = true
-smoothing_enabled = false
-smoothing_speed = 5.0
-offset_v = 0.0
-offset_h = 0.0
-drag_margin_left = 0.2
-drag_margin_top = 0.2
-drag_margin_right = 0.2
-drag_margin_bottom = 0.2
-editor_draw_screen = true
-editor_draw_limits = false
-editor_draw_drag_margin = false
-_sections_unfolded = [ "Limit" ]
-__meta__ = {
-"_edit_lock_": true
-}
 
 [connection signal="body_entered" from="CameraPartReturn/Area2D" to="." method="_on_CameraPart2Return_enter"]
 

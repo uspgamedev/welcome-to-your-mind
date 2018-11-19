@@ -1,12 +1,12 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Stages/Depression/Sections/OctopusTentacle.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://Stages/Depression/TriggerSpawn.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Stages/Depression/Enemies/DeathPit/DeathPit.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Stages/Depression/Enemies/Octopus/Octopus.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Stages/Depression/Tentacle.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Stages/Depression/Tentacle.tscn" type="PackedScene" id=6]
+[ext_resource path="res://CameraAdjust.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -33,13 +33,16 @@ extents = Vector2( 20, 310 )
 custom_solver_bias = 0.0
 extents = Vector2( 50, 50 )
 
-[node name="OctopusTentacle" type="Node2D" index="0"]
+[sub_resource type="RectangleShape2D" id=6]
+
+custom_solver_bias = 0.0
+extents = Vector2( 20, 50 )
+
+[node name="OctopusTentacle" type="Node2D"]
 
 script = ExtResource( 1 )
 
 [node name="Scenery" type="Node2D" parent="." index="0"]
-
-editor/display_folded = true
 
 [node name="Floor1" type="StaticBody2D" parent="Scenery" index="0" groups=[
 "Floor",
@@ -269,49 +272,20 @@ width = 800
 
 _sections_unfolded = [ "Pause", "Transform" ]
 
-[node name="Player" parent="." index="4" instance=ExtResource( 6 )]
-
-position = Vector2( -534.133, 517.343 )
-
-[node name="Camera2D" type="Camera2D" parent="Player" index="7"]
-
-anchor_mode = 1
-rotating = false
-current = true
-zoom = Vector2( 1, 1 )
-limit_left = -10000000
-limit_top = -10000000
-limit_right = 10000000
-limit_bottom = 10000000
-limit_smoothed = false
-drag_margin_h_enabled = true
-drag_margin_v_enabled = true
-smoothing_enabled = false
-smoothing_speed = 5.0
-offset_v = 0.0
-offset_h = 0.0
-drag_margin_left = 0.2
-drag_margin_top = 0.2
-drag_margin_right = 0.2
-drag_margin_bottom = 0.2
-editor_draw_screen = true
-editor_draw_limits = false
-editor_draw_drag_margin = false
-
-[node name="Tentacle" parent="." index="5" instance=ExtResource( 7 )]
+[node name="Tentacle" parent="." index="4" instance=ExtResource( 6 )]
 
 position = Vector2( -100, 400 )
 rotation = 1.5708
 _sections_unfolded = [ "Transform" ]
 
-[node name="Tentacle2" parent="." index="6" instance=ExtResource( 7 )]
+[node name="Tentacle2" parent="." index="5" instance=ExtResource( 6 )]
 
 position = Vector2( 1088.97, 704.098 )
 rotation = 0.244346
 scale = Vector2( 2.3, 1 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Area2D" type="Area2D" parent="." index="7"]
+[node name="Area2D" type="Area2D" parent="." index="6"]
 
 position = Vector2( -206.033, 496.161 )
 input_pickable = true
@@ -326,6 +300,25 @@ audio_bus_name = "Master"
 
 shape = SubResource( 5 )
 
+[node name="CameraAjudst" parent="." index="7" instance=ExtResource( 7 )]
+
+position = Vector2( -413.011, 515.51 )
+_sections_unfolded = [ "Transform" ]
+left_limit = -800
+left_time = 2.0
+top_limit = -500
+top_time = 2.0
+right_limit = 3500
+right_time = 2.0
+bottom_limit = 1200
+bottom_time = 2.0
+zoom_time = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraAjudst/Area2D" index="0"]
+
+shape = SubResource( 6 )
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 
 
+[editable path="CameraAjudst"]

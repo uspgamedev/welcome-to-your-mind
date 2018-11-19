@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Stages/Depression/Sections/IntroTriggerBad.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Stages/Depression/Sections/TriggerGoodChallenges/IntroJump.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Stages/Depression/Sections/PuzzleOctopus.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Stages/Depression/Sections/TriggerGoodChallenges/IntermediateJump.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Stages/Depression/Sections/OctopusTentacle.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Stages/Depression/Sections/TriggerGoodChallenges/AdvancedJump.tscn" type="PackedScene" id=7]
 
 [node name="DepressionStage" type="Node" index="0"]
 
@@ -50,5 +53,17 @@ _sections_unfolded = [ "Transform" ]
 [node name="PuzzleOctopus" parent="." index="3" instance=ExtResource( 4 )]
 
 position = Vector2( 7703.17, -469.765 )
+
+[node name="IntermediateJump" parent="." index="4" instance=ExtResource( 5 )]
+
+position = Vector2( 10292.9, 53.3559 )
+
+[node name="OctopusTentacle" parent="." index="5" instance=ExtResource( 6 )]
+
+position = Vector2( 14672.1, -1107.06 )
+
+[node name="AdvancedJump" parent="." index="6" instance=ExtResource( 7 )]
+
+position = Vector2( 17584, -695.748 )
 
 

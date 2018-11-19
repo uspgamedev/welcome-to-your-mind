@@ -156,7 +156,7 @@ extents = Vector2( 300, 20 )
 custom_solver_bias = 0.0
 extents = Vector2( 300, 20 )
 
-[node name="AdvancedJump" type="Node2D" index="0"]
+[node name="AdvancedJump" type="Node2D"]
 
 __meta__ = {
 "_edit_horizontal_guides_": [ 600.0, 740.0, 370.0 ],
