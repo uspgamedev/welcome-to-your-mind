@@ -4,7 +4,6 @@
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://Stages/Depression/Enemies/slime3.wav" type="AudioStream" id=3]
 
-
 [sub_resource type="Animation" id=1]
 
 resource_name = "die"
@@ -47,7 +46,9 @@ tracks/0/keys = {
 custom_solver_bias = 0.0
 radius = 30.0
 
-[node name="TriggerBase" type="KinematicBody2D"]
+[node name="TriggerBase" type="KinematicBody2D" groups=[
+"TriggerBase",
+]]
 
 z_index = 1
 input_pickable = false
@@ -56,7 +57,8 @@ collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Visibility", "Z Index" ]
-evil = false
+dies_on_walls = false
+sleeping = false
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
