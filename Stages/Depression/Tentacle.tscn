@@ -13,7 +13,7 @@ extents = Vector2( 10.103, 10 )
 custom_solver_bias = 0.0
 extents = Vector2( 191.89, 15.8507 )
 
-[node name="Tentacle" type="Node2D"]
+[node name="Tentacle" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 
@@ -29,9 +29,10 @@ bounce = 0.0
 
 [node name="Sprite" type="Sprite" parent="StaticBody2D" index="0"]
 
+modulate = Color( 0.898438, 1, 0, 1 )
 scale = Vector2( 6, 0.5 )
 texture = ExtResource( 2 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="1"]
 

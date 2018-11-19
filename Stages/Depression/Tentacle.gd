@@ -7,6 +7,6 @@ func die():
 	queue_free()
 
 func _on_Area2D_area_entered(area):
-	if area.get_parent().is_in_group("TriggerBase") and hitted == false:
+	if area.get_parent().is_in_group("TriggerBad") and not hitted:
 		hitted = true
 		self.die()

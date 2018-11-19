@@ -1,0 +1,331 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Stages/Depression/Sections/OctopusTentacle.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Stages/Depression/TriggerSpawn.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Stages/Depression/Enemies/DeathPit/DeathPit.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Stages/Depression/Enemies/Octopus/Octopus.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Stages/Depression/Tentacle.tscn" type="PackedScene" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 700, 20 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 20, 250 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 300, 20 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 20, 310 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 50, 50 )
+
+[node name="OctopusTentacle" type="Node2D" index="0"]
+
+script = ExtResource( 1 )
+
+[node name="Scenery" type="Node2D" parent="." index="0"]
+
+editor/display_folded = true
+
+[node name="Floor1" type="StaticBody2D" parent="Scenery" index="0" groups=[
+"Floor",
+]]
+
+editor/display_folded = true
+position = Vector2( 0, 600 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="Scenery/Floor1" index="0"]
+
+scale = Vector2( 21.9, 0.7 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scenery/Floor1" index="1"]
+
+shape = SubResource( 1 )
+
+[node name="Floor2" type="StaticBody2D" parent="Scenery" index="1" groups=[
+"Floor",
+]]
+
+editor/display_folded = true
+position = Vector2( 2200, 800 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="Scenery/Floor2" index="0"]
+
+scale = Vector2( 21.9, 0.7 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scenery/Floor2" index="1"]
+
+shape = SubResource( 1 )
+
+[node name="Wall1" type="StaticBody2D" parent="Scenery" index="2" groups=[
+"Floor",
+]]
+
+editor/display_folded = true
+position = Vector2( -670, 250 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="Scenery/Wall1" index="0"]
+
+scale = Vector2( 0.7, 8 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scenery/Wall1" index="1"]
+
+shape = SubResource( 2 )
+
+[node name="Wall2" type="StaticBody2D" parent="Scenery" index="3" groups=[
+"Floor",
+]]
+
+editor/display_folded = true
+position = Vector2( -350, 350 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="Scenery/Wall2" index="0"]
+
+scale = Vector2( 9.3, 0.7 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scenery/Wall2" index="1"]
+
+shape = SubResource( 3 )
+
+[node name="Wall3" type="StaticBody2D" parent="Scenery" index="4" groups=[
+"Floor",
+]]
+
+editor/display_folded = true
+position = Vector2( 389.755, 254.106 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="Scenery/Wall3" index="0"]
+
+scale = Vector2( 9.3, 0.7 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scenery/Wall3" index="1"]
+
+shape = SubResource( 3 )
+
+[node name="Wall4" type="StaticBody2D" parent="Scenery" index="5" groups=[
+"Floor",
+]]
+
+editor/display_folded = true
+position = Vector2( 1482.26, 272.279 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="Scenery/Wall4" index="0"]
+
+scale = Vector2( 9.3, 0.7 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scenery/Wall4" index="1"]
+
+shape = SubResource( 3 )
+
+[node name="Wall5" type="StaticBody2D" parent="Scenery" index="6" groups=[
+"Floor",
+]]
+
+editor/display_folded = true
+position = Vector2( 2485.73, 517.815 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="Scenery/Wall5" index="0"]
+
+scale = Vector2( 9.3, 0.7 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scenery/Wall5" index="1"]
+
+shape = SubResource( 3 )
+
+[node name="Wall6" type="StaticBody2D" parent="Scenery" index="7" groups=[
+"Floor",
+]]
+
+editor/display_folded = true
+position = Vector2( 2880, 330 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="Scenery/Wall6" index="0"]
+
+scale = Vector2( 0.7, 10 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scenery/Wall6" index="1"]
+
+position = Vector2( -54.6616, 16.819 )
+shape = SubResource( 4 )
+
+[node name="Spawns" type="Node2D" parent="." index="1"]
+
+editor/display_folded = true
+position = Vector2( 0, -1 )
+
+[node name="Spawn" parent="Spawns" index="0" instance=ExtResource( 3 )]
+
+position = Vector2( 662.266, 506.728 )
+
+[node name="Spawn2" parent="Spawns" index="1" instance=ExtResource( 3 )]
+
+position = Vector2( 1010.96, 564.108 )
+
+[node name="Spawn3" parent="Spawns" index="2" instance=ExtResource( 3 )]
+
+position = Vector2( 1319.49, 630.933 )
+
+[node name="DeathPit" parent="." index="2" instance=ExtResource( 4 )]
+
+position = Vector2( 1100, 880 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+width = 800
+
+[node name="Octopus" parent="." index="3" instance=ExtResource( 5 )]
+
+_sections_unfolded = [ "Pause", "Transform" ]
+
+[node name="Player" parent="." index="4" instance=ExtResource( 6 )]
+
+position = Vector2( -534.133, 517.343 )
+
+[node name="Camera2D" type="Camera2D" parent="Player" index="7"]
+
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+
+[node name="Tentacle" parent="." index="5" instance=ExtResource( 7 )]
+
+position = Vector2( -100, 400 )
+rotation = 1.5708
+_sections_unfolded = [ "Transform" ]
+
+[node name="Tentacle2" parent="." index="6" instance=ExtResource( 7 )]
+
+position = Vector2( 1088.97, 704.098 )
+rotation = 0.244346
+scale = Vector2( 2.3, 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Area2D" type="Area2D" parent="." index="7"]
+
+position = Vector2( -206.033, 496.161 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+
+shape = SubResource( 5 )
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+
+

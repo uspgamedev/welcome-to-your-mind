@@ -4,8 +4,6 @@
 [ext_resource path="res://Stages/Depression/Enemies/Trigger/TriggerBase.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Stages/Depression/Enemies/Trigger/TriggerBad.gd" type="Script" id=3]
 
-
-
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
@@ -214,7 +212,7 @@ tracks/0/keys = {
 custom_solver_bias = 0.0
 extents = Vector2( 40, 20 )
 
-[node name="TriggerWave" type="Node2D" index="0" groups=[
+[node name="TriggerWave" type="Node2D" groups=[
 "TriggerWave",
 ]]
 
@@ -223,14 +221,15 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 SPEED = 300
 DIRECTION = Vector2( 0, 1 )
 
-[node name="TriggerBase" parent="." index="0" instance=ExtResource( 2 )]
+[node name="TriggerBase" parent="." index="0" groups=[
+"TriggerBad",
+] instance=ExtResource( 2 )]
 
 editor/display_folded = true
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 32.5022, 1.10803 )
 script = ExtResource( 3 )
 dies_on_walls = true
-sleeping = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerBase/Area2D" index="0"]
 
@@ -243,14 +242,15 @@ wait_time = 0.5
 one_shot = true
 autostart = false
 
-[node name="TriggerBase2" parent="." index="1" instance=ExtResource( 2 )]
+[node name="TriggerBase2" parent="." index="1" groups=[
+"TriggerBad",
+] instance=ExtResource( 2 )]
 
 editor/display_folded = true
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 48.1808, -57.4263 )
 script = ExtResource( 3 )
 dies_on_walls = true
-sleeping = false
 
 [node name="AnimationPlayer" parent="TriggerBase2/Sprite" index="0"]
 
@@ -267,14 +267,15 @@ wait_time = 0.5
 one_shot = true
 autostart = false
 
-[node name="TriggerBase3" parent="." index="2" instance=ExtResource( 2 )]
+[node name="TriggerBase3" parent="." index="2" groups=[
+"TriggerBad",
+] instance=ExtResource( 2 )]
 
 editor/display_folded = true
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( -43.0146, 49.1909 )
 script = ExtResource( 3 )
 dies_on_walls = true
-sleeping = false
 
 [node name="AnimationPlayer" parent="TriggerBase3/Sprite" index="0"]
 
@@ -291,14 +292,15 @@ wait_time = 0.5
 one_shot = true
 autostart = false
 
-[node name="TriggerBase4" parent="." index="3" instance=ExtResource( 2 )]
+[node name="TriggerBase4" parent="." index="3" groups=[
+"TriggerBad",
+] instance=ExtResource( 2 )]
 
 editor/display_folded = true
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( -29.7682, -5.01938 )
 script = ExtResource( 3 )
 dies_on_walls = true
-sleeping = false
 
 [node name="AnimationPlayer" parent="TriggerBase4/Sprite" index="0"]
 
@@ -315,14 +317,15 @@ wait_time = 0.5
 one_shot = true
 autostart = false
 
-[node name="TriggerBase5" parent="." index="4" instance=ExtResource( 2 )]
+[node name="TriggerBase5" parent="." index="4" groups=[
+"TriggerBad",
+] instance=ExtResource( 2 )]
 
 editor/display_folded = true
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 24.2963, 101.678 )
 script = ExtResource( 3 )
 dies_on_walls = true
-sleeping = false
 
 [node name="AnimationPlayer" parent="TriggerBase5/Sprite" index="0"]
 
@@ -339,14 +342,15 @@ wait_time = 0.5
 one_shot = true
 autostart = false
 
-[node name="TriggerBase6" parent="." index="5" instance=ExtResource( 2 )]
+[node name="TriggerBase6" parent="." index="5" groups=[
+"TriggerBad",
+] instance=ExtResource( 2 )]
 
 editor/display_folded = true
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 40.8346, 51.8613 )
 script = ExtResource( 3 )
 dies_on_walls = true
-sleeping = false
 
 [node name="AnimationPlayer" parent="TriggerBase6/Sprite" index="0"]
 
@@ -363,14 +367,15 @@ wait_time = 0.5
 one_shot = true
 autostart = false
 
-[node name="TriggerBase7" parent="." index="6" instance=ExtResource( 2 )]
+[node name="TriggerBase7" parent="." index="6" groups=[
+"TriggerBad",
+] instance=ExtResource( 2 )]
 
 editor/display_folded = true
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( -48.2906, -54.0524 )
 script = ExtResource( 3 )
 dies_on_walls = true
-sleeping = false
 
 [node name="AnimationPlayer" parent="TriggerBase7/Sprite" index="0"]
 
@@ -387,14 +392,15 @@ wait_time = 0.5
 one_shot = true
 autostart = false
 
-[node name="TriggerBase8" parent="." index="7" instance=ExtResource( 2 )]
+[node name="TriggerBase8" parent="." index="7" groups=[
+"TriggerBad",
+] instance=ExtResource( 2 )]
 
 editor/display_folded = true
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( -23.8281, 100.916 )
 script = ExtResource( 3 )
 dies_on_walls = true
-sleeping = false
 
 [node name="AnimationPlayer" parent="TriggerBase8/Sprite" index="0"]
 
@@ -411,14 +417,15 @@ wait_time = 0.5
 one_shot = true
 autostart = false
 
-[node name="TriggerBase9" parent="." index="8" instance=ExtResource( 2 )]
+[node name="TriggerBase9" parent="." index="8" groups=[
+"TriggerBad",
+] instance=ExtResource( 2 )]
 
 editor/display_folded = true
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( -0.858673, -89.7392 )
 script = ExtResource( 3 )
 dies_on_walls = true
-sleeping = false
 
 [node name="AnimationPlayer" parent="TriggerBase9/Sprite" index="0"]
 
@@ -435,14 +442,15 @@ wait_time = 0.5
 one_shot = true
 autostart = false
 
-[node name="TriggerBase10" parent="." index="9" instance=ExtResource( 2 )]
+[node name="TriggerBase10" parent="." index="9" groups=[
+"TriggerBad",
+] instance=ExtResource( 2 )]
 
 editor/display_folded = true
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( -2.33605, 54.3045 )
 script = ExtResource( 3 )
 dies_on_walls = true
-sleeping = false
 
 [node name="AnimationPlayer" parent="TriggerBase10/Sprite" index="0"]
 
@@ -459,14 +467,15 @@ wait_time = 0.5
 one_shot = true
 autostart = false
 
-[node name="TriggerBase11" parent="." index="10" instance=ExtResource( 2 )]
+[node name="TriggerBase11" parent="." index="10" groups=[
+"TriggerBad",
+] instance=ExtResource( 2 )]
 
 editor/display_folded = true
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( -0.119985, -36.5539 )
 script = ExtResource( 3 )
 dies_on_walls = true
-sleeping = false
 
 [node name="AnimationPlayer" parent="TriggerBase11/Sprite" index="0"]
 
