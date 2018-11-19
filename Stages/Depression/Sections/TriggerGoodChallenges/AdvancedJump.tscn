@@ -1,11 +1,10 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Stages/Depression/Enemies/Trigger/TriggerBad.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Stages/Depression/Enemies/DeathPit/DeathPit.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Stages/Depression/TriggerSpawn.tscn" type="PackedScene" id=4]
 [ext_resource path="res://CameraAdjust.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -157,7 +156,7 @@ extents = Vector2( 300, 20 )
 custom_solver_bias = 0.0
 extents = Vector2( 300, 20 )
 
-[node name="AdvancedJump" type="Node2D"]
+[node name="AdvancedJump" type="Node2D" index="0"]
 
 __meta__ = {
 "_edit_horizontal_guides_": [ 600.0, 740.0, 370.0 ],
@@ -166,6 +165,8 @@ __meta__ = {
 }
 
 [node name="Scenery" type="Node2D" parent="." index="0"]
+
+editor/display_folded = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Scenery" index="0"]
 
@@ -392,6 +393,8 @@ shape = SubResource( 2 )
 
 [node name="Enemies" type="Node2D" parent="." index="1"]
 
+editor/display_folded = true
+
 [node name="TriggerBad" parent="Enemies" index="0" instance=ExtResource( 2 )]
 
 editor/display_folded = true
@@ -504,7 +507,7 @@ width = 1200
 [node name="DeathPit3" parent="Enemies" index="15" instance=ExtResource( 3 )]
 
 position = Vector2( 3742.99, 2471.92 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Transform", "Z Index" ]
 width = 1200
 
 [node name="DeathPit4" parent="Enemies" index="16" instance=ExtResource( 3 )]
@@ -514,6 +517,8 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 width = 150
 
 [node name="Spawn" type="Node2D" parent="." index="2"]
+
+editor/display_folded = true
 
 [node name="Spawn" parent="Spawn" index="0" instance=ExtResource( 4 )]
 
@@ -633,6 +638,7 @@ shape = SubResource( 11 )
 
 [node name="CameraAjudst5" parent="." index="7" instance=ExtResource( 5 )]
 
+editor/display_folded = true
 position = Vector2( 3660, 2080 )
 left_limit = 200
 left_time = 1.0
@@ -650,37 +656,6 @@ zoom_time = 1.0
 position = Vector2( -150, -20 )
 shape = SubResource( 12 )
 _sections_unfolded = [ "Transform" ]
-
-[node name="Player" parent="." index="8" instance=ExtResource( 6 )]
-
-position = Vector2( 3810, 1360 )
-ReloadScene = "res://Stages/Depression/Sections/TriggerGoodChallenges/AdvancedJump.tscn"
-
-[node name="Camera2D" type="Camera2D" parent="Player" index="7"]
-
-anchor_mode = 1
-rotating = false
-current = true
-zoom = Vector2( 1, 1 )
-limit_left = 500
-limit_top = 0
-limit_right = 1200
-limit_bottom = 800
-limit_smoothed = false
-drag_margin_h_enabled = true
-drag_margin_v_enabled = true
-smoothing_enabled = false
-smoothing_speed = 5.0
-offset_v = 0.0
-offset_h = 0.0
-drag_margin_left = 0.2
-drag_margin_top = 0.2
-drag_margin_right = 0.2
-drag_margin_bottom = 0.2
-editor_draw_screen = true
-editor_draw_limits = false
-editor_draw_drag_margin = false
-_sections_unfolded = [ "Limit" ]
 
 
 [editable path="Enemies/TriggerBad"]
