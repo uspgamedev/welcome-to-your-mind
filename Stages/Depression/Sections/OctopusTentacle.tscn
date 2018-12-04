@@ -38,7 +38,7 @@ extents = Vector2( 50, 50 )
 custom_solver_bias = 0.0
 extents = Vector2( 20, 50 )
 
-[node name="OctopusTentacle" type="Node2D"]
+[node name="OctopusTentacle" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 
@@ -199,7 +199,7 @@ shape = SubResource( 3 )
 ]]
 
 editor/display_folded = true
-position = Vector2( 2485.73, 517.815 )
+position = Vector2( 2556.73, 517.815 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -224,7 +224,7 @@ shape = SubResource( 3 )
 ]]
 
 editor/display_folded = true
-position = Vector2( 2880, 330 )
+position = Vector2( 2876, 330 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -242,8 +242,8 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scenery/Wall6" index="1"]
 
-position = Vector2( -54.6616, 16.819 )
 shape = SubResource( 4 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="Spawns" type="Node2D" parent="." index="1"]
 

@@ -1,19 +1,26 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Stages/Depression/Sections/IntroTriggerBad.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Stages/Depression/Sections/TriggerGoodChallenges/IntroJump.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Stages/Depression/Sections/PuzzleOctopus.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Stages/Depression/Sections/TriggerGoodChallenges/IntermediateJump.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Stages/Depression/Sections/OctopusTentacle.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Stages/Depression/Sections/TriggerGoodChallenges/AdvancedJump.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Stages/Depression/DepressionStage.gd" type="Script" id=1]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Stages/Depression/Sections/IntroTriggerBad.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Stages/Depression/Sections/TriggerGoodChallenges/IntroJump.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Stages/Depression/Sections/PuzzleOctopus.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Stages/Depression/Sections/TriggerGoodChallenges/IntermediateJump.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Stages/Depression/Sections/OctopusTentacle.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Stages/Depression/Sections/TriggerGoodChallenges/AdvancedJump.tscn" type="PackedScene" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 180, 100 )
 
 [node name="DepressionStage" type="Node" index="0"]
 
-[node name="Player" parent="." index="0" instance=ExtResource( 1 )]
+script = ExtResource( 1 )
+
+[node name="Player" parent="." index="0" instance=ExtResource( 2 )]
 
 position = Vector2( 195, -1420 )
-ReloadScene = "res://Stages/DepressionStage.tscn"
 
 [node name="Camera2D" type="Camera2D" parent="Player" index="6"]
 
@@ -41,29 +48,77 @@ editor_draw_limits = false
 editor_draw_drag_margin = false
 _sections_unfolded = [ "Limit", "Smoothing", "Transform" ]
 
-[node name="IntroTriggerBad" parent="." index="1" instance=ExtResource( 2 )]
+[node name="IntroTriggerBad" parent="." index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 3.4248, 3.42468 )
 
-[node name="JumpIntro" parent="." index="2" instance=ExtResource( 3 )]
+[node name="JumpIntro" parent="." index="2" instance=ExtResource( 4 )]
 
 position = Vector2( 3000, -300 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="PuzzleOctopus" parent="." index="3" instance=ExtResource( 4 )]
+[node name="PuzzleOctopus" parent="." index="3" instance=ExtResource( 5 )]
 
 position = Vector2( 7703.17, -469.765 )
 
-[node name="IntermediateJump" parent="." index="4" instance=ExtResource( 5 )]
+[node name="IntermediateJump" parent="." index="4" instance=ExtResource( 6 )]
 
 position = Vector2( 10292.9, 53.3559 )
 
-[node name="OctopusTentacle" parent="." index="5" instance=ExtResource( 6 )]
+[node name="OctopusTentacle" parent="." index="5" instance=ExtResource( 7 )]
 
 position = Vector2( 14672.1, -1107.06 )
 
-[node name="AdvancedJump" parent="." index="6" instance=ExtResource( 7 )]
+[node name="AdvancedJump" parent="." index="6" instance=ExtResource( 8 )]
 
 position = Vector2( 17584, -695.748 )
+
+[node name="Checkpoints" type="Node" parent="." index="7"]
+
+[node name="Checkpoint1" type="Area2D" parent="Checkpoints" index="0"]
+
+editor/display_folded = true
+position = Vector2( 3830, 170 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoints/Checkpoint1" index="0"]
+
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Checkpoint2" type="Area2D" parent="Checkpoints" index="1"]
+
+editor/display_folded = true
+position = Vector2( 6940, 205 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoints/Checkpoint2" index="0"]
+
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[connection signal="died" from="Player" to="." method="_on_Player_died"]
+
+[connection signal="body_entered" from="Checkpoints/Checkpoint1" to="." method="_on_Checkpoint1_body_entered"]
+
+[connection signal="body_entered" from="Checkpoints/Checkpoint2" to="." method="_on_Checkpoint2_body_entered"]
 
 
